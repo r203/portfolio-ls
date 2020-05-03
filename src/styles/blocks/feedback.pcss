@@ -1,0 +1,70 @@
+.feedback {
+    width: 900px;
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 100px;
+    }
+    &__row {
+        display: flex;
+        width: 100%;
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
+    }
+    &__col {
+        flex: 1;
+        &:not(:last-child) {
+            margin-right: 100px;
+        }
+    }
+    &__label {
+        position: relative;
+        &-name:before {
+            background-image: url(../images/icons/user.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &-email:before {
+            background-image: url(../images/icons/email.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        &-textarea:before {
+            background-image: url(../images/icons/textarea.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+    &__label:before {
+            content: '';
+            display: inline-flex;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 45px;
+    }
+    &__placeholder {
+        font-weight: 600;
+        opacity: .3;
+    }
+    &__input {
+        position: relative;
+        width: 100%;
+        background-color: transparent;
+        border: transparent;
+        border-bottom: 1px solid $text-color;
+        padding: 25px 50px;
+        color: $text-color;
+    }
+    &__textarea {
+        width: 100%;
+        background-color: transparent;
+        border: transparent;
+        border-bottom: 1px solid $text-color;
+        padding: 25px 50px;
+        color: $text-color;
+        resize: none;
+    }
+
+}

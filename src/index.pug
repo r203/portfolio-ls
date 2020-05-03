@@ -131,91 +131,85 @@ html(lang="ru")
                 a.school__link(href="lostschool.com") Посмотреть сайт
         section.section.section-five
           .container
-           .reviews
-            .reviews__header
-              h2.reviews__title Что обо мне говорят
-              .reviews__controls
-                a.reviews__btn.reviews__btn--next
-                  .reviews__btn-text &lt;
-                a.reviews__btn.reviews__btn--prev
-                  .reviews__btn-text &gt;
-            ul.reviews__list
-              //- забабахаем цикл
-              -
-                var reviews = [
-                  ["avatar1", "Ковальчук Дмитрий","Основатель LoftSchool","Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"],
-                  ["avatar2", "Сабанцев Владимир","Преподаватель","Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"],
-                ];
-              each review in reviews
-                li.reviews__item
-                  .review
-                    blockquote.review__content #{review[3]}
-                    .review__sign
-                      .review__avatar
-                        .avatar
-                          +image("content/user.jpg", "avatar__image", "Artem Archenkov")
-                      .review__sign-block
-                        .review__title #{review[1]}
-                        .review__occupation #{review[2]}
-            .feedback
-              form(action="" ).feedback__form
+            .review-section
+              .reviews
+                  .reviews__header
+                    h2.reviews__title Что обо мне говорят
+                    .reviews__controls
+                      a.reviews__btn.reviews__btn--next
+                        .reviews__btn-text &lt;
+                      a.reviews__btn.reviews__btn--prev
+                        .reviews__btn-text &gt;
+                  ul.reviews__list
+                    -
+                      var reviews = [
+                        ["avatar1", "Ковальчук Дмитрий","Основатель LoftSchool","Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"],
+                        ["avatar2", "Сабанцев Владимир","Преподаватель","Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"],
+                      ];
+                    each review in reviews
+                      li.reviews__item
+                        .review
+                          blockquote.review__content #{review[3]}
+                          .review__sign
+                            .review__avatar
+                              .avatar
+                                +image("content/user.jpg", "avatar__image", "Artem Archenkov")
+                            .review__sign-block
+                              .review__title #{review[1]}
+                              .review__occupation #{review[2]}
+                            
+              .feedback
+                form(action="" ).feedback__form
                   .feedback__title Связаться со мной
                   .feedback__content
                     .feedback__row
                       .feedback__col
-                          label.feedback__label
+                          label.feedback__label.feedback__label-name
                             .feedback__placeholder Введите ваше имя
                             input.feedback__input(type="text", name="name" required)
                             .error
                       .feedback__col
-                          label.feedback__label
+                          label.feedback__label.feedback__label-email
                             .feedback__placeholder Введите ваше e-mail
                             input.feedback__input(type="text", name="email" required)
                             .error
                     .feedback__row
                       .feedback__col
-                        label.feedback__label
+                        label.feedback__label.feedback__label-textarea
                           .feedback__placeholder Сообщение к письму
-                          textarea.feedback__textarea(name="comment", cols="30", rows="10")
+                          textarea.feedback__textarea(name="comment", cols="30", rows="2")
                     .feedback__row
                       button.btn.feedback__btn Отправить
         section.section.section-seven
           .container
             .footer
               .footer__copyright
-                .copyright 2020
+                .copyright &copy; 2020
               .footer__autor
                 .author 
                   .author__name Арченков Артём
                   .author__propery Личный сайт веб-разработчика
               .footer__content
-                .row
+                .footer__row
                     .nav.footer__nav
                       ul.nav__list
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="1") Главная
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="2") Обо мне
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="3") Навыки
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="4") Работы
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="5") Отзывы
-                          li.nav__item
-                            a.nav__link(href="#", data-scroll-to="6") Связаться
-                .row
-                  .col
-                      .footer__desc Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                        .socials.footer__socials
-                            ul.socials__list
-                              //- цикл забабахаем
-                              li.socials__item
-                                a.socials__link(href="instagram.com")
-                              li.socials__item
-                                a.socials__link(href="vk.com")
-                              li.socials__item
-                                a.socials__link(href="github.com")
-                  .col
-                    blockquote.footer__quote Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                    h3.footer__title Martin Golding
+                        - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                        ul.nav__list
+                          each item, index in items
+                            li.nav__item
+                              a.nav__link(href="/", data-scroll='#{index}') #{item}
+                .footer__row
+                  .footer__about-socials
+                      .footer__about 
+                        p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                      .footer__socials.socials
+                        - var items = ["insta", "vk", "github"];
+                        ul.socials__list
+                          each item in items
+                            li.socials__item
+                              a.socials__link(href="/")
+                                +icon(item, "socials__icon")
+                  .footer__quote
+                    .footer-quote
+                      blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                      h3.footer-quote__title Martin Golding
