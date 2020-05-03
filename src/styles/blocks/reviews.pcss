@@ -1,0 +1,32 @@
+.reviews {
+    width: 940px;
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 110px;
+    }
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        margin-right: 120px;
+    }
+    &__controls {
+        display: flex;
+
+    }
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border: 1px solid $text-color;
+        border-radius: 50%;
+        &:not(:last-child) {
+            margin-right: 30px;
+        }
+    }
+    &__list {
+        display: flex;
+    }
+}

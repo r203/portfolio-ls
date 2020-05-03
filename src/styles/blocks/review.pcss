@@ -1,0 +1,33 @@
+.review {
+    margin-left: 80px;
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        left: -80px;
+        width: 75px;
+        height: 63px;
+        background: url(../images/icons/quote.png) center center/cover no-repeat;
+    }
+    &__content {
+        font-weight: 600;
+        margin: 0;
+        opacity: .5;
+        margin-bottom: 30px;
+    }
+    &__avatar {
+        width: 75px;
+        height: 75px;
+        margin-right: 30px;
+    }
+    &__sign {
+        display: flex;
+    }
+    &__title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    &__occupation {
+        opacity: .3;
+    }
+}

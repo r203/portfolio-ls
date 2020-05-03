@@ -5,8 +5,8 @@ Archenkov Artem, 27.04.2020
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone git@github.com:loftschool/ls-advanced-portfolio.git
-$ cd ls-advanced-portfolio
+$ git clone https://github.com/r203/portfolio-ls.git
+$ cd portfolio-ls
 $ yarn
 ```
 

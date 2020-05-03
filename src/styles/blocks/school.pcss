@@ -1,5 +1,29 @@
 .school {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__title {
+        font-size: 30px;
+        font-weight: 600;
         color: #353e4f;
+        margin-bottom: 55px;
+    }
+    &__text {
+        color: #333c49;
+        font-weight: 600;
+        margin-bottom: 55px;
+    }
+    &__link {
+        font-weight: 600;
+        color: #586ed3;
+        text-decoration: none;
+        &:before {
+            content: '';
+            display: inline-flex;
+            width: 15px;
+            height: 15px;
+            background: url(../images/icons/link.png) center center/cover no-repeat;
+            margin-right: 20px;
+        }
     }
 }
