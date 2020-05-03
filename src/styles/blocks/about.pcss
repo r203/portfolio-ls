@@ -1,0 +1,35 @@
+.about {
+    display: flex;
+    // width: 50%;
+    &__user-data {
+        flex: 1;
+    }
+    &__content {
+        flex: 2;
+    }
+    &__introduction {
+        font-weight: 600;
+        opacity: .5;
+    }
+    &__title {
+        font-size: 36px;
+        font-weight: 900;
+    }
+    &__desc {
+        font-weight: 600;
+        opacity: .5;
+    }
+    &__text {
+        position: relative;
+        opacity: .5;
+        font-style: italic;
+        &:before {
+            content: '';
+            position: absolute;
+            background: url(../images/icons/star.png) center center/cover no-repeat;;
+            width: 25px;
+            height: 25px;
+            left: -30px;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.scroll-btn {
+    color: $text-color;
+    &:before {
+        position: absolute;
+        content: '';
+        width: 15px;
+        height: 25px;
+        border: 2px solid $text-color;
+        border-radius: 10px;
+        top: 50%;
+        left: 70px;
+        transform: translateY(-50%);
+    }
+    &:after {
+        position: absolute;
+        content: '';
+        width: 3px;
+        height: 3px;
+        border: 2px solid $text-color;
+        background-color: $text-color;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    &--down {
+        &:after {
+            top: 0%;
+            left: 76px;
+            animation: scroll--down 1s infinite;
+        }
+
+    }
+}
+
+@keyframes scroll--down {
+    0%   {top: 15%;}
+    10%  {opacity: 1;}
+    100% {top: 70%;}
+  }

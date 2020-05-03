@@ -1,7 +1,7 @@
 include ./mixins.pug
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -10,6 +10,196 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        .welcome-section
+          section.section.section-one
+            .container
+                header.header
+                  .header__logo
+                      .logo
+                          a.logo__link(href="/") &lt;AA /&gt;
+                  .header__nav
+                    nav.nav
+                      - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                      ul.nav__list
+                        each item, index in items
+                          li.nav__item
+                            a.nav__link(href="/", data-scroll='#{index}') #{item}
+                  .header__socials  
+                      .socials
+                        - var items = ["insta", "vk", "github"];
+                        ul.socials__list
+                          each item in items
+                            li.socials__item
+                                  a.socials__link(href="/")
+                                    +icon(item, "socials__icon")
+                .section-one__content
+                    .user-data
+                      .user-data__desc Личный сайт<br>веб-разработчика
+                      h1.title.user-data__title Арченков<br>Артём
+                .section-one__btn-scroll
+                  button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
+          section.section.section-two
+              .container.container--small
+                  .about
+                      .about__user-data
+                        .user-info
+                          .user-info__avatar
+                            .avatar
+                              +image("content/user.jpg", "avatar__image", "Artem Archenkov")
+                          .user-info__content
+                            -
+                              var userdata = [
+                                ["Проживаю:", "Астрахань"],
+                                ["Возраст:", "32"],
+                                ["Родился:", "14.08.1988г."]
+                              ];
+                            table.user-info__data
+                              tbody.user-info__data-body
+                                each row in userdata
+                                  tr
+                                    td.user-info__data-item #{row[0]}
+                                    td.user-info__data-desc #{row[1]}
+                      .about__content
+                          blockquote.about__quote
+                            span.about__introduction Привет меня зовут 
+                            h2.about__title Арченков Артём
+                            .about__desc
+                              p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                            .about__text 
+                              p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .empty-section
+          //- Как правильно?
+          .space-empty 
+        section.section.section-three
+          .container.container--small
+            .value
+              .value__title
+                .value__title-content
+                  .longtitle
+                    h2.longtitle__title Чем я могу быть полезен вам
+                    .longtitle__text
+                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+              .value__content
+                ul.user-skills
+                  - 
+                    var skills = [
+                      ['Front-end', ['HTML5', 'CSS3', 'JavaScript', 'JQuery'],['100','250', '320','420']],
+                      ['Workflow', ['GIT', 'TERMINAL', 'GULP', 'WebPack'],['100','250', '320','420']],
+                    ]
+                  each item in skills 
+                    li.user-skills__item.skills-row 
+                      h3.skills-row__title #{item[0]}
+                      ul.skills-row__list
+                        each skill in item[1]
+                          li.skills-row__item
+                            .skill
+                              svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+                                circle(r="80" cx="100" cy="100").skill__circle--under
+                                circle(r="80" cx="100" cy="100" stroke-dasharray="0, #{item[2]}").skill__circle--above
+                                linear-gradient()
+                              .skill__title #{skill}
+        section.section.section-four
+          .container 
+            .my-work
+              .my-work__title Мои Работы
+              .slider
+                .slider__body
+                  .slider__preview
+                    .slider__control
+                      .slider__thumbnail
+                        //- написать цикл
+                        ul.slider__list 
+                          li.slider__item
+                      .slider__btn
+                        .slider__btn--next &lt;
+                        .slider__btn--prev &gt;
+                  .slider__count 2
+            .school
+              .tags
+                ul.tags__list
+                  //- написать цикл 
+                  li.tags__item
+              .scholl__title Сайт школы образования
+              .scholl__text
+                p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+              a.scholl__link(href="lostschool.com") Посмотреть сайт
+        section.section.section-five
+          .container
+           .reviews
+            .reviews__header
+              h2.reviews__title Что обо мне говорят
+              .revies__controls
+                .reviess__btn--next
+                .reviews__btn--prev
+            ul.reviews__list
+              //- забабахаем цикл
+              li.reviews__item
+                .review
+                  blockquote.review__content текст
+                  .review__sign
+                    .avatar
+                    .review__sign-block
+                      .review__title Имя
+                      .review__occupation Основатель лофтскул
+            .feedback
+              form(action="" ).feedback__form
+                  .feedback__title Связаться со мной
+                  .feedback__content
+                    .feedback__row
+                      .feedback__col
+                          label.feedback__label
+                            .feedback__placeholder Введите ваше имя
+                            input.feedback__input(type="text", name="name" required)
+                            .error
+                      .feedback__col
+                          label.feedback__label
+                            .feedback__placeholder Введите ваше e-mail
+                            input.feedback__input(type="text", name="email" required)
+                            .error
+                    .feedback__row
+                      .feedback__col
+                        label.feedback__label
+                          .feedback__placeholder Сообщение к письму
+                          textarea.feedback__textarea(name="comment", cols="30", rows="10")
+                    .feedback__row
+                      button.btn.feedback__btn Отправить
+        section.section.section-seven
+          .container
+            .footer
+              .footer__copyright
+                .copyright 2020
+              .footer__autor
+                .author 
+                  .author__name Арченков Артём
+                  .author__propery Личный сайт веб-разработчика
+              .footer__content
+                .row
+                    .nav.footer__nav
+                      ul.nav__list
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="1") Главная
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="2") Обо мне
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="3") Навыки
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="4") Работы
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="5") Отзывы
+                          li.nav__item
+                            a.nav__link(href="#", data-scroll-to="6") Связаться
+                .row
+                  .col
+                      .footer__desc Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                        .socials.footer__socials
+                            ul.socials__list
+                              //- цикл забабахаем
+                              li.socials__item
+                                a.socials__link(href="instagram.com")
+                              li.socials__item
+                                a.socials__link(href="vk.com")
+                              li.socials__item
+                                a.socials__link(href="github.com")
+                  .col
+                    blockquote.footer__quote Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                    h3.footer__title Martin Golding
