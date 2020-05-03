@@ -61,7 +61,7 @@ html(lang="ru")
                                     td.user-info__data-desc #{row[1]}
                       .about__content
                           blockquote.about__quote
-                            span.about__introduction Привет меня зовут 
+                            .about__introduction Привет меня зовут 
                             h2.about__title Арченков Артём
                             .about__desc
                               p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
@@ -71,6 +71,7 @@ html(lang="ru")
           //- Как правильно?
           .space-empty 
         section.section.section-three
+          +image("bg/hands.png", "section-three-image", "section-three image")
           .container.container--small
             .value
               .value__title
@@ -170,7 +171,7 @@ html(lang="ru")
                             .error
                       .feedback__col
                           label.feedback__label.feedback__label-email
-                            .feedback__placeholder Введите ваше e-mail
+                            .feedback__placeholder Введите ваш e-mail
                             input.feedback__input(type="text", name="email" required)
                             .error
                     .feedback__row
