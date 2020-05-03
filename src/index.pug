@@ -30,8 +30,8 @@ html(lang="ru")
                         ul.socials__list
                           each item in items
                             li.socials__item
-                                  a.socials__link(href="/")
-                                    +icon(item, "socials__icon")
+                              a.socials__link(href="/")
+                                +icon(item, "socials__icon")
                 .section-one__content
                     .user-data
                       .user-data__desc Личный сайт<br>веб-разработчика
@@ -101,28 +101,34 @@ html(lang="ru")
         section.section.section-four
           .container 
             .my-work
-              .my-work__title Мои Работы
               .slider
+                .my-work__title Мои Работы
                 .slider__body
-                  .slider__preview
-                    .slider__control
-                      .slider__thumbnail
-                        //- написать цикл
-                        ul.slider__list 
-                          li.slider__item
-                      .slider__btn
-                        .slider__btn--next &lt;
-                        .slider__btn--prev &gt;
                   .slider__count 2
-            .school
-              .tags
-                ul.tags__list
-                  //- написать цикл 
-                  li.tags__item
-              .scholl__title Сайт школы образования
-              .scholl__text
-                p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-              a.scholl__link(href="lostschool.com") Посмотреть сайт
+                  .slider__preview
+                    +image("slider/preview.png", "slider__preview-img", "slider preview")
+                    .slider__thumbnail
+                      - var items = ["slider/mini-1.jpg","slider/mini-2.jpg", "slider/mini-3.jpg", "slider/mini-4.jpg"];
+                      ul.slider__list 
+                        each item in items
+                          li.slider__item
+                            a.slider__link(href="/")
+                              +image(item, "slider__thumbnail-img", "slider thumbnail")
+                  .slider__controls
+                    a.slider__btn.slider__btn--next 
+                      .slider__btn-text &lt;
+                    a.slider__btn.slider__btn--prev 
+                      .slider__btn-text &gt;
+              .school
+                .tags
+                  - var items = ["HTML", "CSS", "JavaScript"]
+                  ul.tags__list
+                    each item in items
+                      li.tags__item #{item}
+                .scholl__title Сайт школы образования
+                .scholl__text
+                  p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                a.scholl__link(href="lostschool.com") Посмотреть сайт
         section.section.section-five
           .container
            .reviews
