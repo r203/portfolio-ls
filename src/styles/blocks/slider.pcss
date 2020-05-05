@@ -1,6 +1,11 @@
 .slider {
     width: 78%;
     margin-right: 170px;
+    @include tablets {
+        width: 90%;
+        margin-right: 0;
+        margin-bottom: 60px;
+    }
     &__body {
         position: relative;
     }

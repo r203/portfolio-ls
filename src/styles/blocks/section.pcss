@@ -28,11 +28,19 @@
         background: url(../images/bg/foursection.png) center center/cover no-repeat;
         padding: 150px 0;
         position: relative;
+        @include tablets {
+            padding-bottom: 280px;
+          }
         &-image {
             position: absolute;
             width: 35%;
             left: 0;
             bottom: -100px;
+            @include tablets {
+                bottom: -60PX;
+                left: 57%;
+                transform: rotate(-90deg) translateY(-50%);
+              }
         }
     }
     &-four {

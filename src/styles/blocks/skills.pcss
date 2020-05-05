@@ -4,6 +4,9 @@
             font-size: 26px;
             font-weight: 600;
             margin-bottom: 40px;
+            @include tablets {
+                margin-bottom: 30px;
+              }
         }
         &__list {
             display: flex;
@@ -12,6 +15,9 @@
             width: 140px;
             &:not(:last-child) {
                 margin-right: 60px;
+                @include tablets {
+                    margin-right: 27px;
+                  }
             }
         }
     }
