@@ -20,20 +20,18 @@
     }
     &__label {
         position: relative;
-        &-name:before {
-            background-image: url(../images/icons/user.png);
+        &-name:before, &-email:before, &-textarea:before{
             background-repeat: no-repeat;
             background-size: contain;
+        }
+        &-name:before {
+            background-image: url(../images/icons/user.png);
         }
         &-email:before {
             background-image: url(../images/icons/email.png);
-            background-size: contain;
-            background-repeat: no-repeat;
         }
         &-textarea:before {
             background-image: url(../images/icons/textarea.png);
-            background-size: contain;
-            background-repeat: no-repeat;
         }
     }
     &__label:before {
@@ -56,6 +54,13 @@
         border-bottom: 1px solid $text-color;
         padding: 25px 50px;
         color: $text-color;
+        &:focus {
+            outline: 0;
+            border-bottom: 1px solid #f39a2d;
+        }
+        &::placeholder {
+            font-weight: 600;
+        }
     }
     &__textarea {
         width: 100%;
@@ -65,6 +70,10 @@
         padding: 25px 50px;
         color: $text-color;
         resize: none;
+        &:focus {
+            outline: 0;
+            border-bottom: 1px solid #f39a2d;
+        }
     }
 
 }

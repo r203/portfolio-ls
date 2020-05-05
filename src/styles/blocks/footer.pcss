@@ -1,4 +1,10 @@
 .footer {
+    &__left {
+        display: flex;
+        @include desktop {
+            flex-direction: column;
+          }
+    }
     &__row {
         display: flex;
         flex-direction: row;
@@ -10,6 +16,9 @@
     flex-direction: row;
     &__copyright {
         margin-right: 60px;
+        @include desktop {
+            margin-bottom: 25px;
+          }
     }
     &__author {
         width: 150px;
@@ -32,5 +41,11 @@
                 padding: 10px;
             }
         }
+    }
+    &__about-socials {
+        margin-right: 190px;
+        @include desktop {
+            margin-right: 55px;
+          }
     }
 }

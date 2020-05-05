@@ -30,11 +30,15 @@ body {
   margin: 0 auto;
   max-width: 1480px;
   width: 95%;
-  // width: 1490px;
   &--small {
-    width: 960px;
+    max-width: 960px;
   }
-
+  @include desktop {
+    max-width: 1080PX;
+  }
+  @include tablets {
+    max-width: 688PX;
+  }
   @include phones {
     width: 85%;
   }

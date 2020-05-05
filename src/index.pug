@@ -16,7 +16,7 @@ html(lang="ru")
                 header.header
                   .header__logo
                       .logo
-                          a.logo__link(href="/") &lt;AA /&gt;
+                          a.logo__link(href="/") &lt;AA&nbsp;/&gt;
                   .header__nav
                     nav.nav
                       - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
@@ -36,7 +36,7 @@ html(lang="ru")
                     .user-data
                       .user-data__desc Личный сайт<br>веб-разработчика
                       h1.title.user-data__title Арченков<br>Артём
-                .section-one__btn-scroll
+                .section-one__scroll-btn
                   button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
           section.section.section-two
               .container.container--small
@@ -65,8 +65,8 @@ html(lang="ru")
                             h2.about__title Арченков Артём
                             .about__desc
                               p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                            .about__text 
-                              p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                          .about__text 
+                            p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
         .empty-section
           //- Как правильно?
           .space-empty 
@@ -112,7 +112,7 @@ html(lang="ru")
                     a.slider__btn.slider__btn--prev 
                       .slider__btn-text &gt;
                   .slider__preview
-                    +image("slider/preview.png", "slider__preview-img", "slider preview")
+                    +image("slider/preview.png", "slider__preview-image", "slider preview")
                     .slider__thumbnail
                       - var items = ["slider/mini-1.jpg","slider/mini-2.jpg", "slider/mini-3.jpg", "slider/mini-4.jpg"];
                       ul.slider__list 
@@ -166,51 +166,52 @@ html(lang="ru")
                     .feedback__row
                       .feedback__col
                           label.feedback__label.feedback__label-name
+                            .error Какая то ошибка
                             .feedback__placeholder Введите ваше имя
-                            input.feedback__input(type="text", name="name" required)
-                            .error
+                            input.feedback__input(type="text", name="name" placeholder="Введите ваше имя" required)
                       .feedback__col
                           label.feedback__label.feedback__label-email
                             .feedback__placeholder Введите ваш e-mail
-                            input.feedback__input(type="text", name="email" required)
-                            .error
+                            input.feedback__input(type="text", name="email" placeholder="Введите ваше email" required)
                     .feedback__row
                       .feedback__col
                         label.feedback__label.feedback__label-textarea
                           .feedback__placeholder Сообщение к письму
-                          textarea.feedback__textarea(name="comment", cols="30", rows="2")
+                          textarea.feedback__textarea(name="comment", cols="30", rows="2" placeholder="Сообщение к письму" )
                     .feedback__row
                       button.btn.feedback__btn Отправить
         section.section.section-seven
           .container
             .footer
-              .footer__copyright
-                .copyright &copy;&nbsp;2020
-              .footer__author
-                .author 
-                  .author__name Арченков Артём
-                  .author__property Личный сайт веб-разработчика
-              .footer__content
-                .footer__row
-                    .nav.footer__nav
-                      ul.nav__list
-                        - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+              .footer__left
+                .footer__copyright
+                  .copyright &copy;&nbsp;2020
+                .footer__author
+                  .author 
+                    .author__name Арченков Артём
+                    .author__property Личный сайт веб-разработчика
+              .footer__right
+                .footer__content
+                  .footer__row
+                      .nav.footer__nav
                         ul.nav__list
-                          each item, index in items
-                            li.nav__item
-                              a.nav__link(href="/", data-scroll='#{index}') #{item}
-                .footer__row
-                  .footer__about-socials
-                      .footer__about 
-                        p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                      .footer__socials.socials
-                        - var items = ["insta", "vk", "github"];
-                        ul.socials__list
-                          each item in items
-                            li.socials__item
-                              a.socials__link(href="/")
-                                +icon(item, "socials__icon")
-                  .footer__quote
-                    .footer-quote
-                      blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                      h3.footer-quote__title Martin Golding
+                          - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                          ul.nav__list
+                            each item, index in items
+                              li.nav__item
+                                a.nav__link(href="/", data-scroll='#{index}') #{item}
+                  .footer__row
+                    .footer__about-socials
+                        .footer__about 
+                          p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                        .footer__socials.socials
+                          - var items = ["insta", "vk", "github"];
+                          ul.socials__list
+                            each item in items
+                              li.socials__item
+                                a.socials__link(href="/")
+                                  +icon(item, "socials__icon")
+                    .footer__quote
+                      .footer-quote
+                        blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                        h3.footer-quote__title Martin Golding

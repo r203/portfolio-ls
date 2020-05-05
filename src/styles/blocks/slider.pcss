@@ -1,14 +1,16 @@
 .slider {
+    width: 78%;
     margin-right: 170px;
     &__body {
         position: relative;
-        width: 975px; //мне кажется это тут не должно быть
-        height: 550px;
     }
     &__preview {
         position: relative;
         min-width: 100%;
         min-height: 100%;
+        &-image {
+            width: 100%;
+        }
     }
     &__image {
         object-fit: cover;
@@ -18,26 +20,36 @@
     &__list {
         display: flex;
         justify-content: flex-end;
-        position: absolute;
-        bottom: 60px;
-        right: 0;
+        width: 720px;
+        @include desktop {
+            width: 540px;
+          }
     }
     &__item {
         width: 180px;
         height: 100px;
+        min-width: 25%;
         transition: all .2s;
+        @include desktop {
+            min-width: 33.3%;
+          }
         &:hover {
             outline: 2px solid #d6841f;
             z-index: 0;
-            transform: scale(1.1);
         }
         &--active {
             outline: 2px solid #d6841f;
         }
     }
-    &__thumbnail-img {
-        object-fit: cover;
-        min-width: 100%;
+    &__thumbnail {
+        overflow: hidden;
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        &-img {
+            object-fit: cover;
+            min-width: 100%;
+        }
     }
     &__controls {
         display: flex;

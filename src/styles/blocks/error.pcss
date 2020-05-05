@@ -1,0 +1,21 @@
+.error {
+    position: absolute;
+    background-color: #cd1515;
+    padding: 15px;
+    bottom: -90px;
+    left: 45px;
+    &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        top: -10px;
+        left: 50%;
+        transform: rotate(45deg) translate(25%, 25%);
+        background-color: #cd1515;
+    }
+    & ~ input {
+        border-bottom: 1px solid #cd1515 !important;
+    }
+}
