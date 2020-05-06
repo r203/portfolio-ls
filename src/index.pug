@@ -84,19 +84,19 @@ html(lang="ru")
                 ul.user-skills
                   - 
                     var skills = [
-                      ['Front-end', ['HTML5', 'CSS3', 'JavaScript', 'JQuery'],['100','250', '320','420']],
-                      ['Workflow', ['GIT', 'TERMINAL', 'GULP', 'WebPack'],['100','250', '320','420']],
+                      ['Front-end', ['HTML5', 'CSS3', 'JavaScript', 'JQuery'],['85','75', '40','45']],
+                      ['Workflow', ['GIT', 'TERMINAL', 'GULP', 'WebPack'],['70','60', '50','40']],
                     ]
                   each item in skills 
                     li.user-skills__item.skills-row 
                       h3.skills-row__title #{item[0]}
                       ul.skills-row__list
-                        each skill in item[1]
+                        each skill, index in item[1]
                           li.skills-row__item
                             .skill
                               svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
                                 circle(r="80" cx="100" cy="100").skill__circle--under
-                                circle(r="80" cx="100" cy="100" stroke-dasharray="0, #{item[2]}").skill__circle--above
+                                circle(r="80" cx="100" cy="100" stroke-dashoffset=`calc(502 - ${item[2][index]} / 100 * 502)`).skill__circle--above
                                 linear-gradient()
                               .skill__title #{skill}
         section.section.section-four
@@ -195,13 +195,12 @@ html(lang="ru")
                 .footer__content
                   .footer__row
                       .nav.footer__nav
-                        ul.nav__list
                           - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
                           ul.nav__list
                             each item, index in items
                               li.nav__item
                                 a.nav__link(href="/", data-scroll='#{index}') #{item}
-                  .footer__row
+                  .footer__about-socials-quote
                     .footer__about-socials
                         .footer__about 
                           p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool

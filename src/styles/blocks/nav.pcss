@@ -1,7 +1,4 @@
 .nav {
-    @include tablets {
-        display: none;
-      }
     &__list {
         display: flex;
     }
@@ -32,4 +29,22 @@
         color: inherit;
         text-decoration: none;
     }
+}
+.footer .nav {
+    &__list {
+        @include tablets {
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+    }
+    &__item {
+        @include tablets {
+            margin-bottom: 35px;
+        }
+    }
+}
+.header .nav { // с этим придумаю что то позже
+    @include tablets {
+        display: none;
+      }
 }
