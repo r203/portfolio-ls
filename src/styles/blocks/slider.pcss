@@ -6,6 +6,12 @@
         margin-right: 50px;
         margin-bottom: 60px;
     }
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #333c49;
+        margin-bottom: 100px;
+    }
     &__body {
         position: relative;
     }
@@ -69,13 +75,13 @@
         align-items: center;
         width: 50px;
         height: 50px;
+        transition: all .3s;
         background-color: #353e4e;
-        &:hover .slider__btn-text {
-            opacity: 1;
+        &:hover {
+            background-color: #d6841f;
         }
-        &-text {
+        &--end .slider__btn-text {
             opacity: .3;
-            transition: all .3s;
         }
     }
     &__count {

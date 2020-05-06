@@ -11,7 +11,7 @@ html(lang="ru")
     .wrapper
       .maincontent
         .welcome-section
-          section.section.section-one
+          section.section.section-hero
             .container
                 header.header
                   .header__logo
@@ -32,13 +32,13 @@ html(lang="ru")
                             li.socials__item
                               a.socials__link(href="/")
                                 +icon(item, "socials__icon")
-                .section-one__content
+                .section-hero__content
                     .user-data
                       .user-data__desc Личный сайт<br>веб-разработчика
                       h1.title.user-data__title Арченков<br>Артём
-                .section-one__scroll-btn
+                .section-hero__scroll-btn
                   button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
-          section.section.section-two
+          section.section.section-about
               .container.container--small
                   .about
                       .about__user-data
@@ -68,10 +68,9 @@ html(lang="ru")
                           .about__text 
                             p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
         .empty-section
-          //- Как правильно?
           .space-empty 
-        section.section.section-three
-          +image("bg/hands.png", "section-three-image", "section-three image")
+        section.section.section-skill
+          +image("bg/hands.png", "section-skill-image", "section-three image")
           .container.container--small
             .value
               .value__title
@@ -99,15 +98,15 @@ html(lang="ru")
                                 circle(r="80" cx="100" cy="100" stroke-dashoffset=`calc(502 - ${item[2][index]} / 100 * 502)`).skill__circle--above
                                 linear-gradient()
                               .skill__title #{skill}
-        section.section.section-four
+        section.section.section-jobs
           .container 
             .my-work
               .slider
-                .my-work__title Мои Работы
+                .slider__title Мои Работы
                 .slider__body
                   .slider__count 2
                   .slider__controls
-                    a.slider__btn.slider__btn--next 
+                    a.slider__btn.slider__btn--next.slider__btn--end 
                       .slider__btn-text &lt;
                     a.slider__btn.slider__btn--prev 
                       .slider__btn-text &gt;
@@ -131,7 +130,7 @@ html(lang="ru")
                   p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                 .school__site
                   a.school__link(href="lostschool.com") Посмотреть сайт
-        section.section.section-five
+        section.section.section-feedback
           .container
             .review-section
               .reviews
@@ -181,7 +180,7 @@ html(lang="ru")
                           textarea.feedback__textarea(name="comment", cols="30", rows="2" placeholder="Сообщение к письму" )
                     .feedback__row
                       button.btn.feedback__btn Отправить
-        section.section.section-seven
+        section.section.section-footer
           .container
             .footer
               .footer__left
@@ -204,7 +203,7 @@ html(lang="ru")
                     .footer__about-socials
                         .footer__about 
                           p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                        .footer__socials.socials
+                        .footer__socials.socials.socials--footer
                           - var items = ["insta", "vk", "github"];
                           ul.socials__list
                             each item in items
