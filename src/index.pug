@@ -167,16 +167,16 @@ html(lang="ru")
                       .feedback__col
                           label.feedback__label
                             .error Какая то ошибка
-                            input.feedback__input.feedback__input-name(type="text", name="name" required)
+                            input.feedback__input.feedback__input-name(type="text", name="name" placeholder="Иванов Иван" required)
                             .feedback__placeholder Введите ваше имя
                       .feedback__col
                           label.feedback__label
-                            input.feedback__input.feedback__input-email(type="text", name="email" required)
+                            input.feedback__input.feedback__input-email(type="text", name="email" placeholder="mail@gmail.com" required)
                             .feedback__placeholder Введите ваш e-mail
                     .feedback__row
                       .feedback__col
                         label.feedback__label
-                          textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2")
+                          textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2" placeholder="Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса")
                           .feedback__placeholder.feedback__placeholder-textarea Сообщение к письму
                     .feedback__row
                       button.btn.feedback__btn Отправить
