@@ -165,19 +165,19 @@ html(lang="ru")
                   .feedback__content
                     .feedback__row
                       .feedback__col
-                          label.feedback__label.feedback__label-name
+                          label.feedback__label
                             .error Какая то ошибка
+                            input.feedback__input.feedback__input-name(type="text", name="name" required)
                             .feedback__placeholder Введите ваше имя
-                            input.feedback__input(type="text", name="name" placeholder="Введите ваше имя" required)
                       .feedback__col
-                          label.feedback__label.feedback__label-email
+                          label.feedback__label
+                            input.feedback__input.feedback__input-email(type="text", name="email" required)
                             .feedback__placeholder Введите ваш e-mail
-                            input.feedback__input(type="text", name="email" placeholder="Введите ваше email" required)
                     .feedback__row
                       .feedback__col
-                        label.feedback__label.feedback__label-textarea
-                          .feedback__placeholder Сообщение к письму
-                          textarea.feedback__textarea(name="comment", cols="30", rows="2" placeholder="Сообщение к письму" )
+                        label.feedback__label
+                          textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2")
+                          .feedback__placeholder.feedback__placeholder-textarea Сообщение к письму
                     .feedback__row
                       button.btn.feedback__btn Отправить
         section.section.section-footer

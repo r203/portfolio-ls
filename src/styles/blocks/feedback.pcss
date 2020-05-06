@@ -27,34 +27,18 @@
     }
     &__label {
         position: relative;
-        &-name:before, &-email:before, &-textarea:before{
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: .3;
-        }
-        &-name:before {
-            background: svg-load('user.svg', fill=#fff, width=100%, height=100%);
-        }
-        &-email:before {
-            background: svg-load('envelope.svg', fill=#fff, width=100%, height=100%);
-
-        }
-        &-textarea:before {
-            background: svg-load('message.svg', fill=#fff, width=100%, height=100%);
-
-        }
-    }
-    &__label:before {
-            content: '';
-            display: inline-flex;
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            top: 45px;
     }
     &__placeholder {
+        position: absolute;
+        top: 0;
+        left: 50px;
         font-weight: 600;
         opacity: .3;
+        transition: all .3s;
+        &-textarea {
+            top: -40px;
+            transition: all .3s;
+        }
     }
     &__input {
         position: relative;
@@ -64,12 +48,58 @@
         border-bottom: 1px solid $text-color;
         padding: 25px 50px;
         color: $text-color;
+        &-name {
+            background: svg-load('user.svg', fill=#fff, width=100%, height=100%);
+            &:hover {
+                background: svg-load('user.svg', fill=#f39a2d, width=100%, height=100%);
+            }
+            &:focus {
+                background: svg-load('user.svg', fill=#f39a2d, width=100%, height=100%);
+            }
+        }
+        &-email {
+            background: svg-load('envelope.svg', fill=#fff, width=100%, height=100%);
+            &:hover {
+                background: svg-load('envelope.svg', fill=#f39a2d, width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+                opacity: .3;
+            }
+            &:focus {
+                background: svg-load('envelope.svg', fill=#f39a2d, width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+                opacity: .3;
+            }
+        }
+        &-name, &-email {
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            opacity: .3;
+        }
+        &:hover {
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            opacity: .3;
+            border-bottom: 1px solid #f39a2d;
+            &+ .feedback {
+                &__placeholder {
+                    top: -50px;
+                }
+            }
+        }
         &:focus {
             outline: 0;
             border-bottom: 1px solid #f39a2d;
-        }
-        &::placeholder {
-            font-weight: 600;
+            &+ .feedback {
+                &__placeholder {
+                    top: -50px;
+                }
+            }
         }
     }
     &__textarea {
@@ -80,9 +110,43 @@
         padding: 25px 50px;
         color: $text-color;
         resize: none;
+        &:hover {
+            border-bottom: 1px solid #f39a2d;
+            &+ .feedback {
+                &__placeholder-textarea {
+                    top: -90px;
+                }
+            }
+        }
+        &-textarea {
+            background: svg-load('message.svg', fill=#fff, width=100%, height=100%);
+            background-repeat: no-repeat;
+            background-size: 30px;
+            opacity: .3;
+            background-position: 0 50%;
+            &:hover {
+                background: svg-load('message.svg', fill=#f39a2d, width=100%, height=100%);
+                background-repeat: no-repeat;
+                background-size: 30px;
+                opacity: .3;
+                background-position: 0 50%;
+            }
+            &:focus{
+                background: svg-load('message.svg', fill=#f39a2d, width=100%, height=100%);
+                background-repeat: no-repeat;
+                background-size: 30px;
+                opacity: .3;
+                background-position: 0 50%;
+            }
+        }
         &:focus {
             outline: 0;
             border-bottom: 1px solid #f39a2d;
+            &+ .feedback {
+                &__placeholder-textarea {
+                    top: -90px;
+                }
+            }
         }
     }
 
