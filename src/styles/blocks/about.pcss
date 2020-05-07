@@ -1,6 +1,5 @@
 .about {
     display: flex;
-    // width: 50%;
     &__user-data {
         flex: 1;
         margin-right: 120px;
@@ -10,6 +9,10 @@
     }
     &__quote {
         margin: 0;
+        margin-bottom: 90px;
+        @include tablets {
+            margin-bottom: 50px;
+          }
     }
     &__introduction {
         font-weight: 600;
@@ -23,7 +26,6 @@
     }
     &__desc {
         font-weight: 600;
-        margin-bottom: 90px;
         opacity: .5;
     }
     &__text {

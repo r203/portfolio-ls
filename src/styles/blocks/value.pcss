@@ -3,14 +3,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include tablets {
+        text-align: center;
+      }
     &__title {
         width: 650px;
         margin-bottom: 100px;
+        @include tablets {
+            max-width: 450px;
+          }
     }
     &__content {
         display: flex;
         width: 100%;
         justify-content: flex-end;
-
+        @include tablets {
+            justify-content: center;
+          }
     }
 }

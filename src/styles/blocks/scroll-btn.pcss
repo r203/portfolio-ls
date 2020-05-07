@@ -1,5 +1,8 @@
 .scroll-btn {
     color: $text-color;
+    @include tablets {
+        display: none;
+      }
     &:before {
         position: absolute;
         content: '';

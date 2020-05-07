@@ -1,14 +1,27 @@
 .slider {
+    width: 78%;
     margin-right: 170px;
+    @include tablets {
+        width: 90%;
+        margin-right: 50px;
+        margin-bottom: 60px;
+    }
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #333c49;
+        margin-bottom: 100px;
+    }
     &__body {
         position: relative;
-        width: 975px; //мне кажется это тут не должно быть
-        height: 550px;
     }
     &__preview {
         position: relative;
         min-width: 100%;
         min-height: 100%;
+        &-image {
+            width: 100%;
+        }
     }
     &__image {
         object-fit: cover;
@@ -18,26 +31,36 @@
     &__list {
         display: flex;
         justify-content: flex-end;
-        position: absolute;
-        bottom: 60px;
-        right: 0;
+        width: 720px;
+        @include desktop {
+            width: 540px;
+          }
     }
     &__item {
         width: 180px;
         height: 100px;
+        min-width: 25%;
         transition: all .2s;
+        @include desktop {
+            min-width: 33.3%;
+          }
         &:hover {
             outline: 2px solid #d6841f;
             z-index: 0;
-            transform: scale(1.1);
         }
         &--active {
             outline: 2px solid #d6841f;
         }
     }
-    &__thumbnail-img {
-        object-fit: cover;
-        min-width: 100%;
+    &__thumbnail {
+        // overflow: hidden; он нужен, но с ним не работает оутлайн
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        &-img {
+            object-fit: cover;
+            min-width: 100%;
+        }
     }
     &__controls {
         display: flex;
@@ -52,13 +75,13 @@
         align-items: center;
         width: 50px;
         height: 50px;
+        transition: all .3s;
         background-color: #353e4e;
-        &:hover .slider__btn-text {
-            opacity: 1;
+        &:hover {
+            background-color: #d6841f;
         }
-        &-text {
+        &--end .slider__btn-text {
             opacity: .3;
-            transition: all .3s;
         }
     }
     &__count {
@@ -70,6 +93,9 @@
         color: #e6e6e6;
         font-weight: 900;
         z-index: -1;
+        @include desktop {
+            font-size: 300px;
+          }
     }
     
 }

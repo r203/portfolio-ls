@@ -1,5 +1,8 @@
 .user-data {
     display: flex;
+    @include tablets {
+        flex-direction: column;
+      }
     &__title {
         font-weight: 900;
         font-size: 72px;
@@ -13,5 +16,11 @@
         text-align: right;
         margin-right: 60px;
         opacity: .4;
+        @include tablets {
+            position: unset;
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: 40px;
+          }
     }
 }

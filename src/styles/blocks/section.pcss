@@ -2,7 +2,7 @@
     background: url(../images/bg/parallax.png) center center/cover no-repeat;
 }
 .section {
-    &-one {
+    &-hero {
         display: flex;
         position: relative;
         width: 100%;
@@ -14,35 +14,46 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        &__btn-scroll {
+        &__scroll-btn {
             position: absolute;
             bottom: 3%;
             left: 50%;
             transform: translateX(-50%);
         }
     }
-    &-two {
+    &-about {
         padding-top: 145px;
     }
-    &-three {
+    &-skill {
         background: url(../images/bg/foursection.png) center center/cover no-repeat;
         padding: 150px 0;
         position: relative;
+        @include tablets {
+            padding-bottom: 280px;
+          }
         &-image {
             position: absolute;
             width: 35%;
             left: 0;
             bottom: -100px;
+            @include tablets {
+                bottom: -60PX;
+                left: 57%;
+                transform: rotate(-90deg) translateY(-50%);
+              }
         }
     }
-    &-four {
+    &-jobs {
         padding: 150px 0;
+        @include tablets {
+            padding: 120px 0;
+          }
     }
-    &-five {
+    &-feedback {
         padding: 150px 0;
         background: url(../images/bg/fivesection.png) center center/cover no-repeat;
     }
-    &-seven {
+    &-footer {
         background-color: #222427;
         padding: 80px 0;
     }

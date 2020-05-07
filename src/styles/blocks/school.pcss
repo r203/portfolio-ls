@@ -1,7 +1,14 @@
 .school {
+    width: 22%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include tablets {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        max-width: 460px;
+    }
     &__title {
         font-size: 30px;
         font-weight: 600;

@@ -1,14 +1,24 @@
 .review {
     position: relative;
-    margin-bottom: 210px;
     margin-left: 80px;
+    @include tablets {
+        margin-left: 35px;
+      }
     &:before {
         content: '';
         position: absolute;
         left: -80px;
         width: 75px;
         height: 63px;
-        background: url(../images/icons/quote.png) center center/cover no-repeat;
+        // background: url(../images/icons/quote.png) center center/cover no-repeat;
+        background: svg-load('quote.svg', fill=#fff, width=100%, height=100%);
+        background-repeat: no-repeat;
+        opacity: .05;
+        @include tablets {
+            left: -35px;
+            width: 30px;
+            height: 25px;
+          }
     }
     &__content {
         font-weight: 600;

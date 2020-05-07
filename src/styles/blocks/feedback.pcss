@@ -1,9 +1,13 @@
 .feedback {
-    width: 900px;
+    max-width: 900px;
     &__title {
         font-size: 36px;
         font-weight: 600;
         margin-bottom: 100px;
+        @include tablets {
+            text-align: center;
+            margin-bottom: 55px;
+          }
     }
     &__row {
         display: flex;
@@ -16,37 +20,25 @@
         flex: 1;
         &:not(:last-child) {
             margin-right: 100px;
+            @include tablets {
+                margin-right: 22px;
+              }
         }
     }
     &__label {
         position: relative;
-        &-name:before {
-            background-image: url(../images/icons/user.png);
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-        &-email:before {
-            background-image: url(../images/icons/email.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-        &-textarea:before {
-            background-image: url(../images/icons/textarea.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    }
-    &__label:before {
-            content: '';
-            display: inline-flex;
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            top: 45px;
     }
     &__placeholder {
+        position: absolute;
+        top: -50px;
+        left: 50px;
         font-weight: 600;
         opacity: .3;
+        transition: all .3s;
+        &-textarea {
+            top: -90px;
+            transition: all .3s;
+        }
     }
     &__input {
         position: relative;
@@ -56,6 +48,60 @@
         border-bottom: 1px solid $text-color;
         padding: 25px 50px;
         color: $text-color;
+        &::placeholder {
+            font-weight: 600;
+            color: $text-color;
+        }
+        &-name {
+            background: svg-load('user.svg', fill=rgba(255, 255, 255, .3), width=100%, height=100%);
+            &:hover {
+                background: svg-load('user.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+            }
+            &:focus {
+                background: svg-load('user.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+            }
+        }
+        &-email {
+            background: svg-load('envelope.svg', fill=rgba(255, 255, 255, .3), width=100%, height=100%);
+            &:hover {
+                background: svg-load('envelope.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+            }
+            &:focus {
+                background: svg-load('envelope.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-size: 30px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+            }
+        }
+        &-name, &-email {
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+        }
+        &:hover {
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            border-bottom: 1px solid #f39a2d;
+            &+ .feedback {
+                &__placeholder {
+                    top: -50px;
+                }
+            }
+        }
+        &:focus {
+            outline: 0;
+            border-bottom: 1px solid #f39a2d;
+        }
     }
     &__textarea {
         width: 100%;
@@ -65,6 +111,41 @@
         padding: 25px 50px;
         color: $text-color;
         resize: none;
+        &::placeholder {
+            font-weight: 600;
+            color: $text-color;
+            opacity: 1;
+        }
+        &:hover {
+            border-bottom: 1px solid #f39a2d;
+        }
+        &-textarea {
+            background: svg-load('message.svg', fill=rgba(255, 255, 255, .3), width=100%, height=100%);
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: 0 50%;
+            &:hover {
+                background: svg-load('message.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-repeat: no-repeat;
+                background-size: 30px;
+                background-position: 0 50%;
+            }
+            &:focus{
+                background: svg-load('message.svg', fill=rgba(243, 154, 45, .3), width=100%, height=100%);
+                background-repeat: no-repeat;
+                background-size: 30px;
+                background-position: 0 50%;
+            }
+        }
+        &:focus {
+            outline: 0;
+            border-bottom: 1px solid #f39a2d;
+            &+ .feedback {
+                &__placeholder-textarea {
+                    top: -90px;
+                }
+            }
+        }
     }
 
 }
