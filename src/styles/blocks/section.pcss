@@ -40,18 +40,28 @@
                 bottom: -60PX;
                 left: 57%;
                 transform: rotate(-90deg) translateY(-50%);
-              }
+            }
+            @include phones {
+                bottom: -53PX;
+                width: 50%;
+            }
         }
     }
     &-jobs {
         padding: 150px 0;
         @include tablets {
             padding: 120px 0;
-          }
+        }
+        @include phones {
+            padding: 100px 0;
+        }
     }
     &-feedback {
         padding: 150px 0;
         background: url(../images/bg/fivesection.png) center center/cover no-repeat;
+        @include phones {
+            padding: 100px 0;
+        }
     }
     &-footer {
         background-color: #222427;

@@ -10,10 +10,19 @@
         margin-bottom: 70px;
         @include tablets {
             max-width: 85%;
-          }
+        }
+        @include phones {
+            width: 100%;
+            max-width: 100%;
+            font-size: 24px;
+            text-align: left;
+        }
     }
     &__text {
         font-weight: 600;
         opacity: .5;
+        @include phones {
+            text-align: left;
+        }
     }
 }

@@ -31,15 +31,20 @@
     }
 }
 .footer .nav {
+    @include phones {
+        width: 100%;
+    }
     &__list {
+        flex-wrap: wrap;
         @include tablets {
-            flex-wrap: wrap;
             margin-bottom: 35px;
         }
     }
     &__item {
-        @include tablets {
-            margin-bottom: 35px;
+        margin-bottom: 35px;
+        @include phones {
+            width: 50%;
+            margin-right: 0;
         }
     }
 }

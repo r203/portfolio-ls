@@ -30,6 +30,11 @@ body {
   margin: 0 auto;
   max-width: 1480px;
   width: 95%;
+  &--mobile-full {
+    @include phones {
+      min-width: 100%;
+    }
+  }
   &--small {
     max-width: 960px;
   }

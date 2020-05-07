@@ -23,7 +23,11 @@
     }
     
 }
-
+.header .socials {
+    @include phones {
+        display: none;
+      }
+}
 .socials--footer {
     .socials {
         &__item {
