@@ -53,3 +53,22 @@
         display: none;
       }
 }
+
+.mobile-menu .nav {
+    @include tablets {
+        display: flex;
+        margin-bottom: 60px;
+        &__list {
+            flex-direction: column;
+            color: #414c63;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        &__item {
+            margin-right: 0;
+            &:not(:last-child) {
+                margin-bottom: 35px;
+            }
+        }
+      }
+}

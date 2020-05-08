@@ -10,7 +10,9 @@ html(lang="ru")
   body
     .wrapper
       .maincontent
-        .welcome-section
+        .welcome-section.parallax
+          .parallax__layer
+            +image("Parallax/1.png", "parallax__image", "Parallax1")
           section.section.section-hero
             .container
                 header.header
@@ -23,7 +25,7 @@ html(lang="ru")
                       ul.nav__list
                         each item, index in items
                           li.nav__item
-                            a.nav__link(href="/", data-scroll='#{index}') #{item}
+                            a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
                   .header__socials  
                       .socials
                         - var items = ["insta", "vk", "github"];
@@ -32,6 +34,34 @@ html(lang="ru")
                             li.socials__item
                               a.socials__link(href="/")
                                 +icon(item, "socials__icon")
+                  a.hamburger-menu-link
+                    .hamburger-menu-link__bars
+                  .mobile-menu
+                    .mobile-menu__nav
+                      nav.nav
+                        - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                        ul.nav__list
+                          each item, index in items
+                            li.nav__item
+                              a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
+                    .mobile-menu__socials
+                      .socials
+                        - var items = ["insta", "vk", "github"];
+                        ul.socials__list
+                          each item in items
+                            li.socials__item
+                              a.socials__link(href="/")
+                                +icon(item, "socials__icon")
+          .parallax__layer
+            +image("Parallax/2.png", "parallax__image", "Parallax2")
+          .parallax__layer
+            +image("Parallax/3.png", "parallax__image", "Parallax3")
+          .parallax__layer
+            +image("Parallax/4.png", "parallax__image", "Parallax4")
+          .parallax__layer
+            +image("Parallax/5.png", "parallax__image", "Parallax5")
+          .parallax__layer
+            +image("Parallax/6.png", "parallax__image", "Parallax6")
                 .section-hero__content
                     .user-data
                       .user-data__desc Личный сайт<br>веб-разработчика
@@ -198,7 +228,7 @@ html(lang="ru")
                           ul.nav__list
                             each item, index in items
                               li.nav__item
-                                a.nav__link(href="/", data-scroll='#{index}') #{item}
+                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
                   .footer__about-socials-quote
                     .footer__about-socials
                         .footer__about 
