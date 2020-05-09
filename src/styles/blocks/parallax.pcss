@@ -2,11 +2,52 @@
     // background: url(../images/parallax/1.png) center center/cover no-repeat;
     position: relative;
     overflow: hidden;
+    height: 1500PX;
+    &__image {
+    position: absolute;
+    }
     &__layer {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        &:nth-child(1) {
+            .parallax__image {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &:nth-child(3) {
+            .parallax__image {
+                left: 0;
+                // top: 400PX;
+            }
+        }
+        &:nth-child(5) {
+            .parallax__image {
+                left: 0;
+                // top: 450PX;
+            }
+        }
+        &:nth-child(6) {
+            .parallax__image {
+                left: 0;
+                // top: 860PX;
+            }
+        }
+        &:nth-child(8) {
+            .parallax__image {
+                left: 0;
+                // top: 1000PX;
+            }
+        }
+        &:nth-child(9) {
+            .parallax__image {
+                left: 0;
+                // top: 1100PX;
+            }
+        }
     }
 }

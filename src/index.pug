@@ -11,9 +11,9 @@ html(lang="ru")
     .wrapper
       .maincontent
         .welcome-section.parallax
-          .parallax__layer
+          .parallax__layer(data-speed="0.1")
             +image("Parallax/1.png", "parallax__image", "Parallax1")
-          section.section.section-hero
+          section.section.section-hero(data-speed="0.14")
             .container
                 header.header
                   .header__logo
@@ -52,23 +52,23 @@ html(lang="ru")
                             li.socials__item
                               a.socials__link(href="/")
                                 +icon(item, "socials__icon")
-          .parallax__layer
+          .parallax__layer(data-speed="0.18")
             +image("Parallax/2.png", "parallax__image", "Parallax2")
-          .parallax__layer
+          .section-hero__content(data-speed="0.22")
+            .user-data
+              .user-data__desc Личный сайт<br>веб-разработчика
+              h1.title.user-data__title Арченков<br>Артём
+          .parallax__layer(data-speed="0.26")
             +image("Parallax/3.png", "parallax__image", "Parallax3")
-          .parallax__layer
+          .parallax__layer(data-speed="0.30")
             +image("Parallax/4.png", "parallax__image", "Parallax4")
-          .parallax__layer
+          .section-hero__scroll-btn(data-speed="0.34")
+            button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
+          .parallax__layer(data-speed="0.38")
             +image("Parallax/5.png", "parallax__image", "Parallax5")
-          .parallax__layer
+          .parallax__layer(data-speed="0.42")
             +image("Parallax/6.png", "parallax__image", "Parallax6")
-                .section-hero__content
-                    .user-data
-                      .user-data__desc Личный сайт<br>веб-разработчика
-                      h1.title.user-data__title Арченков<br>Артём
-                .section-hero__scroll-btn
-                  button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
-          section.section.section-about
+          section.section.section-about(data-speed="0.46")
               .container.container--small
                   .about
                       .about__user-data
@@ -110,24 +110,8 @@ html(lang="ru")
                     .longtitle__text
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
               .value__content
-                ul.user-skills
-                  - 
-                    var skills = [
-                      ['Front-end', ['HTML5', 'CSS3', 'JavaScript', 'JQuery'],['85','75', '40','45']],
-                      ['Workflow', ['GIT', 'TERMINAL', 'GULP', 'WebPack'],['70','60', '50','40']],
-                    ]
-                  each item in skills 
-                    li.user-skills__item.skills-row 
-                      h3.skills-row__title #{item[0]}
-                      ul.skills-row__list
-                        each skill, index in item[1]
-                          li.skills-row__item
-                            .skill
-                              svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                                circle(r="80" cx="100" cy="100").skill__circle--under
-                                circle(r="80" cx="100" cy="100" stroke-dashoffset=`calc(502 - ${item[2][index]} / 100 * 502)`).skill__circle--above
-                                linear-gradient()
-                              .skill__title #{skill}
+                #skills-component
+
         section.section.section-jobs
           .container.container--mobile-full
             .my-work
@@ -244,3 +228,5 @@ html(lang="ru")
                       .footer-quote
                         blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                         h3.footer-quote__title Martin Golding
+
+    include ./templates/entry.pug
