@@ -2,6 +2,9 @@
     position: relative;
     overflow: hidden;
     height: 1500PX; // какое число тут подставлять???
+    @include tablets {
+        display: none;
+      }
     &__image {
     object-fit: cover;
     position: absolute;
