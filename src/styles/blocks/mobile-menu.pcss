@@ -1,19 +1,38 @@
 .mobile-menu {
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 70px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background-color: $text-color;
-    &--active {
-        display: flex;
+
+    &__wrap {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 70px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        background-color: $text-color;
+        @include phones {
+            left: 0;
+          }
     }
-    @include phones {
+    &--isopen {
+        position: absolute;
+        top: 0;
         left: 0;
-      }
+        right: 0;
+        bottom: 0;
+        background-color: rgba(47, 50, 52, .92);
+        z-index: 1;
+        .mobile-menu {
+            &__wrap {
+                display: flex;
+            }
+        }
+    }
+
 }
+
+.overflow--hidden {
+    overflow: hidden;
+  }

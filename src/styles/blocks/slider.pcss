@@ -48,6 +48,9 @@
         height: 100px;
         min-width: 25%;
         transition: all .2s;
+        &:not(:last-child){
+            margin-right: 2px;
+        }
         @include desktop {
             min-width: 33.3%;
           }
@@ -55,7 +58,7 @@
             outline: 2px solid #d6841f;
             z-index: 0;
         }
-        &--active {
+        &.active {
             outline: 2px solid #d6841f;
         }
     }

@@ -34,24 +34,25 @@ html(lang="ru")
                             li.socials__item
                               a.socials__link(href="/")
                                 +icon(item, "socials__icon")
+                  .mobile-menu
+                    .mobile-menu__wrap
+                      .mobile-menu__nav
+                        nav.nav
+                          - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                          ul.nav__list
+                            each item, index in items
+                              li.nav__item
+                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
+                      .mobile-menu__socials
+                        .socials
+                          - var items = ["insta", "vk", "github"];
+                          ul.socials__list
+                            each item in items
+                              li.socials__item
+                                a.socials__link(href="/")
+                                  +icon(item, "socials__icon")
                   a.hamburger-menu-link
                     .hamburger-menu-link__bars
-                  .mobile-menu
-                    .mobile-menu__nav
-                      nav.nav
-                        - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
-                        ul.nav__list
-                          each item, index in items
-                            li.nav__item
-                              a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
-                    .mobile-menu__socials
-                      .socials
-                        - var items = ["insta", "vk", "github"];
-                        ul.socials__list
-                          each item in items
-                            li.socials__item
-                              a.socials__link(href="/")
-                                +icon(item, "socials__icon")
           .parallax__layer(data-speed="0.18")
             +image("Parallax/2.png", "parallax__image", "Parallax2")
           .section-hero__content(data-speed="0.22")
@@ -114,64 +115,12 @@ html(lang="ru")
 
         section.section.section-jobs
           .container.container--mobile-full
-            .my-work
-              .slider
-                .slider__title Мои Работы
-                .slider__body
-                  .slider__count 2
-                  .slider__controls
-                    a.slider__btn.slider__btn--next.slider__btn--end 
-                      .slider__btn-text &lt;
-                    a.slider__btn.slider__btn--prev 
-                      .slider__btn-text &gt;
-                  .slider__preview
-                    +image("slider/preview.png", "slider__preview-image", "slider preview")
-                    .slider__thumbnail
-                      - var items = ["slider/mini-1.jpg","slider/mini-2.jpg", "slider/mini-3.jpg", "slider/mini-4.jpg"];
-                      ul.slider__list 
-                        each item in items
-                          li.slider__item
-                            a.slider__link(href="/")
-                              +image(item, "slider__thumbnail-img", "slider thumbnail")
-              .school
-                .tags
-                  - var items = ["HTML", "CSS", "JavaScript"]
-                  ul.tags__list
-                    each item in items
-                      li.tags__item #{item}
-                .school__title Сайт школы образования
-                .school__text
-                  p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                .school__site
-                  a.school__link(href="lostschool.com") Посмотреть сайт
+            #slider-component
+
         section.section.section-feedback
           .container
-            .review-section
-              .reviews
-                  .reviews__header
-                    h2.reviews__title Что обо мне говорят
-                    .reviews__controls
-                      a.reviews__btn.reviews__btn--next
-                        .reviews__btn-text &lt;
-                      a.reviews__btn.reviews__btn--prev
-                        .reviews__btn-text &gt;
-                  ul.reviews__list
-                    -
-                      var reviews = [
-                        ["avatar1", "Ковальчук Дмитрий","Основатель LoftSchool","Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"],
-                        ["avatar2", "Сабанцев Владимир","Преподаватель","Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"],
-                      ];
-                    each review in reviews
-                      li.reviews__item
-                        .review
-                          blockquote.review__content #{review[3]}
-                          .review__sign
-                            .review__avatar
-                              .avatar
-                                +image("content/user.jpg", "avatar__image", "Artem Archenkov")
-                            .review__sign-block
-                              .review__title #{review[1]}
-                              .review__occupation #{review[2]}
+            .reviews-section
+              #feedback-component
                             
               .feedback
                 form(action="" ).feedback__form
