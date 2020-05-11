@@ -12,21 +12,33 @@ html(lang="ru")
       .maincontent
         .welcome-section.parallax
           .parallax__layer(data-speed="0.1")
-            +image("Parallax/1.png", "parallax__image", "Parallax1")
+            picture
+              source(srcset=require(`images/Parallax/1.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image(src=require(`images/bg/main.jpg`))
           .parallax__layer(data-speed="0.18")
-            +image("Parallax/2.png", "parallax__image", "Parallax2")
+            picture
+              source(srcset=require(`images/Parallax/2.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
           .section-hero__content(data-speed="0.22")
             .user-data
               .user-data__desc Личный сайт<br>веб-разработчика
               h1.title.user-data__title Арченков<br>Артём
           .parallax__layer(data-speed="0.26")
-            +image("Parallax/3.png", "parallax__image", "Parallax3")
+            picture
+              source(srcset=require(`images/Parallax/3.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
           .parallax__layer(data-speed="0.30")
-            +image("Parallax/4.png", "parallax__image", "Parallax4")
+            picture
+              source(srcset=require(`images/Parallax/4.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
           .parallax__layer(data-speed="0.38")
-            +image("Parallax/5.png", "parallax__image", "Parallax5")
+            picture
+              source(srcset=require(`images/Parallax/5.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
           .parallax__layer(data-speed="0.42")
-            +image("Parallax/6.png", "parallax__image", "Parallax6")
+            picture
+              source(srcset=require(`images/Parallax/6.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
           section.section.section-hero(data-speed="0.14")
             .container
                 header.header

@@ -5,7 +5,7 @@ function moveLayersDependsOnScroll (wScroll) {
 
     Array.from(layers).forEach(layer => {
         const divider = layer.dataset.speed;
-        const strafe = wScroll * divider / 50;
+        const strafe = wScroll * divider / 200;
 
         layer.style.transform = `translate3d(0, -${strafe}%, 0)`;
     })
