@@ -10,8 +10,36 @@ html(lang="ru")
   body
     .wrapper
       .maincontent
-        .welcome-section
-          section.section.section-hero
+        .welcome-section.parallax
+          .parallax__layer(data-speed="0.1")
+            picture
+              source(srcset=require(`images/Parallax/1.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image(src=require(`images/bg/main.jpg`))
+          .parallax__layer(data-speed="0.18")
+            picture
+              source(srcset=require(`images/Parallax/2.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
+          .section-hero__content(data-speed="0.22")
+            .user-data
+              .user-data__desc Личный сайт<br>веб-разработчика
+              h1.title.user-data__title Арченков<br>Артём
+          .parallax__layer(data-speed="0.26")
+            picture
+              source(srcset=require(`images/Parallax/3.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
+          .parallax__layer(data-speed="0.30")
+            picture
+              source(srcset=require(`images/Parallax/4.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
+          .parallax__layer(data-speed="0.38")
+            picture
+              source(srcset=require(`images/Parallax/5.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
+          .parallax__layer(data-speed="0.42")
+            picture
+              source(srcset=require(`images/Parallax/6.png`), media="(min-width: 769px)").parallax__image
+              img.parallax__image.parallax__image--disabled(src="")
+          section.section.section-hero(data-speed="0.14")
             .container
                 header.header
                   .header__logo
@@ -23,7 +51,7 @@ html(lang="ru")
                       ul.nav__list
                         each item, index in items
                           li.nav__item
-                            a.nav__link(href="/", data-scroll='#{index}') #{item}
+                            a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
                   .header__socials  
                       .socials
                         - var items = ["insta", "vk", "github"];
@@ -32,13 +60,28 @@ html(lang="ru")
                             li.socials__item
                               a.socials__link(href="/")
                                 +icon(item, "socials__icon")
-                .section-hero__content
-                    .user-data
-                      .user-data__desc Личный сайт<br>веб-разработчика
-                      h1.title.user-data__title Арченков<br>Артём
-                .section-hero__scroll-btn
-                  button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
-          section.section.section-about
+                  .mobile-menu
+                    .mobile-menu__wrap
+                      .mobile-menu__nav
+                        nav.nav
+                          - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                          ul.nav__list
+                            each item, index in items
+                              li.nav__item
+                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
+                      .mobile-menu__socials
+                        .socials
+                          - var items = ["insta", "vk", "github"];
+                          ul.socials__list
+                            each item in items
+                              li.socials__item
+                                a.socials__link(href="/")
+                                  +icon(item, "socials__icon")
+                  a.hamburger-menu-link
+                    .hamburger-menu-link__bars
+          .section-hero__scroll-btn(data-speed="0.34")
+            button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
+          section.section.section-about(data-speed="0.46")
               .container.container--small
                   .about
                       .about__user-data
@@ -80,84 +123,16 @@ html(lang="ru")
                     .longtitle__text
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
               .value__content
-                ul.user-skills
-                  - 
-                    var skills = [
-                      ['Front-end', ['HTML5', 'CSS3', 'JavaScript', 'JQuery'],['85','75', '40','45']],
-                      ['Workflow', ['GIT', 'TERMINAL', 'GULP', 'WebPack'],['70','60', '50','40']],
-                    ]
-                  each item in skills 
-                    li.user-skills__item.skills-row 
-                      h3.skills-row__title #{item[0]}
-                      ul.skills-row__list
-                        each skill, index in item[1]
-                          li.skills-row__item
-                            .skill
-                              svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                                circle(r="80" cx="100" cy="100").skill__circle--under
-                                circle(r="80" cx="100" cy="100" stroke-dashoffset=`calc(502 - ${item[2][index]} / 100 * 502)`).skill__circle--above
-                                linear-gradient()
-                              .skill__title #{skill}
+                #skills-component
+
         section.section.section-jobs
-          .container 
-            .my-work
-              .slider
-                .slider__title Мои Работы
-                .slider__body
-                  .slider__count 2
-                  .slider__controls
-                    a.slider__btn.slider__btn--next.slider__btn--end 
-                      .slider__btn-text &lt;
-                    a.slider__btn.slider__btn--prev 
-                      .slider__btn-text &gt;
-                  .slider__preview
-                    +image("slider/preview.png", "slider__preview-image", "slider preview")
-                    .slider__thumbnail
-                      - var items = ["slider/mini-1.jpg","slider/mini-2.jpg", "slider/mini-3.jpg", "slider/mini-4.jpg"];
-                      ul.slider__list 
-                        each item in items
-                          li.slider__item
-                            a.slider__link(href="/")
-                              +image(item, "slider__thumbnail-img", "slider thumbnail")
-              .school
-                .tags
-                  - var items = ["HTML", "CSS", "JavaScript"]
-                  ul.tags__list
-                    each item in items
-                      li.tags__item #{item}
-                .school__title Сайт школы образования
-                .school__text
-                  p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                .school__site
-                  a.school__link(href="lostschool.com") Посмотреть сайт
+          .container.container--mobile-full
+            #slider-component
+
         section.section.section-feedback
           .container
-            .review-section
-              .reviews
-                  .reviews__header
-                    h2.reviews__title Что обо мне говорят
-                    .reviews__controls
-                      a.reviews__btn.reviews__btn--next
-                        .reviews__btn-text &lt;
-                      a.reviews__btn.reviews__btn--prev
-                        .reviews__btn-text &gt;
-                  ul.reviews__list
-                    -
-                      var reviews = [
-                        ["avatar1", "Ковальчук Дмитрий","Основатель LoftSchool","Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"],
-                        ["avatar2", "Сабанцев Владимир","Преподаватель","Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"],
-                      ];
-                    each review in reviews
-                      li.reviews__item
-                        .review
-                          blockquote.review__content #{review[3]}
-                          .review__sign
-                            .review__avatar
-                              .avatar
-                                +image("content/user.jpg", "avatar__image", "Artem Archenkov")
-                            .review__sign-block
-                              .review__title #{review[1]}
-                              .review__occupation #{review[2]}
+            .reviews-section
+              #feedback-component
                             
               .feedback
                 form(action="" ).feedback__form
@@ -176,7 +151,7 @@ html(lang="ru")
                     .feedback__row
                       .feedback__col
                         label.feedback__label
-                          textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2" placeholder="Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса")
+                          textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
                           .feedback__placeholder.feedback__placeholder-textarea Сообщение к письму
                     .feedback__row
                       button.btn.feedback__btn Отправить
@@ -198,7 +173,7 @@ html(lang="ru")
                           ul.nav__list
                             each item, index in items
                               li.nav__item
-                                a.nav__link(href="/", data-scroll='#{index}') #{item}
+                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
                   .footer__about-socials-quote
                     .footer__about-socials
                         .footer__about 
@@ -214,3 +189,5 @@ html(lang="ru")
                       .footer-quote
                         blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                         h3.footer-quote__title Martin Golding
+
+    include ./templates/entry.pug

@@ -6,11 +6,18 @@
         margin-right: 50px;
         margin-bottom: 60px;
     }
+    @include phones {
+        margin-right: 0;
+        width: 100%;
+    }
     &__title {
         font-size: 36px;
         font-weight: 600;
         color: #333c49;
         margin-bottom: 100px;
+        @include phones {
+            text-align: center;
+        }
     }
     &__body {
         position: relative;
@@ -41,6 +48,9 @@
         height: 100px;
         min-width: 25%;
         transition: all .2s;
+        &:not(:last-child){
+            margin-right: 2px;
+        }
         @include desktop {
             min-width: 33.3%;
           }
@@ -48,7 +58,7 @@
             outline: 2px solid #d6841f;
             z-index: 0;
         }
-        &--active {
+        &.active {
             outline: 2px solid #d6841f;
         }
     }
@@ -57,6 +67,9 @@
         position: absolute;
         bottom: 60px;
         right: 0;
+        @include phones {
+            display: none;
+        }
         &-img {
             object-fit: cover;
             min-width: 100%;
@@ -68,6 +81,11 @@
         position: absolute;
         right: -50px;
         bottom: 60px;
+        @include phones {
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
     }
     &__btn {
         display: flex;
@@ -95,7 +113,10 @@
         z-index: -1;
         @include desktop {
             font-size: 300px;
-          }
+        }
+        @include phones {
+            display: none;
+        }
     }
     
 }

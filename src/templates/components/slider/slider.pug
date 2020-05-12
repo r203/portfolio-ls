@@ -1,0 +1,61 @@
+script(type="text/x-template")#slider-container
+    .my-work
+        .slider
+            .slider__title Мои Работы
+            .slider__body
+                .slider__count {{currentWork.id}}
+                controls(
+                    @slide="handleSlide"
+                    :currentWork="currentWork"
+                )
+                display(
+                    :currentWork="currentWork"
+                    :works="works"
+                )
+        school(
+            :currentWork="currentWork"
+        )
+
+script(type="text/x-template")#slider-display
+    .slider__preview
+        img.slider__preview-image(:src="currentWork.photo", alt="slider preview")
+        thumbnail(
+            :works="reversedWorks"
+            :currentWork="currentWork"
+        )
+
+script(type="text/x-template")#slider-thumbnail
+    .slider__thumbnail
+        ul.slider__list 
+            li.slider__item(
+                v-for="work in works" 
+                :key="work.id"
+                :class="{active: currentWork.id === work.id}"
+                )
+                a.slider__link(href="/")
+                    img.slider__thumbnail-img(:src="work.thumbnail", alt="slider thumbnail")
+
+script(type="text/x-template")#slider-controls
+    .slider__controls
+        a(@click.prevent="handleClick('next')" id="btnNext").slider__btn.slider__btn--next
+            .slider__btn-text &lt;
+        a(@click.prevent="handleClick('prev')" id="btnPrev").slider__btn.slider__btn--prev
+            .slider__btn-text &gt;
+
+script(type="text/x-template")#slider-school
+    .school
+        tags(
+            :tags="tagsArray"
+        )
+        .school__title {{currentWork.title}}
+        .school__text
+            p  {{currentWork.desc}}
+        .school__site
+            a.school__link(:href="currentWork.link") Посмотреть сайт
+
+script(type="text/x-template")#slider-tags
+    .tags
+        ul.tags__list
+            li.tags__item(v-for="tag in tags" :key="tag") {{tag}}
+
+

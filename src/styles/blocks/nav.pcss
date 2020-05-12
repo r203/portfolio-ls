@@ -6,7 +6,7 @@
         position: relative;
         transition: all 0.6s;
         &:not(:last-child) {
-            margin-right: 60px;
+            margin-right: 40px;
         }
         &:before {
             content: "";
@@ -31,20 +31,44 @@
     }
 }
 .footer .nav {
+    @include phones {
+        width: 100%;
+    }
     &__list {
+        flex-wrap: wrap;
         @include tablets {
-            flex-wrap: wrap;
             margin-bottom: 35px;
         }
     }
     &__item {
-        @include tablets {
-            margin-bottom: 35px;
+        margin-bottom: 35px;
+        @include phones {
+            width: 50%;
+            margin-right: 0;
         }
     }
 }
 .header .nav { // с этим придумаю что то позже
     @include tablets {
         display: none;
+      }
+}
+
+.mobile-menu .nav {
+    @include tablets {
+        display: flex;
+        margin-bottom: 60px;
+        &__list {
+            flex-direction: column;
+            color: #414c63;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        &__item {
+            margin-right: 0;
+            &:not(:last-child) {
+                margin-bottom: 35px;
+            }
+        }
       }
 }

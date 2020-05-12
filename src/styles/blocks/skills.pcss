@@ -10,6 +10,9 @@
         }
         &__list {
             display: flex;
+            @include phones {
+                flex-wrap: wrap;
+            }
         }
         &__item {
             width: 140px;
@@ -17,7 +20,16 @@
                 margin-right: 60px;
                 @include tablets {
                     margin-right: 27px;
-                  }
+                }
+                @include phones {
+                    margin-right: 0;
+                }
+            }
+            @include tablets {
+                width: 25%;
+            }
+            @include phones {
+                width: 50%;
             }
         }
     }

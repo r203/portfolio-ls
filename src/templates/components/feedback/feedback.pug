@@ -1,0 +1,20 @@
+script(type="text/x-template")#feedback-container
+    .reviews
+      .reviews__header
+        h2.reviews__title Что обо мне говорят
+        .reviews__controls
+          a(@click="previous()").reviews__btn.reviews__btn--prev
+            .reviews__btn-text &lt;
+          a(@click="next()").reviews__btn.reviews__btn--next
+            .reviews__btn-text &gt;
+      flickity(ref="flickity" :options="flickityOptions")
+        .reviews__item.carousel-cell(v-for="quote in feedback" :key="feedback.id")
+          .review
+            blockquote.review__content {{quote.quote}}
+            .review__sign
+              .review__avatar
+                .avatar
+                  img.avatar__image(:src="quote.avatar", alt="Artem Archenkov")
+              .review__sign-block
+                .review__title {{quote.author}}
+                .review__occupation {{quote.occupation}}

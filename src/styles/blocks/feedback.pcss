@@ -15,6 +15,9 @@
         &:not(:last-child) {
             margin-bottom: 40px;
         }
+        @include phones {
+            flex-direction: column;
+        }
     }
     &__col {
         flex: 1;
@@ -22,7 +25,11 @@
             margin-right: 100px;
             @include tablets {
                 margin-right: 22px;
-              }
+            }
+            @include phones {
+                margin-bottom: 50px;
+                margin-right: 0;
+            }
         }
     }
     &__label {

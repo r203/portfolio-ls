@@ -4,20 +4,31 @@
     align-items: center;
     @include tablets {
         align-items: flex-start;
-      }
+    }
+    @include phones {
+        align-items: center;
+    }
     &__avatar {
         width: 200px;
         margin-bottom: 75px;
         @include tablets {
             margin-left: 15px;
             margin-right: 15px;
-          }
+        }
+        @include phones {
+            margin-bottom: 30px;
+            margin-left: 0;
+            margin-right: 0px;
+        }
     }
     &__data-item {
         display: block;
-        margin-right: 80px;
+        margin-right: 20px;
         opacity: .15;
         font-weight: 600;
+        @include tablets {
+            opacity: .5;
+        }
     }
     &__data {
         border-spacing: 1em;

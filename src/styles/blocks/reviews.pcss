@@ -1,22 +1,37 @@
 .reviews {
+    &-section {
+        max-width: 940px;
+        margin-bottom: 210px;  
+    }
     max-width: 940px;
     margin-bottom: 210px;
     @include tablets {
         width: 100%;
         margin-bottom: 120px;
-      }
+    }
+    @include phones {
+        margin-bottom: 155px;
+    }
     &__header {
         display: flex;
         align-items: center;
         margin-bottom: 110px;
         @include tablets {
             margin-bottom: 80px;
-          }
+        }
+        @include phones {
+            flex-direction: column;
+            margin-bottom: 35px;
+        }
     }
     &__title {
         font-size: 36px;
         font-weight: 600;
         margin-right: 120px;
+        @include phones {
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
     }
     &__controls {
         display: flex;
@@ -40,10 +55,17 @@
     }
     &__list {
         display: flex;
+        @include phones {
+            overflow: hidden;
+        }
     }
     &__item {
+        width: 50%;
         @include tablets {
             width: 50%;
-          }
+        }
+        @include phones {
+            min-width: 100%;
+        }
     }
 }

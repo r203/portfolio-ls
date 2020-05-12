@@ -9,7 +9,7 @@
             opacity: 1;
         }
         &:not(:last-child) {
-            margin-right: 40px;
+            margin-right: 20px;
         }
     }
     &__link {
@@ -23,7 +23,11 @@
     }
     
 }
-
+.header .socials {
+    @include phones {
+        display: none;
+      }
+}
 .socials--footer {
     .socials {
         &__item {
@@ -39,5 +43,19 @@
             height: 48px;
             padding: 10px;
         }
+    }
+}
+
+.mobile-menu .socials {
+    @include tablets {
+        &__item {
+            opacity: 1;
+        }
+        &__icon {
+            fill: #414c63;
+        }
+    }
+    @include phones {
+        display: flex;
     }
 }
