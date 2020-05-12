@@ -32,14 +32,14 @@ script(type="text/x-template")#slider-thumbnail
                 :key="work.id"
                 :class="{active: currentWork.id === work.id}"
                 )
-                a.slider__link(href="/")
+                button.slider__link(href="/")
                     img.slider__thumbnail-img(:src="work.thumbnail", alt="slider thumbnail")
 
 script(type="text/x-template")#slider-controls
     .slider__controls
-        a(@click.prevent="handleClick('next')" id="btnNext").slider__btn.slider__btn--next
+        button(@click.prevent="handleClick('next')" id="btnNext").slider__btn.slider__btn--next
             .slider__btn-text &lt;
-        a(@click.prevent="handleClick('prev')" id="btnPrev").slider__btn.slider__btn--prev
+        button(@click.prevent="handleClick('prev')" id="btnPrev").slider__btn.slider__btn--prev
             .slider__btn-text &gt;
 
 script(type="text/x-template")#slider-school

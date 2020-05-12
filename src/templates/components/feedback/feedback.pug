@@ -3,9 +3,9 @@ script(type="text/x-template")#feedback-container
       .reviews__header
         h2.reviews__title Что обо мне говорят
         .reviews__controls
-          a(@click="previous()").reviews__btn.reviews__btn--prev
+          button(@click="previous()").reviews__btn.reviews__btn--prev
             .reviews__btn-text &lt;
-          a(@click="next()").reviews__btn.reviews__btn--next
+          button(@click="next()").reviews__btn.reviews__btn--next
             .reviews__btn-text &gt;
       flickity(ref="flickity" :options="flickityOptions")
         .reviews__item.carousel-cell(v-for="quote in feedback" :key="feedback.id")

@@ -1,6 +1,7 @@
 {
   "text-color": "#fff",
   "links-color": "#4b6fd7",
+  "main-color": "#d6841f",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",

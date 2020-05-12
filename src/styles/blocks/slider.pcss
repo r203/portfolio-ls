@@ -62,6 +62,9 @@
             outline: 2px solid #d6841f;
         }
     }
+    &__link {
+        padding: 0;
+    }
     &__thumbnail {
         // overflow: hidden; он нужен, но с ним не работает оутлайн
         position: absolute;
@@ -95,8 +98,12 @@
         height: 50px;
         transition: all .3s;
         background-color: #353e4e;
+        color: $text-color;
         &:hover {
             background-color: #d6841f;
+        }
+        &:focus {
+            outline: 1px solid #d6841f;
         }
         &--end .slider__btn-text {
             opacity: .3;
