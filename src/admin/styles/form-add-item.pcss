@@ -1,0 +1,42 @@
+.form-add-item {
+  &__row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+  &__col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+  &__label {
+    font-weight: 600;
+    color: #414c63;
+    opacity: .5;
+  }
+  &__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #414c63;
+    padding: 20px 0;
+    &::placeholder {
+      font-weight: 600;
+      color: #414c63;
+      opacity: .5;
+    }
+  }
+  &__textarea {
+    margin-top: 20px;
+    border: 1px solid #d9dbe0;
+    resize: none;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

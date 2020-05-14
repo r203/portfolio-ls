@@ -33,8 +33,23 @@
           ul.about__group
             li.group-about
               .group-about__title 
+                .form-add-item.group-about__title-left
+                  .form-add-item__row
+                    .form-add-item__col
+                      input(placeholder="Название новой группы").form-add-item__input
+                .group-about__title-right 
+                  .group-about__btns
+                    button.btn.btn__secondary.btn__ok 
+                    button.btn.btn__secondary.btn__erase
               .group-about__content
-              .group-about__line-add
+              .form-add-item.group-about-add
+                .group-about-add__row
+                  .group-about-add__skill
+                    input(placeholder="Новый навык").form-add-item__input
+                  .group-about-add__percent
+                    input(placeholder="0").form-add-item__input
+                  .group-about-add__btns
+                    button.btn.btn__secondary.btn__add-group-item +
             li.group-about
               .group-about__title
               .group-about__content
@@ -72,7 +87,7 @@
                   button.btn.btn__primary Загрузить
         ul.works__list
           li.works__item
-            .item-add
+            button.item-add
               .item-add__content
                 span.item-add__content-text +
               .item-add__sign
@@ -82,6 +97,10 @@
               .work__image-block
                 img.work__image(src="https://picsum.photos/300", alt="Artem Archenkov")
                 .tags
+                  ul.tags__list
+                    li.tags__item html
+                    li.tags__item css
+                    li.tags__item javaascript
               .work__content
                 h3.work__title Новая работа
                 .work__desc
@@ -121,7 +140,7 @@
                   button.btn.btn__primary Загрузить
         ul.reviews__list
           li.reviews__item
-            .item-add
+            button.item-add
               .item-add__content
                 span.item-add__content-text +
               .item-add__sign
@@ -151,503 +170,23 @@
 @import "../styles/mixins.pcss";
 @import "../styles/layout/base.pcss";
 
-body {
-  background-color: #f8fafe;
-}
+@import "./styles/layout.pcss";
+@import "./styles/header.pcss";
+@import "./styles/avatar.pcss";
+@import "./styles/nav.pcss";
+@import "./styles/about.pcss";
+@import "./styles/group-about.pcss";
+@import "./styles/works.pcss";
+@import "./styles/reviews.pcss";
+@import "./styles/work-add.pcss";
+@import "./styles/review-add.pcss";
+@import "./styles/upload.pcss";
+@import "./styles/upload-photo.pcss";
+@import "./styles/btn.pcss";
+@import "./styles/form-add-item.pcss";
+@import "./styles/item-add.pcss";
+@import "./styles/work.pcss";
+@import "./styles/review.pcss";
+@import "./styles/tags.pcss";
 
-.container {
-      max-width: 1080PX;
-}
-
-.header {
-    width: 100%;
-    background-color: #424268;
-    &__container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 0;
-      margin: 0 auto;
-    }
-    &__left {
-      display: flex;
-      align-items: center;
-      :not(:last-child) {
-      margin-right: 22px;
-    }
-    }
-    &__logo {
-      width: 46px;
-    }
-
-
-}
-
-.avatar {
-    overflow: hidden;
-    border-radius: 50%;
-    &__image {
-        display: block;
-        max-width: 100%;
-        object-fit: cover;
-    }
-}
-
-.user-name {
-  &__content {
-    font-size: 18px;
-    font-weight: 600;
-  }
-}
-
-.page-name {
-  &__content {
-    opacity: .5;
-  }
-}
-
-.logout-btn {
-  &__link {
-    opacity: .7;
-  }
-}
-
-.nav {
-    color: #414c63;
-    background-color: #fff;
-    margin-bottom: 56px;
-    &__list {
-      display: flex;
-    }
-    &__item {
-      border-bottom: 2px solid transparent;
-      &:hover {
-        color: #383bcf;
-        font-weight: 600;
-        border-bottom: 2px solid #383bcf;
-
-      }
-    }
-    &__link {
-      display: block;
-      font-weight: 600;
-      padding: 30px;
-      text-decoration: none;
-    }
-}
-
-.about {
-  margin-bottom: 60px;
-  &__container {
-    display: flex;
-    flex-direction: column;
-  }
-  &__title {
-    display: flex;
-    margin-bottom: 60px;
-    &-text {
-      font-weight: 900;
-      font-size: 21px;
-      color: #414c63;
-    }
-  }
-  &__group {
-    display: flex;
-  }
-}
-
-.group-about {
-  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
-  width: 50%;
-  /* убери высоту как контент появится */
-  height: 395px; 
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
-}
-
-.works {
-  margin-bottom: 60px;
-  &__container {
-    display: flex;
-    flex-direction: column;
-  }
-  &__list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  &__item {
-    width: 33.333%;
-    max-width: 33.333%; 
-    max-height: 560px;
-    &:not(:last-child) {
-      margin-right: 30px;
-    }
-  }
-}
-
-.reviews {
-  margin-bottom: 60px;
-  &__container {
-    display: flex;
-    flex-direction: column;
-  }
-  &__list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  &__item {
-    width: 33.333%;
-    max-width: 33.333%; 
-    max-height: 560px;
-    &:not(:last-child) {
-      margin-right: 30px;
-    }
-  }
-}
-
-.work-add {
-  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  &__title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #414c63;
-    padding: 30px 15px;
-    margin: 0 20px;
-    margin-bottom: 50px;
-    border-bottom: 1px solid rgba(31, 35, 45, .15);
-  }
-  &__content {
-    display: flex;
-    flex-direction: row;
-    padding: 0 35px;
-  }
-  &__left {
-    width: 50%;
-    margin-right: 30px;
-  }
-  &__right {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-}
-
-.review-add {
-  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  &__title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #414c63;
-    padding: 30px 15px;
-    margin: 0 20px;
-    margin-bottom: 50px;
-    border-bottom: 1px solid rgba(31, 35, 45, .15);
-  }
-  &__content {
-    display: flex;
-    flex-direction: row;
-    padding: 0 35px;
-  }
-  &__left {
-    width: 30%;
-    margin-right: 30px;
-  }
-  &__right {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-  }
-}
-
-.upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* временное решение - переделать */
-  height: 275px; 
-  /* height: 100%; */
-  max-height: 275px;
-  background-color: #dee4ed;
-  border: 1px dashed rgba(31, 35, 45, .15);
-  text-align: center;
-  line-height: 30px;
-  padding: 0px 90px;
-  &__desc {
-    color: #414c63;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }
-}
-
-.upload-photo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  &__img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    background-color: #dee4ed;
-    border-radius: 50%;
-    margin-bottom: 30px;
-  }
-  &__image {
-    width: 50%;
-  }
-  &__btn {
-    display: flex;
-    width: 100%;
-    justify-content: center
-  }
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  &__primary {
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 19px 50px;
-    border-radius: 50px;
-    background: rgb(20,89,226);
-    background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
-  }
-  &__cancel {
-    font-weight: 600;
-    color: #383bcf;
-    background: transparent;
-    margin: 0 55px;
-  }
-  &__edit {
-    font-weight: 600;
-    background: transparent;
-    color: #414c63;
-    opacity: .7;
-    &:after {
-      content: '';
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 15px;
-      color: #fff;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: svg-load('pencil.svg', fill=#383bcf, width=100%, height=100%);
-    }
-  }
-  &__delete {
-    font-weight: 600;
-    background: transparent;
-    color: #414c63;
-    opacity: .7;;
-    &:after {
-      content: '';
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 15px;
-      color: #fff;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%);
-    }
-  }
-  &__add-photo {
-    font-weight: 600;
-    color: #383bcf;
-    background: transparent;
-  }
-  &__add-group {
-    font-weight: 600;
-    color: #383bcf;
-    background: transparent;
-    margin: 0 55px;
-    &:before {
-      content: '+';
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      color: #fff;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgb(20,89,226);
-      background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
-    }
-  }
-}
-
-.form-add-item {
-  &__row {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-  }
-  &__col {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    &:not(:last-child) {
-      margin-right: 30px;
-    }
-  }
-  &__label {
-    font-weight: 600;
-    color: #414c63;
-    opacity: .5;
-  }
-  &__input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #414c63;
-    padding: 20px 0;
-  }
-  &__textarea {
-    margin-top: 20px;
-    border: 1px solid #d9dbe0;
-    resize: none;
-  }
-  &__btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-}
-
-.item-add {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 560px;
-  width: 100%;
-  height: 100%;
-  background: rgb(20,89,226);
-  background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
-  &__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 150px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    font-size: 72px;
-    font-weight: 100;
-    margin-bottom: 30px;
-  }
-  &__sign {
-    font-size: 18px;
-    font-weight: 600;
-  }
-}
-
-.work {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
-  &__image-block {
-    width: 100%;
-    height: 40%;
-  }
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  &__content {
-    width: 100%;
-    height: 100%;
-    padding: 40px 30px;
-  }
-  &__title {
-    color: #414c63;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }
-  &__desc {
-    color: #414c63;
-    opacity: .75;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }  
-  &__site-page {
-    color: #4548d2;
-    opacity: .75;
-    font-weight: 600;
-  }
-  &__btns {
-    display: flex;
-    width: 100%;
-    padding: 0 30px;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 30px;
-  }
-}
-
-.review {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  width: 100%;
-  height: 100%;
-  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
-  &__title-block {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border-bottom: 1px solid rgba(31, 35, 45, .15);
-    padding: 0 10px 30px 10px;
-  }
-  &__avatar {
-      width: 46px;
-  }
-  &__name-occupation {
-    margin-left: 20px;
-  }
-  &__name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #414c63;
-  }
-  &__occupation {
-    font-weight: 600;
-    color: #414c63;
-    opacity: .5;
-  }
-  &__content {
-    flex: 1;
-    font-weight: 600;
-    color: #414c63;
-    opacity: .7;
-    padding: 30px 0;
-  }
-  &__btns {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
 </style>

@@ -1,0 +1,114 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  &__primary {
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 19px 50px;
+    border-radius: 50px;
+    background: rgb(20,89,226);
+    background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+  }
+  &__cancel {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+    margin: 0 55px;
+  }
+  &__edit {
+    font-weight: 600;
+    background: transparent;
+    color: #414c63;
+    opacity: .7;
+    &:after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 15px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: svg-load('pencil.svg', fill=#383bcf, width=100%, height=100%);
+    }
+  }
+  &__delete {
+    font-weight: 600;
+    background: transparent;
+    color: #414c63;
+    opacity: .7;;
+    &:after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 15px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%);
+    }
+  }
+  &__add-photo {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+  }
+  &__add-group {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+    margin: 0 55px;
+    &:before {
+      content: '+';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgb(20,89,226);
+      background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgb(20,89,226);
+      background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    }
+  }
+  &__ok {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: svg-load('tick.svg', fill=#00d70a, width=100%, height=100%);
+  }
+  &__erase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: svg-load('remove.svg', fill=#bf2929, width=100%, height=100%);
+  }
+}

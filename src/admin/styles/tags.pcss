@@ -1,0 +1,21 @@
+.tags {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  &__list {
+    display: flex;
+    flex-direction: row;
+  }
+  &__item {
+    color: #687079;
+    font-weight: 600;
+    font-size: 13px;
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 50px;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.group-about {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+  width: 50%;
+  /* убери высоту как контент появится */
+  height: 395px; 
+  padding: 35px 30px;
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+  &__title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(31, 35, 45, .15);
+    &-left {
+      width: 70%;
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 30%;
+    }
+  }
+  &__content {
+    height: 100%;
+  }
+  &-add {
+    &__row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      // width: 80%;
+      text-align: right;
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    &__skill {
+      width: 50%;
+      margin-right: 10px;
+  
+    }
+    &__percent {
+      width: 20%;
+      margin-right: 30px;
+    }
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}
