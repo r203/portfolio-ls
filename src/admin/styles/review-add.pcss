@@ -15,14 +15,29 @@
     display: flex;
     flex-direction: row;
     padding: 0 35px;
+    @include phones {
+      flex-direction: column;
+    }
   }
   &__left {
     width: 30%;
     margin-right: 30px;
+    @include phones {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
   }
   &__right {
     display: flex;
     flex-direction: column;
     width: 70%;
+    @include phones {
+      width: 100%;
+    }
   }
+}
+
+.review-add .form-add-item__btns {
+  justify-content: flex-end;
 }

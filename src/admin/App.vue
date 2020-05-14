@@ -147,7 +147,7 @@
 
     section.reviews
       .container.rewiews__container
-        .review-add
+        .form-add-item.review-add
           h2.review-add__title Добавление отзыва
           .review-add__content
             .review-add__left

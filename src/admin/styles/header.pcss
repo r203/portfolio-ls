@@ -28,6 +28,9 @@
 }
 
 .page-name {
+  @include phones {
+    display: none;
+  }
   &__content {
     opacity: .5;
   }

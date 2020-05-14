@@ -7,13 +7,23 @@
   &__title {
     display: flex;
     margin-bottom: 60px;
+    @include phones {
+      flex-direction: column;
+    }
     &-text {
       font-weight: 900;
       font-size: 21px;
       color: #414c63;
+      @include phones {
+        margin-bottom: 30px;
+      }
     }
   }
   &__group {
     display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -30px;
   }
 }

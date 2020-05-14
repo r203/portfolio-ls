@@ -6,8 +6,10 @@
   /* убери высоту как контент появится */
   height: 395px; 
   padding: 35px 30px;
-  &:not(:last-child) {
-    margin-right: 30px;
+  width: calc(100% / 2 - 30px);
+  margin-left: 30px;
+  @include phones {
+    width: 100%;
   }
   &__title {
     display: flex;
