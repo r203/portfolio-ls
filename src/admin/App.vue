@@ -52,8 +52,42 @@
                     button.btn.btn__secondary.btn__add-group-item +
             li.group-about
               .group-about__title
+                .group-about__title-left 
+                  h2.group-about__title-text Frontend
+                .group-about__title-right 
+                  .group-about__btns
+                    button.btn.btn__secondary.btn__edit
               .group-about__content
-              .group-about__line-add
+                ul.group-about__skills-list
+                  li.group-about__skills-item
+                    ul.group-about__skill-list
+                      li.group-about__skill-name html
+                      li.group-about__skill-percent 80
+                      li.group-about__skill-btn
+                        button.btn.btn__secondary.btn__edit
+                        button.btn.btn__secondary.btn__trash
+                  li.group-about__skills-item
+                    ul.group-about__skill-list
+                      li.group-about__skill-name css
+                      li.group-about__skill-percent 70
+                      li.group-about__skill-btn
+                        button.btn.btn__secondary.btn__edit
+                        button.btn.btn__secondary.btn__trash
+                  li.group-about__skills-item
+                    ul.group-about__skill-list
+                      li.group-about__skill-name java
+                      li.group-about__skill-percent 30
+                      li.group-about__skill-btn
+                        button.btn.btn__secondary.btn__edit
+                        button.btn.btn__secondary.btn__trash
+              .group-about-add
+                .group-about-add__row
+                  .group-about-add__skill
+                    input(placeholder="Новый навык").form-add-item__input
+                  .group-about-add__percent
+                    input(placeholder="0").form-add-item__input
+                  .group-about-add__btns
+                    button.btn.btn__secondary.btn__add-group-item +
 
     section.works
       .container.works__container

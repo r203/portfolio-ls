@@ -13,6 +13,11 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid rgba(31, 35, 45, .15);
+    &-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #414c63;
+    }
     &-left {
       width: 70%;
     }
@@ -25,6 +30,43 @@
   }
   &__content {
     height: 100%;
+    color: #414c63;
+    padding: 30px 0;
+  }
+  &__skills {
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__skill {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+    &-name {
+      width: 60%;
+    }
+    &-percent {
+      position: relative;
+      width: 15%;
+      &:after {
+        content: '%';
+        position: absolute;
+        display: inline-flex;
+        right: 0;
+      }
+    }
+    &-btn {
+      width: 25%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
   }
   &-add {
     &__row {
