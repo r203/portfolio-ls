@@ -7,5 +7,19 @@ html(lang="en")
     title Portfolio | login
   body
     .wrapper.admin-wrapper
-      .maincontent1
-        .123 1232
+      .maincontent
+        .section-welcome
+          .login
+            form.login__form
+              .login__col
+                h2.login__title-text Авторизация
+              .login__col
+                  label.login__label Логин
+                  input(type="text", id="login").login__input
+              .login__col
+                  label.login__label Пароль
+                  input(type="password", id="pass").login__input
+              .login__btns
+                button(type="submit").btn__submit-login Отправить
+              .login__btns-close
+                button(type="submit").btn__submit-close

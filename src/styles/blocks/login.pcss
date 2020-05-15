@@ -1,0 +1,114 @@
+.section-welcome {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(../images/bg/main.jpg) center center/cover no-repeat;
+  
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #2d3c4e;
+    opacity: .7;
+  }
+}
+
+.login {
+  position: relative;
+  max-width: 570px;
+  min-height: 520px;
+  width: 95%;
+  padding: 60px 80px;
+  background-color: #fff;
+  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+  @include phones {
+    width: 100%;
+    height: 100vh;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    @include phones {
+      justify-content: center;
+    }
+  }
+  &__col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include phones {
+      margin-bottom: 40px;
+    }
+  }
+  &__title-text {
+    font-size: 36px;
+    font-weight: 600;
+    color: #414c63;
+  }
+  &__label {
+    text-align: left;
+    font-weight: 600;
+    color: #414c63;
+    opacity: .3;
+    margin-left: 45px;
+  }
+  &__input {
+    border: none;
+    border-bottom: 1px solid #c2c5cd;
+    padding: 23px 45px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #414c63;
+  }
+}
+
+
+#login {
+  background: svg-load('user.svg', fill=#d7dadf, width=100%, height=100%);
+}
+#pass {
+  background: svg-load('key.svg', fill=#d7dadf, width=100%, height=100%);
+}
+#login, #pass {
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+
+}
+
+.btn__submit-login {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 35px 120px;
+  background: rgb(20,89,226);
+  background: linear-gradient(90deg, rgba(173,0,237,1) 0%, rgba(85,0,242,1) 100%);
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.login__btns-close {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 5%;
+  top: 5%;
+}
+.btn__submit-close {
+  width: 100%;
+  height: 100%;
+  background: svg-load('Cross.svg', fill=#525c71, width=100%, height=100%);
+}
