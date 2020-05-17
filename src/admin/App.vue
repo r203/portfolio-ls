@@ -91,7 +91,7 @@
 
     section.works
       .container.works__container
-        .work-add
+        form.work-add
           h2.work-add__title Добавление Работы
           .work-add__content
             .work-add__left
@@ -103,22 +103,22 @@
               .form-add-item__row
                 .form-add-item__col
                   label.form-add-item__label Название
-                  input.form-add-item__input
+                  input(required).form-add-item__input
               .form-add-item__row
                 .form-add-item__col
                   label.form-add-item__label Ссылка
-                  input.form-add-item__input
+                  input(required).form-add-item__input
               .form-add-item__row
                 .form-add-item__col
                   label.form-add-item__label Описание
-                  textarea.form-add-item__input.form-add-item__textarea
+                  textarea(required).form-add-item__input.form-add-item__textarea
               .form-add-item__row
                 .form-add-item__col
                   label.form-add-item__label Добавление тега
                   input.form-add-item__input
               .form-add-item__btns
                   button.btn.btn__secondary.btn__cancel Отменить
-                  button.btn.btn__primary Загрузить
+                  button(type="submit").btn.btn__primary Загрузить
         ul.works__list
           li.works__item
             button.item-add
@@ -147,7 +147,7 @@
 
     section.reviews
       .container.rewiews__container
-        .form-add-item.review-add
+        form.form-add-item.review-add
           h2.review-add__title Добавление отзыва
           .review-add__content
             .review-add__left
@@ -161,17 +161,17 @@
                 .form-add-item__row
                   .form-add-item__col
                     label.form-add-item__label Имя автора
-                    input.form-add-item__input
+                    input(required).form-add-item__input
                   .form-add-item__col
                     label.form-add-item__label Титул автора
-                    input.form-add-item__input
+                    input(required).form-add-item__input
               .form-add-item__row
                 .form-add-item__col
                   label.form-add-item__label Отзыв
-                  textarea.form-add-item__input.form-add-item__textarea
+                  textarea(required).form-add-item__input.form-add-item__textarea
               .form-add-item__btns
                   button.btn.btn__secondary.btn__cancel Отменить
-                  button.btn.btn__primary Загрузить
+                  button(type="submit").btn.btn__primary Загрузить
         ul.reviews__list
           li.reviews__item
             button.item-add

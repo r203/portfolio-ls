@@ -8,6 +8,7 @@ import "./scripts/skills";
 import "./scripts/slider";
 import "./scripts/parallax";
 import "./scripts/feedback";
+import "./scripts/form-feedback";
 import "./scripts/vue-scrollto";
 
 
