@@ -9,6 +9,7 @@ script(type="text/x-template")#slider-container
                     :currentWork="currentWork"
                 )
                 display(
+                    @thumb="handleThumb"
                     :currentWork="currentWork"
                     :works="works"
                 )
@@ -20,6 +21,7 @@ script(type="text/x-template")#slider-display
     .slider__preview
         img.slider__preview-image(:src="currentWork.photo", alt="slider preview")
         thumbnail(
+            @thumb="handleThumb"
             :works="reversedWorks"
             :currentWork="currentWork"
         )
@@ -32,7 +34,7 @@ script(type="text/x-template")#slider-thumbnail
                 :key="work.id"
                 :class="{active: currentWork.id === work.id}"
                 )
-                button.slider__link(href="/")
+                button.slider__link(@click.prevent="handleClickThumb(work.id)")
                     img.slider__thumbnail-img(:src="work.thumbnail", alt="slider thumbnail")
 
 script(type="text/x-template")#slider-controls

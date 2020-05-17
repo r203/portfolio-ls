@@ -61,9 +61,16 @@
         &.active {
             outline: 2px solid #d6841f;
         }
+        &:focus {
+            outline: none;
+        }
     }
     &__link {
         padding: 0;
+        outline: none;
+        &:focus {
+            outline: none;
+        }
     }
     &__thumbnail {
         // overflow: hidden; он нужен, но с ним не работает оутлайн
