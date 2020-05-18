@@ -116,6 +116,19 @@
                 .form-add-item__col
                   label.form-add-item__label Добавление тега
                   input.form-add-item__input
+              .form-add-item__row
+                .form-add-item__col
+                  .tags.work-add__tags
+                    ul.tags__list
+                      li.tags__item 
+                        span.tags__text html
+                        button.btn.btn__secondary.btn__del-tag
+                      li.tags__item 
+                        span.tags__text css
+                        button.btn.btn__secondary.btn__del-tag
+                      li.tags__item 
+                        span.tags__text javaascript
+                        button.btn.btn__secondary.btn__del-tag
               .form-add-item__btns
                   button.btn.btn__secondary.btn__cancel Отменить
                   button(type="submit").btn.btn__primary Загрузить
@@ -193,8 +206,25 @@
               .review__btns
                 button.btn.btn__edit Править
                 button.btn.btn__delete Удалить
+
+    section.section-welcome
+      .login
+        form.login__form
+          .login__col
+            h2.login__title-text Авторизация
+          .login__col
+              label.login__label Логин
+              input(type="text", id="login").login__input
+          .login__col
+              label.login__label Пароль
+              input(type="password", id="pass").login__input
+          .login__btns
+            button(type="submit").btn__submit-login Отправить
+          .login__btns-close
+            button(type="submit").btn__submit-close
         
-        
+
+
 
 </template>
 
@@ -222,5 +252,7 @@
 @import "./styles/work.pcss";
 @import "./styles/review.pcss";
 @import "./styles/tags.pcss";
+@import "./styles/login.pcss";
+
 
 </style>

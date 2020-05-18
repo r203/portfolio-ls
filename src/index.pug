@@ -46,20 +46,8 @@ html(lang="ru")
                       .logo
                           a.logo__link(href="/") &lt;AA&nbsp;/&gt;
                   .header__nav
-                    nav.nav#nav
-                      - 
-                        var items = [
-                          ["Главная", "#main"],
-                          ["Обо мне", "#about"],
-                          ["Навыки", "#skills"],
-                          ["Работы", "#works"],
-                          ["Отзывы", "#reviews"],
-                          ["Связаться", "#feedback"],
-                        ];
-                      ul.nav__list
-                        each item, index in items
-                          li.nav__item
-                            a.nav__link(href=`${item[1]}`,  v-scroll-to=`"${item[1]}"`) #{item[0]}
+                    #nav-component
+                    
                   .header__socials  
                       .socials
                         - var items = ["insta", "vk", "github"];
@@ -165,12 +153,12 @@ html(lang="ru")
               .footer__right
                 .footer__content
                   .footer__row
-                      .nav.footer__nav
-                          - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
-                          ul.nav__list
-                            each item, index in items
-                              li.nav__item
-                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
+                    .nav.footer__nav
+                        - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                        ul.nav__list
+                          each item, index in items
+                            li.nav__item
+                              a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
                   .footer__about-socials-quote
                     .footer__about-socials
                         .footer__about 
