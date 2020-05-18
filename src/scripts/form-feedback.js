@@ -32,7 +32,26 @@ new Vue({
       this.$validate()
         .then(function (success) {
           if (success) {
-            alert('Validation succeeded!');
+            const deliveryForm = document.querySelector('#deliveryForm');
+            
+            var formData = new FormData(deliveryForm);
+            formData.append("phone", "+71234567898");
+            formData.append("to", "test@test.ru");
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'json';
+            xhr.open("POST", "https://webdev-api.loftschool.com/sendmail");
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            xhr.send(formData);
+            xhr.addEventListener('load', ()=> {
+                if(xhr.response.status) {
+                    var reviewText = xhr.response.message;
+                    alert(reviewText);
+                    deliveryForm.reset();
+                } else {
+                    reviewText = xhr.response.message;
+                    alert(reviewText);
+                };
+            })
           }
         });
     }
