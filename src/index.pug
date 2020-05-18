@@ -9,7 +9,7 @@ html(lang="ru")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
+      .maincontent#main
         .welcome-section.parallax
           .parallax__layer(data-speed="0.1")
             picture
@@ -46,12 +46,20 @@ html(lang="ru")
                       .logo
                           a.logo__link(href="/") &lt;AA&nbsp;/&gt;
                   .header__nav
-                    nav.nav
-                      - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                    nav.nav#nav
+                      - 
+                        var items = [
+                          ["Главная", "#main"],
+                          ["Обо мне", "#about"],
+                          ["Навыки", "#skills"],
+                          ["Работы", "#works"],
+                          ["Отзывы", "#reviews"],
+                          ["Связаться", "#feedback"],
+                        ];
                       ul.nav__list
                         each item, index in items
                           li.nav__item
-                            a.nav__link() #{item}
+                            a.nav__link(href=`${item[1]}`,  v-scroll-to=`"${item[1]}"`) #{item[0]}
                   .header__socials  
                       .socials
                         - var items = ["insta", "vk", "github"];
@@ -64,11 +72,19 @@ html(lang="ru")
                     .mobile-menu__wrap
                       .mobile-menu__nav
                         nav.nav
-                          - var items = ["Главная","Обо мне", "Навыки", "Работы","Отзывы","Связаться"];
+                          - 
+                            var items = [
+                              ["Главная", "#main"],
+                              ["Обо мне", "#about"],
+                              ["Навыки", "#skills"],
+                              ["Работы", "#works"],
+                              ["Отзывы", "#reviews"],
+                              ["Связаться", "#feedback"],
+                            ];
                           ul.nav__list
                             each item, index in items
                               li.nav__item
-                                a.nav__link(href="/", data-scroll=`${[index]}`) #{item}
+                                a.nav__link(href=`${item[1]}`,  v-scroll-to=`"${item[1]}"`, @click="onStart") #{item[0]}
                       .mobile-menu__socials
                         .socials
                           - var items = ["insta", "vk", "github"];
@@ -80,10 +96,10 @@ html(lang="ru")
                   a.hamburger-menu-link
                     .hamburger-menu-link__bars
           .section-hero__scroll-btn(data-speed="0.34")
-            button.scroll-btn.scroll-btn--down(type="button", data-scroll-to="1") Скролл
+            button.scroll-btn.scroll-btn--down(type="button") Скролл
           section.section.section-about(data-speed="0.46")
               .container.container--small
-                  .about
+                  .about#about
                       .about__user-data
                         .user-info
                           .user-info__avatar
@@ -115,7 +131,7 @@ html(lang="ru")
         section.section.section-skill
           +image("bg/hands.png", "section-skill-image", "section-three image")
           .container.container--small
-            .value
+            .value#skills
               .value__title
                 .value__title-content
                   .longtitle
@@ -126,13 +142,14 @@ html(lang="ru")
                 #skills-component
 
         section.section.section-jobs
-          .container.container--mobile-full
+          .container.container--mobile-full#works
             #slider-component
 
         section.section.section-feedback
           .container
-            .reviews-section
+            .reviews-section#reviews
               #feedback-component
+              #feedback
               #form-feedback-component
 
         section.section.section-footer

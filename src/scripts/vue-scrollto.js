@@ -1,10 +1,15 @@
-// import Vue from 'vue';
-// // import VueScrollTo from 'vue-scrollto';
-// // Vue.use(VueScrollTo)
+import Vue from 'vue';
+import VueScrollTo from 'vue-scrollto';
+Vue.use(VueScrollTo)
 
-// new Vue({
-//   el: '.wrapper',
-//   methods: {
-//   }
-// })
+new Vue({
+  el: '#nav',
+  methods: {
+    onStart(elem) {
+      
+      const bodyTag = document.querySelector('body');
+      bodyTag.classList.remove('overflow--hidden')
+    }
+  }
+})
 
