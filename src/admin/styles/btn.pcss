@@ -9,12 +9,20 @@
     border-radius: 50px;
     background: rgb(20,89,226);
     background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    &:hover {
+      transition: all .3s;
+      background: linear-gradient(90deg,#c856f1,#424268);
+    }
   }
   &__cancel {
     font-weight: 600;
     color: #383bcf;
     background: transparent;
     margin: 0 55px;
+    transition: all .3s;
+    &:hover {
+      color:#414c63;
+    }
     @include phones {
       margin: 0 15px;
     }
@@ -24,6 +32,10 @@
     background: transparent;
     color: #414c63;
     opacity: .7;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 1;
+    }
     &:after {
       content: '';
       display: inline-flex;
@@ -41,7 +53,11 @@
     font-weight: 600;
     background: transparent;
     color: #414c63;
-    opacity: .7;;
+    opacity: .7;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 1;
+    }
     &:after {
       content: '';
       display: inline-flex;
@@ -59,12 +75,24 @@
     font-weight: 600;
     color: #383bcf;
     background: transparent;
+    transition: all .3s;
+    &:hover {
+      color:#414c63;
+    }
   }
   &__add-group {
     font-weight: 600;
     color: #383bcf;
     background: transparent;
     margin: 0 55px;
+    transition: all .3s;
+    &:hover {
+      color: #424268;
+      &:before {
+        background: linear-gradient(90deg,#c856f1,#424268);
+
+      }
+    }
     @include phones {
       margin: 0;
       padding: 0;
@@ -79,6 +107,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
+      transition: all .3s;
       background: rgb(20,89,226);
       background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
     }
@@ -92,8 +121,13 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
+      transition: all .3s;
       background: rgb(20,89,226);
       background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+      &:hover {
+        transition: all .3s;
+        background: linear-gradient(90deg,#c856f1,#424268);
+      }
     }
   }
   &__ok {

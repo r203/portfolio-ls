@@ -10,36 +10,8 @@ html(lang="ru")
   body
     .wrapper
       .maincontent#main
-        .welcome-section.parallax
-          .parallax__layer(data-speed="0.1")
-            picture
-              source(srcset=require(`images/Parallax/1.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image(src=require(`images/bg/main.jpg`))
-          .parallax__layer(data-speed="0.18")
-            picture
-              source(srcset=require(`images/Parallax/2.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image.parallax__image--disabled(src="")
-          .section-hero__content(data-speed="0.22")
-            .user-data
-              .user-data__desc Личный сайт<br>веб-разработчика
-              h1.title.user-data__title Арченков<br>Артём
-          .parallax__layer(data-speed="0.26")
-            picture
-              source(srcset=require(`images/Parallax/3.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image.parallax__image--disabled(src="")
-          .parallax__layer(data-speed="0.30")
-            picture
-              source(srcset=require(`images/Parallax/4.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image.parallax__image--disabled(src="")
-          .parallax__layer(data-speed="0.38")
-            picture
-              source(srcset=require(`images/Parallax/5.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image.parallax__image--disabled(src="")
-          .parallax__layer(data-speed="0.42")
-            picture
-              source(srcset=require(`images/Parallax/6.png`), media="(min-width: 769px)").parallax__image
-              img.parallax__image.parallax__image--disabled(src="")
-          section.section.section-hero(data-speed="0.14")
+        .section-welcome
+          section.section.section-hero
             .container
                 header.header
                   .header__logo
@@ -47,7 +19,7 @@ html(lang="ru")
                           a.logo__link(href="/") &lt;AA&nbsp;/&gt;
                   .header__nav
                     #nav-component
-                    
+
                   .header__socials  
                       .socials
                         - var items = ["insta", "vk", "github"];
@@ -83,9 +55,13 @@ html(lang="ru")
                                   +icon(item, "socials__icon")
                   a.hamburger-menu-link
                     .hamburger-menu-link__bars
-          .section-hero__scroll-btn(data-speed="0.34")
-            button.scroll-btn.scroll-btn--down(type="button") Скролл
-          section.section.section-about(data-speed="0.46")
+                .section-hero__content
+                  .user-data
+                    .user-data__desc Личный сайт<br>веб-разработчика
+                    h1.title.user-data__title Арченков<br>Артём
+                .section-hero__scroll-btn
+                  a.scroll-btn.scroll-btn--down(type="button", href="#skills") Скролл
+          section.section.section-about
               .container.container--small
                   .about#about
                       .about__user-data
@@ -114,8 +90,7 @@ html(lang="ru")
                               p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                           .about__text 
                             p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-        .empty-section
-          .space-empty 
+
         section.section.section-skill
           +image("bg/hands.png", "section-skill-image", "section-three image")
           .container.container--small

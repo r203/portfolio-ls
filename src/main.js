@@ -11,5 +11,6 @@ import "./scripts/parallax";
 import "./scripts/feedback";
 import "./scripts/form-feedback";
 import "./scripts/vue-scrollto";
+import "./scripts/scroll-down";
 
 
