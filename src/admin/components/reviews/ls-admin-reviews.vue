@@ -1,5 +1,5 @@
 <template lang="pug">
-  .ls-admin-reviews
+  .ls-admin-reviews.container
     ls-admin-review-add
     ul.reviews__list
       li.reviews__item
@@ -26,12 +26,10 @@
 
 <script>
 
-import lsAdminReviewAdd from './ls-admin-review-add'
-
 export default {
   name: 'ls-admin-reviews',
   components: {
-    lsAdminReviewAdd,
+    lsAdminReviewAdd: () => import("./ls-admin-review-add"),
   },
   props: {},
   data() {
@@ -43,4 +41,12 @@ export default {
 }
 </script>
 
-<style lang="" scoped></style>
+<style lang="postcss">
+@import "../../../styles/mixins.pcss";
+
+@import "../../styles/reviews.pcss";
+@import "../../styles/review-add.pcss";
+@import "../../styles/upload-photo.pcss";
+@import "../../styles/review.pcss";
+
+</style>

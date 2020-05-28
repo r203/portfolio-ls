@@ -48,4 +48,14 @@ export default {
 }
 </script>
 
-<style lang="postcss" ></style>
+<style lang="postcss" >
+@import "../../../styles/mixins.pcss";
+
+@import "../../styles/works.pcss";
+@import "../../styles/work-add.pcss";
+@import "../../styles/upload.pcss";
+@import "../../styles/work.pcss";
+@import "../../styles/tags.pcss";
+
+
+</style>

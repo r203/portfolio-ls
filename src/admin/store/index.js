@@ -1,12 +1,21 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
 import admin from './modules/admin'
+import categories from "./modules/categories"
+import user from "./modules/user"
+import skills from "./modules/skills"
 
-export const store = new Vuex.Store({
+
+
+
+export default new Vuex.Store({
   modules: {
-    admin
+    admin,
+    categories,
+    user,
+    skills,
   }
 });

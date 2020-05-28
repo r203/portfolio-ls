@@ -2,7 +2,7 @@
   .ls-admin-header-logout
     .header__btns
       .logout-btn
-        a(href="#").logout-btn__link Выйти
+        a(href="/").logout-btn__link Выйти
 </template>
 
 <script>

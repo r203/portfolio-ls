@@ -1,0 +1,229 @@
+<template lang="pug">
+  .ls-admin-about
+    .container.about__container
+      .about__title
+        h2.about__title-text Блок "Обо мне"
+        button.btn.btn__secondary.btn__add-group Добавить группу
+      .about__content
+        ul.about__group
+          li.group-about
+            form(
+              @submit.prevent="createNewCategory"
+              ).group-about__title 
+              .form-add-item.group-about__title-left
+                .form-add-item__row
+                  .form-add-item__col
+                    input(
+                      v-model="category.title"
+                      type="text"
+                      placeholder="Название новой группы"
+                      ).form-add-item__input
+              .group-about__title-right 
+                .group-about__btns
+                  button(type="submit").btn.btn__secondary.btn__ok 
+                  button.btn.btn__secondary.btn__erase
+            .group-about__content
+            .form-add-item.group-about-add
+              .group-about-add__row
+                .group-about-add__skill
+                  input(placeholder="Новый навык").form-add-item__input
+                .group-about-add__percent
+                  input(placeholder="0").form-add-item__input
+                .group-about-add__btns
+                  button.btn.btn__secondary.btn__add-group-item +
+          li.group-about(
+            v-for="cat in categories" 
+            :key="cat.id"
+            )
+            ls-admin-group-about(
+              @removeCurrentCategory="removeCurrentCategory"
+              :category="cat"
+            )
+</template>
+
+<script>
+
+import { mapActions, mapState } from "vuex";
+export default {
+  name: 'ls-admin-about',
+  components: {
+    lsAdminGroupAbout: () => import("./ls-admin-group-about"),
+  },
+  props: {},
+  data() {
+    return {
+      category: {
+        title: ""
+      }
+    }
+  },
+  computed: {
+    ...mapState("categories", {
+      categories: state => state.categories
+    })
+  },
+  created() {
+    this.fetchCategories();
+  },
+  mounted() {},
+  beforeDestroy() {},
+  methods: {
+    ...mapActions("categories", ["addCategory", "fetchCategories", "removeCategory"]),
+    async createNewCategory() {
+      try {
+        await this.addCategory(this.category.title);
+        this.category.title = "";
+      } catch (error) {
+        alert(error.message);
+      };
+    },
+    async removeCurrentCategory(currentCategory) {
+      try {
+        await this.removeCategory(currentCategory);
+      } catch (error) {
+        alert(error.message);
+      };
+    },
+  }
+}
+</script>
+
+<style lang="postcss" >
+@import "../../../styles/mixins.pcss";
+
+.about {
+  margin-bottom: 60px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    display: flex;
+    margin-bottom: 60px;
+    @include phones {
+      flex-direction: column;
+    }
+    &-text {
+      font-weight: 900;
+      font-size: 21px;
+      color: #414c63;
+      @include phones {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__group {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+}
+
+.group-about {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+  width: 50%;
+  /* убери высоту как контент появится */
+  height: 395px; 
+  padding: 35px 30px;
+  width: calc(100% / 2 - 30px);
+  margin-left: 30px;
+  margin-bottom: 30px;
+  @include phones {
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(31, 35, 45, .15);
+    &-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #414c63;
+    }
+    &-left {
+      width: 70%;
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 30%;
+    }
+  }
+  &__content {
+    height: 100%;
+    color: #414c63;
+    padding: 30px 0;
+  }
+  &__skills {
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__skill {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+    &-name {
+      width: 60%;
+      margin-right: 10px;
+    }
+    &-percent {
+      position: relative;
+      width: 15%;
+      &:after {
+        content: '%';
+        position: absolute;
+        display: inline-flex;
+        right: 0;
+      }
+    }
+    &-btn {
+      width: 25%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+  &-add {
+    &__row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      // width: 80%;
+      text-align: right;
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    &__skill {
+      width: 50%;
+      margin-right: 10px;
+  
+    }
+    &__percent {
+      width: 20%;
+      margin-right: 30px;
+    }
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}
+
+
+
+</style>

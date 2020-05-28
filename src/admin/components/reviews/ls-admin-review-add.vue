@@ -6,7 +6,7 @@
         .review-add__left
           .upload-photo
             .upload-photo__img
-              img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
+              //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
             .upload-photo__btn
               button.btn.btn__add-photo Добавить фото
         .review-add__right
@@ -41,4 +41,51 @@ export default {
 }
 </script>
 
-<style lang="" scoped></style>
+<style lang="postcss" scoped>
+@import "../../../styles/mixins.pcss";
+
+.review-add {
+  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #414c63;
+    padding: 30px 15px;
+    margin: 0 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgba(31, 35, 45, .15);
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    padding: 0 35px;
+    @include phones {
+      flex-direction: column;
+    }
+  }
+  &__left {
+    width: 30%;
+    margin-right: 30px;
+    @include phones {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    @include phones {
+      width: 100%;
+    }
+  }
+}
+
+.review-add .form-add-item__btns {
+  justify-content: flex-end;
+}
+
+</style>
