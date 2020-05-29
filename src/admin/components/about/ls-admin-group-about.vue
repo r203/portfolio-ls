@@ -6,7 +6,7 @@
       .group-about__title-left 
         input(
           type="text"
-          v-model="category.category"
+          v-model="editedCategory.category"
         ).form-add-item__input
       .group-about__title-right 
         .group-about__btns
@@ -87,7 +87,7 @@ export default {
   beforeDestroy() {},
   methods: {
     ...mapActions("skills", ["addSkill"]),
-    ...mapActions("categories", ["editedCategory"]),
+    ...mapActions("categories", ["editCategory"]),
     async addNewSkill () {
       const skillData = {
         ...this.skill,
@@ -107,7 +107,7 @@ export default {
     },
     async editCurrentCategory() {
       try {
-        // await this.editCategory(this.editedCategory);
+        await this.editCategory(this.editedCategory);
         
       } catch (error) {
         console.log(error);

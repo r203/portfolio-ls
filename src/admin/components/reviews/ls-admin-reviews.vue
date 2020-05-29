@@ -1,43 +1,60 @@
 <template lang="pug">
   .ls-admin-reviews.container
-    ls-admin-review-add
+    ls-admin-review-add(
+      :review="review"
+    )
     ul.reviews__list
       li.reviews__item
         button.item-add
           .item-add__content
             span.item-add__content-text +
           .item-add__sign
-            span.item-add__sign-text Добавить работу
-      li.reviews__item
-        .review
-          .review__title-block
-            .review__avatar
-              .avatar
-                img.avatar__image(src="https://picsum.photos/200", alt="Artem Archenkov")
-            .review__name-occupation
-              h3.review__name Имя Фамилия
-              .review__occupation Программист
-          .review__content
-            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem quaerat sunt corporis ex, delectus a recusandae illum suscipit nesciunt, inventore assumenda dolores ab repellendus sed consequatur dicta. Dicta, praesentium quas!
-          .review__btns
-            button.btn.btn__edit Править
-            button.btn.btn__delete Удалить
+            span.item-add__sign-text Добавить отзыв
+      li(
+        v-for="review in reviews"
+        :key="review.id"
+      ).reviews__item
+        ls-admin-review(
+          :review="review"
+        )
 </template>
 
 <script>
+
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: 'ls-admin-reviews',
   components: {
     lsAdminReviewAdd: () => import("./ls-admin-review-add"),
+    lsAdminReview: () => import("./ls-admin-review"),
+
   },
   props: {},
   data() {
-    return {}
+    return {
+      review: {
+        author: "",
+        occ: "",
+        text: "",
+        photo: {},
+      }
+    }
+  },
+    computed: {
+    ...mapState("reviews", {
+      reviews: state => state.reviews
+    })
+  },
+  created() {
+    this.fetchReviews();
   },
   mounted() {},
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    ...mapActions("reviews", ["fetchReviews"]),
+
+  }
 }
 </script>
 

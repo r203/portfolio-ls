@@ -3,10 +3,15 @@
     .container.about__container
       .about__title
         h2.about__title-text Блок "Обо мне"
-        button.btn.btn__secondary.btn__add-group Добавить группу
+        button(
+          type="button"
+          @click="blockVisibleOn = true"
+        ).btn.btn__secondary.btn__add-group Добавить группу
       .about__content
         ul.about__group
-          li.group-about
+          li(
+            v-show="blockVisibleOn"
+          ).group-about
             form(
               @submit.prevent="createNewCategory"
               ).group-about__title 
@@ -21,16 +26,24 @@
               .group-about__title-right 
                 .group-about__btns
                   button(type="submit").btn.btn__secondary.btn__ok 
-                  button.btn.btn__secondary.btn__erase
+                  button(
+                    type="button"
+                    @click="resetForm()"
+                  ).btn.btn__secondary.btn__erase
             .group-about__content
             .form-add-item.group-about-add
               .group-about-add__row
-                .group-about-add__skill
-                  input(placeholder="Новый навык").form-add-item__input
-                .group-about-add__percent
-                  input(placeholder="0").form-add-item__input
-                .group-about-add__btns
-                  button.btn.btn__secondary.btn__add-group-item +
+                button(
+                  type="button"
+                  @click="blockVisibleOn= false"
+                ).btn.btn__secondary.btn__cancel Отменить
+
+                //- .group-about-add__skill
+                //-   input(placeholder="Новый навык").form-add-item__input
+                //- .group-about-add__percent
+                //-   input(placeholder="0").form-add-item__input
+                //- .group-about-add__btns
+                //-   button.btn.btn__secondary.btn__add-group-item +
           li.group-about(
             v-for="cat in categories" 
             :key="cat.id"
@@ -54,7 +67,8 @@ export default {
     return {
       category: {
         title: ""
-      }
+      },
+      blockVisibleOn: false,
     }
   },
   computed: {
@@ -84,6 +98,9 @@ export default {
         alert(error.message);
       };
     },
+    resetForm(){
+      this.category.title = "";
+    }
   }
 }
 </script>
@@ -158,6 +175,8 @@ export default {
     height: 100%;
     color: #414c63;
     padding: 30px 0;
+    overflow-y: auto;
+    max-height: 200px;
   }
   &__skills {
     &-item {

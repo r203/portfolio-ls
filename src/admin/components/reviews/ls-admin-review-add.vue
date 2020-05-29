@@ -1,43 +1,92 @@
 <template lang="pug">
   .ls-admin-review-add
-    form.form-add-item.review-add
+    form(
+      @submit.prevent="addNewReview"
+    ).form-add-item.review-add
       h2.review-add__title Добавление отзыва
       .review-add__content
         .review-add__left
           .upload-photo
-            .upload-photo__img
-              //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
-            .upload-photo__btn
-              button.btn.btn__add-photo Добавить фото
+            label.form-add-item__label-file
+              input(
+                type="file"
+                @change="handleFileChange"
+              ).form-add-item__input-file
+              .upload-photo__img
+                //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
+              .upload-photo__btn
+                button(
+                  v-model="review.photo"
+                ).btn.btn__add-photo Добавить фото
         .review-add__right
           .review-add__name-occupation
             .form-add-item__row
               .form-add-item__col
                 label.form-add-item__label Имя автора
-                input(required).form-add-item__input
+                input(
+                  v-model="review.author"
+                ).form-add-item__input
               .form-add-item__col
                 label.form-add-item__label Титул автора
-                input(required).form-add-item__input
+                input(
+                  v-model="review.occ"
+                ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
               label.form-add-item__label Отзыв
-              textarea(required).form-add-item__input.form-add-item__textarea
+              textarea(
+                  v-model="review.text"
+              ).form-add-item__input.form-add-item__textarea
           .form-add-item__btns
               button.btn.btn__secondary.btn__cancel Отменить
-              button(type="submit").btn.btn__primary Загрузить
+              button(
+                type="submit"
+                ).btn.btn__primary Загрузить
 </template>
 
 <script>
+
+import { mapActions } from "vuex";
+
 export default {
   name: 'ls-admin-review-add',
   components: {},
-  props: {},
+  props: {
+    review: {
+      type: Object,
+      default: () => {},
+      required: true,
+    }
+  },
   data() {
-    return {}
+    return {
+      editedReview: {...this.review},
+    }
   },
   mounted() {},
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    ...mapActions("reviews", ["addReview"]),
+    async handleFileChange(event) {
+      
+      this.review.photo = event.target.files[0];  
+                
+    },
+    async addNewReview(review) {
+      try {
+        const formData = new FormData;
+
+        formData.append("author", this.review.author);
+        formData.append("occ", this.review.occ);
+        formData.append("text", this.review.text);
+        formData.append("photo", this.review.photo);
+        
+        await this.addReview(formData);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  }
 }
 </script>
 

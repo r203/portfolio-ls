@@ -18,23 +18,14 @@ export default {
       });
 
     },
-    EDIT_CATEGORY(state, skillToEdit) {
-      console.log("mutation");
-      
-      // const editSkillCategory = (category) => {
-      //   category.skills = category.skills.map(
-      //     (skill) => skill.id === skillToEdit.id ? skillToEdit : skill
-      //   );
-      // };
+    EDIT_CATEGORY(state, categoryToEdit) {
 
-      // const findCategory = (category) => {
-      //   if (category.id === skillToEdit.category){
-      //     editSkillCategory(category);
-      //   }
-      //   return category;
-      // };
+      state.categories = state.categories.map( category => {
+          category.id === categoryToEdit.id ? category.category = categoryToEdit.category : category.category
+          return category;
+        });
+        
 
-      // state.categories = state.categories.map(findCategory);
     },
     ADD_SKILL(state, newSkill) {
       state.categories = state.categories.map(category => {
@@ -109,7 +100,7 @@ export default {
       },
       async editCategory({ commit }, editedCategory) {
         try {
-          const {data} = await this.$axios.post(`/categories/${editedCategory.id}`, editedCategory);
+          const {data} = await this.$axios.post(`/categories/${editedCategory.id}`, { title: editedCategory.category });
           commit("categories/EDIT_CATEGORY", editedCategory, { root: true });
         } catch (error){
             console.log(error);
