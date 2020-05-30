@@ -78,7 +78,7 @@ export default {
       } finally {
         this.editModeOn = false;
       }
-    }
+    },
   }
 }
 </script>

@@ -1,6 +1,56 @@
 <template lang="pug">
   .ls-admin-review-add
     form(
+      v-if="reviewToEdit.editReviewOn"
+      v-show="reviewBlockVisibleOn"
+      @submit.prevent="editCurrentReview"
+    ).form-add-item.review-add
+      h2.review-add__title Изменение отзыва
+      .review-add__content
+        .review-add__left
+          .upload-photo
+            label.form-add-item__label-file
+              input(
+                type="file"
+                @change="handleFileChange"
+              ).form-add-item__input-file
+              .upload-photo__img
+                //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
+              .upload-photo__btn
+                button(
+                  v-model="reviewToEdit.photo"
+                ).btn.btn__add-photo Добавить фото
+        .review-add__right
+          .review-add__name-occupation
+            .form-add-item__row
+              .form-add-item__col
+                label.form-add-item__label Имя автора
+                input(
+                  v-model="reviewToEdit.author"
+                ).form-add-item__input
+              .form-add-item__col
+                label.form-add-item__label Титул автора
+                input(
+                  v-model="reviewToEdit.occ"
+                ).form-add-item__input
+          .form-add-item__row
+            .form-add-item__col
+              label.form-add-item__label Отзыв
+              textarea(
+                  v-model="reviewToEdit.text"
+              ).form-add-item__input.form-add-item__textarea
+          .form-add-item__btns
+              button(
+                type="button"
+                @click="reviewBlockVisibleOn = false"
+              ).btn.btn__secondary.btn__cancel Отменить
+              button(
+                type="submit"
+                ).btn.btn__primary Изменить 
+
+    form(
+      v-else
+      v-show="reviewBlockVisibleOn"
       @submit.prevent="addNewReview"
     ).form-add-item.review-add
       h2.review-add__title Добавление отзыва
@@ -38,10 +88,14 @@
                   v-model="review.text"
               ).form-add-item__input.form-add-item__textarea
           .form-add-item__btns
-              button.btn.btn__secondary.btn__cancel Отменить
+              button(
+                type="button"
+                @click="reviewBlockVisibleOn = false"
+              ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
-                ).btn.btn__primary Загрузить
+                ).btn.btn__primary Загрузить 
+              
 </template>
 
 <script>
@@ -56,17 +110,24 @@ export default {
       type: Object,
       default: () => {},
       required: true,
-    }
+    },
+    reviewToEdit: {
+      type: Object,
+      default: () => {},
+      required: true,
+    },
+      reviewBlockVisibleOn: {
+        type: Boolean,
+        default: false,
+      }
   },
   data() {
-    return {
-      editedReview: {...this.review},
-    }
+    return {}
   },
   mounted() {},
   beforeDestroy() {},
   methods: {
-    ...mapActions("reviews", ["addReview"]),
+    ...mapActions("reviews", ["addReview", "editReview"]),
     async handleFileChange(event) {
       
       this.review.photo = event.target.files[0];  
@@ -84,6 +145,16 @@ export default {
         await this.addReview(formData);
       } catch (error) {
         console.log(error);
+      }
+    },
+    async editCurrentReview() {
+      try {
+        await this.editReview(this.reviewToEdit);
+        
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.editModeOn = false;
       }
     },
   }

@@ -13,8 +13,14 @@
     .review__content
       p {{review.text}}
     .review__btns
-      button.btn.btn__edit Править
-      button.btn.btn__delete Удалить
+      button(
+        type="button"
+        @click="editCurrentReview"
+      ).btn.btn__edit Править
+      button(
+        type="button"
+        @click="removeCurrentReview"
+      ).btn.btn__delete Удалить
  
 </template>
 
@@ -30,11 +36,25 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      editedReview: {...this.review}
+    }
   },
   mounted() {},
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    removeCurrentReview(){
+      const currentReview = this.review;
+      this.$emit('removeCurrentReview', currentReview);
+    },
+    editCurrentReview(){
+      
+      const editReviewOn= true;
+
+      this.editedReview = {...this.editedReview, editReviewOn}
+      this.$emit('editCurrentReview', this.editedReview, editReviewOn);      
+    },
+  }
 }
 </script>
 

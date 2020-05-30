@@ -2,10 +2,15 @@
   .ls-admin-reviews.container
     ls-admin-review-add(
       :review="review"
+      :reviewToEdit="reviewToEdit"
+      :reviewBlockVisibleOn="reviewBlockVisibleOn"
     )
     ul.reviews__list
       li.reviews__item
-        button.item-add
+        button(
+          type="button"
+          @click="reviewBlockVisibleOn = true"
+        ).item-add
           .item-add__content
             span.item-add__content-text +
           .item-add__sign
@@ -15,6 +20,8 @@
         :key="review.id"
       ).reviews__item
         ls-admin-review(
+          @removeCurrentReview="removeCurrentReview"
+          @editCurrentReview="editCurrentReview"
           :review="review"
         )
 </template>
@@ -38,12 +45,14 @@ export default {
         occ: "",
         text: "",
         photo: {},
-      }
+      },
+      reviewToEdit: {},
+      reviewBlockVisibleOn: false,
     }
   },
     computed: {
     ...mapState("reviews", {
-      reviews: state => state.reviews
+      reviews: state => state.reviews,
     })
   },
   created() {
@@ -52,8 +61,19 @@ export default {
   mounted() {},
   beforeDestroy() {},
   methods: {
-    ...mapActions("reviews", ["fetchReviews"]),
+    ...mapActions("reviews", ["fetchReviews", "removeReview"]),
+    async removeCurrentReview(currentReview) {
+      try {
+        await this.removeReview(currentReview);
 
+      } catch (error) {
+        alert(error.message);
+      };
+    },
+    editCurrentReview(editedReview, editReviewOn){
+      this.reviewToEdit = editedReview;
+      this.reviewBlockVisibleOn = true   
+    },
   }
 }
 </script>
@@ -65,5 +85,6 @@ export default {
 @import "../../styles/review-add.pcss";
 @import "../../styles/upload-photo.pcss";
 @import "../../styles/review.pcss";
+@import "../../styles/avatar.pcss";
 
 </style>
