@@ -18,8 +18,6 @@ export default {
       });
     },
     EDIT_REVIEW(state, editedReview) {
-      console.log(editedReview);
-      
       state.reviews = state.reviews.map( review => {
         review.id === editedReview.id ? review = editedReview : review
         return review;
@@ -56,7 +54,7 @@ export default {
       },
       async editReview({ commit }, editedReview) {
         try {
-          // const {data} = await this.$axios.post(`/reviews/${editedReview.id}`, editedReview);
+          const {data} = await this.$axios.post(`/reviews/${editedReview.id}`, editedReview);
           await commit("EDIT_REVIEW", editedReview);
         } catch (error){
             console.log(error);

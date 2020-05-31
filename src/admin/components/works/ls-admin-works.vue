@@ -1,35 +1,59 @@
 <template lang="pug">
   .ls-admin-works
     .container.works__container
-      lsAdminWorkAdd
+      lsAdminWorkAdd(
+        :work="work"
+        :editedWork="editedWork"
+        :workBlockVisibleOn="workBlockVisibleOn"
+        :editWorkOn="editWorkOn"
+      )
       ul.works__list
         li.works__item
-          button.item-add
+          button(
+            type="button"
+            @click="workBlockVisibleOn = true"
+          ).item-add
             .item-add__content
               span.item-add__content-text +
             .item-add__sign
               span.item-add__sign-text Добавить работу
-        li.works__item
+        li(
+          v-for="(workItem, index) in works"
+          :key="work.id"
+        ).works__item
           .work
             .work__image-block
-              img.work__image(src="https://picsum.photos/300", alt="Artem Archenkov")
+              img.work__image(
+                :src="`https://webdev-api.loftschool.com/${workItem.photo}`"
+                :alt="workItem.title"
+                )
               .tags
                 ul.tags__list
                   li.tags__item html
                   li.tags__item css
                   li.tags__item javaascript
             .work__content
-              h3.work__title Новая работа
+              h3.work__title {{workItem.title}}
               .work__desc
-                p Описание работы
+                p {{workItem.description}}
               .work__site-page
-                a.work__link google.com
+                a(
+                  :href="`https://${workItem.link}`"
+                ).work__link {{workItem.link}}
             .work__btns
-              button.btn.btn__edit Править
-              button.btn.btn__delete Удалить
+              button(
+                type="button"
+                @click="editCurrentWork(index)"
+              ).btn.btn__edit Править
+              button(
+                type="button"
+                @click="removeCurrentWork(index)"
+              ).btn.btn__delete Удалить
 </template>
 
 <script>
+
+import { mapActions, mapState } from "vuex";
 
 import lsAdminWorkAdd from './ls-admin-work-add'
 
@@ -40,11 +64,44 @@ export default {
   },
   props: {},
   data() {
-    return {}
+    return {
+      work: {
+        title: "",
+        techs: "",
+        photo: {},
+        link: "",
+        description: "",
+      },    
+      editedWork: {},
+      workBlockVisibleOn: false,
+      editWorkOn: true,
+    }
+  },
+  computed: {
+    ...mapState("works", {
+      works: state => state.works,
+    }),
+  },
+  created() {
+    this.fetchWorks();
   },
   mounted() {},
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    ...mapActions("works", ["fetchWorks", "removeWork"]),
+    async removeCurrentWork(index) {
+      try {
+        await this.removeWork(this.works[index]);
+      } catch (error) {
+        alert(error.message);
+      };
+    },
+    async editCurrentWork(index){
+      this.workBlockVisibleOn = true;
+      this.editWorkOn = false;      
+      this.editedWork = this.works[index];      
+    },
+  },
 }
 </script>
 

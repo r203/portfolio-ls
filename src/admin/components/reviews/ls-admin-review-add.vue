@@ -66,6 +66,7 @@
                 //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
               .upload-photo__btn
                 button(
+                  type="button"
                   v-model="review.photo"
                 ).btn.btn__add-photo Добавить фото
         .review-add__right
@@ -116,10 +117,10 @@ export default {
       default: () => {},
       required: true,
     },
-      reviewBlockVisibleOn: {
-        type: Boolean,
-        default: false,
-      }
+    reviewBlockVisibleOn: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {}
@@ -129,9 +130,7 @@ export default {
   methods: {
     ...mapActions("reviews", ["addReview", "editReview"]),
     async handleFileChange(event) {
-      
       this.review.photo = event.target.files[0];  
-                
     },
     async addNewReview(review) {
       try {

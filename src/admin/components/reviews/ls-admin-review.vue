@@ -5,7 +5,7 @@
         .avatar
           img.avatar__image(
             :src="`https://webdev-api.loftschool.com/${review.photo}`"
-            alt="review.author"
+            :alt="review.author"
             )
       .review__name-occupation
         h3.review__name {{review.author}}
