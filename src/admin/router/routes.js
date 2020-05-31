@@ -39,7 +39,7 @@ export default [
     path: "/login",
     component: () => import("../components/login/ls-admin-login.vue"),
     meta: {
-      public: true
+      public: true,
     }
   }
 ];

@@ -7,14 +7,19 @@
           .page-name
             span.page-name__content Панель администрирования
       .ls-admin-header__right
-        ls-admin-header-logout
+        .ls-admin-header-logout
+          .header__btns
+            .logout-btn
+              a(
+                @click="logoutUser"
+              ).logout-btn__link Выйти
 </template>
 
 <script>
 
+import { mapActions } from "vuex";
 import lsAdminHeaderUser from './ls-admin-header-user'
 import lsAdminHeaderLogout from './ls-admin-header-logout'
-
 
 export default {
   name: 'ls-admin-header',
@@ -27,7 +32,13 @@ export default {
   },
   mounted() {},
   beforeDestroy() {},
-  methods: {}
+  methods: {
+    ...mapActions("user", ["logout"]),
+    logoutUser() {
+      this.logout();
+      this.$router.replace("/login");
+    }
+  }
 }
 </script>
 

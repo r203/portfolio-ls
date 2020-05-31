@@ -1,23 +1,25 @@
 export default {
   namespaced: true,
   state: {
-    categories: []
+    user: {}
   },
-  mutations: {},
+  mutations: {
+    SET_USER: (state, user) => {state.user = user},
+    CLEAR_USER: state => (state.user = {})
+  },
+  getters: {
+    userIsLoggedIn: state => {
+      const userObj = state.user;
+      const userObjectIsEmpty =
+        Object.keys(userObj).length === 0 && userObj.constructor === Object;
+
+      return userObjectIsEmpty === false;
+    }
+  },
   actions: {
-    async loginUser(store, payload) {
-      try {
-        // const response = await this.$axios.post("/login", payload);
-        // const token = response.data.token;
-        // localStorage.setItem("token", token);
-        // $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-
-      } catch (error){
-        throw new Error(
-          error.response.data.error || error.response.data.message
-        );
-      }
-   }
-
+    logout({ commit }) {
+      commit("CLEAR_USER");
+      localStorage.clear();
+    }
   }
-}
+};

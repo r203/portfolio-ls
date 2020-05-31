@@ -14,7 +14,9 @@
                 type="file"
                 @change="handleFileChange"
               ).form-add-item__input-file
-              .upload-photo__img
+              .upload-photo__img(
+                :style="{backgroundImage: `url(${this.renderedPhoto})`}"
+              )
                 //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
               .upload-photo__btn
                 button(
@@ -62,7 +64,9 @@
                 type="file"
                 @change="handleFileChange"
               ).form-add-item__input-file
-              .upload-photo__img
+              .upload-photo__img(
+                :style="{backgroundImage: `url(${renderedPhoto})`}"
+              )
                 //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
               .upload-photo__btn
                 button(
@@ -101,6 +105,7 @@
 
 <script>
 
+import { renderer } from "../../helpers/pictures"
 import { mapActions } from "vuex";
 
 export default {
@@ -120,10 +125,14 @@ export default {
     reviewBlockVisibleOn: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
-    return {}
+    return {
+      renderedPhoto: {},
+    }
+  },
+  computed: {
   },
   mounted() {},
   beforeDestroy() {},
@@ -131,6 +140,9 @@ export default {
     ...mapActions("reviews", ["addReview", "editReview"]),
     async handleFileChange(event) {
       this.review.photo = event.target.files[0];  
+      renderer(this.review.photo).then(pic => {
+        this.renderedPhoto = pic;
+      })
     },
     async addNewReview(review) {
       try {

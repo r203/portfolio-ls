@@ -29,7 +29,6 @@
 <script>
 
 import { mapActions, mapState } from "vuex";
-import { renderer } from "../../helpers/pictures"
 
 export default {
   name: 'ls-admin-reviews',
@@ -49,7 +48,6 @@ export default {
       },
       reviewToEdit: {},
       reviewBlockVisibleOn: false,
-      renderedPhoto: {},
     }
   },
   computed: {
