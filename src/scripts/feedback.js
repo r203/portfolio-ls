@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Flickity from 'vue-flickity';
- 
+import axios from "axios";
+
+const request = axios.create({
+  baseURL: "https://webdev-api.loftschool.com"
+});
+
 new Vue({
   el: "#feedback-component",
   template: "#feedback-container",
@@ -17,9 +22,9 @@ new Vue({
         wrapAround: false,
         groupCells: true,
         autoPlay: false,
-        
-        feedback: []
-      }
+
+      },
+      feedback: [],
     }
   },
   
@@ -35,8 +40,9 @@ new Vue({
       console.log("prev");
     }
   },
-  created() {
-    const data = require("../data/feedback.json");
+  async created() {
+    const { data } = await request.get("/reviews/327");
     this.feedback = data;
-},
+    this.$nextTick(function () { this.$refs.flickity.rerender(); });
+  },
 });

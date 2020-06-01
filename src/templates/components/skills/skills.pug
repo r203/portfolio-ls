@@ -1,6 +1,6 @@
 script(type="text/x-template")#skills-list
     ul.user-skills
-        li.user-skills__item(v-for="category in skills" :key="category.title")
+        li.user-skills__item(v-for="category in skills" :key="category.category")
             skills-row(
                 :category="category"
             )
@@ -8,7 +8,7 @@ script(type="text/x-template")#skills-list
 
 script(type="text/x-template")#skills-row
     .skills-row
-        h3.skills-row__title {{category.title}}
+        h3.skills-row__title {{category.category}}
         ul.skills-row__list
             li.skills-row__item(v-for="skill in category.skills" :key="skill.id")
                 skill(

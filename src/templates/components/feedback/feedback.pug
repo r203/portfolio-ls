@@ -8,13 +8,19 @@ script(type="text/x-template")#feedback-container
           button(@click="next()").reviews__btn.reviews__btn--next
             .reviews__btn-text &gt;
       flickity(ref="flickity" :options="flickityOptions")
-        .reviews__item.carousel-cell(v-for="quote in feedback" :key="feedback.id")
+        .reviews__item.carousel-cell(
+          v-for="quote in feedback"
+          :key="feedback.id"
+          )
           .review
-            blockquote.review__content {{quote.quote}}
+            blockquote.review__content {{quote.text}}
             .review__sign
               .review__avatar
                 .avatar
-                  img.avatar__image(:src="quote.avatar", alt="Artem Archenkov")
+                  img.avatar__image(
+                    :src="`https://webdev-api.loftschool.com/${quote.photo}`"
+                    alt="Artem Archenkov"
+                    )
               .review__sign-block
                 .review__title {{quote.author}}
-                .review__occupation {{quote.occupation}}
+                .review__occupation {{quote.occ}}
