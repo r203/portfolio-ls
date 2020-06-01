@@ -4,9 +4,7 @@ import router from './router/';
 import store from './store';
 import $axios from './requests';
 
-import SimpleVueValidation from 'simple-vue-validator';
-const Validator = SimpleVueValidation.Validator;
-Vue.use(SimpleVueValidation);
+
 
 store.$axios = $axios;
 

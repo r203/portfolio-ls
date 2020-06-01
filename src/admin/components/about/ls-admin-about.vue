@@ -18,6 +18,7 @@
               .form-add-item.group-about__title-left
                 .form-add-item__row
                   .form-add-item__col
+                    .message(:class="{error: validation.hasError('category.title')}") {{ validation.firstError('category.title') }}
                     input(
                       v-model="category.title"
                       type="text"
@@ -38,12 +39,6 @@
                   @click="blockVisibleOn= false"
                 ).btn.btn__secondary.btn__cancel Отменить
 
-                //- .group-about-add__skill
-                //-   input(placeholder="Новый навык").form-add-item__input
-                //- .group-about-add__percent
-                //-   input(placeholder="0").form-add-item__input
-                //- .group-about-add__btns
-                //-   button.btn.btn__secondary.btn__add-group-item +
           li.group-about(
             v-for="cat in categories" 
             :key="cat.id"
@@ -55,6 +50,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
+Vue.use(SimpleVueValidation);
 
 import { mapActions, mapState } from "vuex";
 export default {
@@ -71,6 +70,12 @@ export default {
       blockVisibleOn: false,
     }
   },
+  validators: {
+    'category.title': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+      
+    },
+  },
   computed: {
     ...mapState("categories", {
       categories: state => state.categories
@@ -84,12 +89,13 @@ export default {
   methods: {
     ...mapActions("categories", ["addCategory", "fetchCategories", "removeCategory"]),
     async createNewCategory() {
-      try {
-        await this.addCategory(this.category.title);
-        this.category.title = "";
-      } catch (error) {
-        alert(error.message);
-      };
+      if (await this.$validate()) {
+        try {
+          await this.addCategory(this.category.title);
+          this.category.title = "";
+        } catch (error) {
+          alert(error.message);
+        };}
     },
     async removeCurrentCategory(currentCategory) {
       try {

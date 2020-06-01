@@ -6,13 +6,14 @@
           h2.login__title-text Авторизация
         .login__col
             label.login__label Логин
-            .message(:class="{error: validation.hasError('login')}") {{ validation.firstError('login') }}
+            .message(:class="{error: validation.hasError('user.name')}") {{ validation.firstError('user.name') }}
             input(
               type="text"
               v-model="user.name"
               ).login__input
         .login__col
             label.login__label Пароль
+            .message(:class="{error: validation.hasError('user.password')}") {{ validation.firstError('user.password') }}
             input(
               type="password"
               v-model="user.password"
@@ -24,7 +25,11 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
+Vue.use(SimpleVueValidation);
+
 import $axios from "../../requests"; 
 
 export default {
@@ -39,25 +44,36 @@ export default {
       }
     }
   },
+  validators: {
+    'user.name': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+      
+    },
+    'user.password': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+      
+    },
+  },
   mounted() {},
   beforeDestroy() {},
   methods: {
-    // ...mapActions("user", ["loginUser"]),
     async authorizationLogin() {
-      try {
-        const response = await $axios.post("/login",  this.user); 
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-        this.$router.replace("/");
-      } catch (error) {
-        console.log("no");
-        
-        alert(error.message);
-      };
-
+      
+      if (await this.$validate()) {
+            try {
+              const response = await $axios.post("/login",  this.user); 
+              const token = response.data.token;
+              localStorage.setItem("token", token);
+              $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+              this.$router.replace("/");
+            } catch (error) {
+              console.log("no");
+              
+              alert(error.message);
+            };
+          }
+      }
     }
-  }
 }
 </script>
 

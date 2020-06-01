@@ -24,24 +24,28 @@
         .work-add__right.form-add-item
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('work.title')}") {{ validation.firstError('work.title') }}
               label.form-add-item__label Название
               input(
                 v-model="work.title"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('work.link')}") {{ validation.firstError('work.link') }}
               label.form-add-item__label Ссылка
               input(
                 v-model="work.link"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('work.description')}") {{ validation.firstError('work.description') }}
               label.form-add-item__label Описание
               textarea(
                 v-model="work.description"
               ).form-add-item__input.form-add-item__textarea
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('work.techs')}") {{ validation.firstError('work.techs') }}
               label.form-add-item__label Добавление тега
               input(
                 v-model="work.techs"
@@ -89,24 +93,28 @@
         .work-add__right.form-add-item
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('editedWork.title')}") {{ validation.firstError('editedWork.title') }}
               label.form-add-item__label Название
               input(
                 v-model="editedWork.title"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('editedWork.link')}") {{ validation.firstError('editedWork.link') }}
               label.form-add-item__label Ссылка
               input(
                 v-model="editedWork.link"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('editedWork.description')}") {{ validation.firstError('editedWork.description') }}
               label.form-add-item__label Описание
               textarea(
                 v-model="editedWork.description"
               ).form-add-item__input.form-add-item__textarea
           .form-add-item__row
             .form-add-item__col
+              .message(:class="{error: validation.hasError('editedWork.techs')}") {{ validation.firstError('editedWork.techs') }}
               label.form-add-item__label Добавление тега
               input(
                 v-model="editedWork.techs"
@@ -135,7 +143,10 @@
 </template>
 
 <script>
-
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
+Vue.use(SimpleVueValidation);
 import { mapActions } from "vuex";
 
 export default {
@@ -166,6 +177,32 @@ export default {
   data() {
     return {}
   },
+  validators: {
+    'work.title': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'work.link': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'work.description': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'work.techs': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'editedWork.title': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'editedWork.link': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'editedWork.description': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'editedWork.techs': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+  },
   mounted() {},
   beforeDestroy() {},
   methods: {
@@ -174,39 +211,41 @@ export default {
       this.work.photo = event.target.files[0];  
     },
     async addNewWork(work) {
-      try {
-        const formData = new FormData;
+      if (await this.$validate()){
+        try {
+          const formData = new FormData;
 
-        formData.append("title", this.work.title);
-        formData.append("techs", this.work.techs);
-        formData.append("photo", this.work.photo);
-        formData.append("link", this.work.link);
-        formData.append("description", this.work.description);
-        
-        await this.addWork(formData);
+          formData.append("title", this.work.title);
+          formData.append("techs", this.work.techs);
+          formData.append("photo", this.work.photo);
+          formData.append("link", this.work.link);
+          formData.append("description", this.work.description);
+          
+          await this.addWork(formData);
 
-        this.work.title = "";
-        this.work.techs = "";
-        this.work.photo = "";
-        this.work.link = "";
-        this.work.description = "";
-      } catch (error) {
-        console.log(error);
+          this.work.title = "";
+          this.work.techs = "";
+          this.work.photo = "";
+          this.work.link = "";
+          this.work.description = "";
+        } catch (error) {
+          console.log(error);
+        }
       }
     },
     async editCurrentWork() {
-      try {
-      console.log(this.editWorkOn);
-        
-        await this.editWork(this.editedWork);
-        
-      } catch (error) {
-        console.log(error);
-      } finally {
+      if (await this.$validate()){
+        try {
+            await this.editWork(this.editedWork);
+          } catch (error) {
+            console.log(error);
+          } finally {
+        }
       }
     },
   }
 }
 </script>
 
-<style lang="" scoped></style>
+<style lang="scss">
+</style>

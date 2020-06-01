@@ -46,11 +46,13 @@
     ).group-about-add
       .group-about-add__row
         .group-about-add__skill
+          .message(:class="{error: validation.hasError('skill.title')}") {{ validation.firstError('skill.title') }}
           input(
             v-model="skill.title"
             placeholder="Новый навык"
             ).form-add-item__input
         .group-about-add__percent
+          .message(:class="{error: validation.hasError('skill.percent')}") {{ validation.firstError('skill.percent') }}
           input(
             v-model="skill.percent"
             placeholder="0"
@@ -62,7 +64,10 @@
 </template>
 
 <script>
-
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
+Vue.use(SimpleVueValidation);
 import { mapActions } from "vuex";
 
 export default {
@@ -83,6 +88,16 @@ export default {
       editedCategory: {...this.category}
     }
   },
+  validators: {
+    'skill.title': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+      
+    },
+    'skill.percent': function (value) {
+      return Validator.value(value).lessThanOrEqualTo(100, "Число от 0 до 100").required('Это поле обязательное');
+      
+    },
+  },
   mounted() {},
   beforeDestroy() {},
   methods: {
@@ -93,13 +108,14 @@ export default {
         ...this.skill,
         category: this.category.id,
       }
-      try {
-        await this.addSkill(skillData);
-        this.skill.title = "";
-        this.skill.percent = "";
-      } catch (error){
-        console.log(error);
-      }
+      if (await this.$validate()){
+        try {
+          await this.addSkill(skillData);
+          this.skill.title = "";
+          this.skill.percent = "";
+        } catch (error){
+          console.log(error);
+      }}
     },
     removeCurrentCategory(){
       const currentCategory = this.category;
@@ -122,6 +138,9 @@ export default {
 <style lang="postcss">
 @import "../../../styles/mixins.pcss";
 
+.message.error {
+  color: red;
+}
 
 
 </style>
