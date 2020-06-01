@@ -1,4 +1,9 @@
 import Vue from "vue";
+import axios from "axios";
+
+const request = axios.create({
+    baseURL: "https://webdev-api.loftschool.com"
+});
 
 const controls = {
     template: "#slider-controls",
@@ -16,6 +21,7 @@ const thumbnail = {
     methods: {
         handleClickThumb(work) {
             this.$emit("thumb", work);
+            
         }
     },
 }
@@ -45,10 +51,12 @@ const tags = {
 const school = {
     template: "#slider-school",
     components: {tags},
-    props: ["currentWork"],
+    props:{
+        currentWork: Object,
+    },
     computed: {
         tagsArray() {
-            return this.currentWork.skills.split(",");
+            // return this.currentWork.techs.split(","); //почему то не нравится ему текс. без текса есть массив. а с ним уже ошибка
         }
     }
 }
@@ -121,11 +129,12 @@ new Vue({
         handleThumb(work) {
             const workIndex = work - 1;
             this.currentIndex = workIndex;
+
             
         },
     },
-    created() {
-        const data = require("../data/works.json");
-        this.works = this.makeArrWithRequireImages(data);
+    async created() {
+        const { data } = await request.get("/works/327");
+        this.works = data;
     },
 });

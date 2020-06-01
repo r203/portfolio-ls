@@ -3,7 +3,7 @@ script(type="text/x-template")#slider-container
         .slider
             .slider__title Мои Работы
             .slider__body
-                .slider__count {{currentWork.id}}
+                .slider__count {{currentIndex+1}}
                 controls(
                     @slide="handleSlide"
                     :currentWork="currentWork"
@@ -19,7 +19,10 @@ script(type="text/x-template")#slider-container
 
 script(type="text/x-template")#slider-display
     .slider__preview
-        img.slider__preview-image(:src="currentWork.photo", alt="slider preview")
+        img.slider__preview-image(
+            :src="`https://webdev-api.loftschool.com/${currentWork.photo}`"
+            alt="slider preview"
+            )
         thumbnail(
             @thumb="handleThumb"
             :works="reversedWorks"
@@ -30,12 +33,14 @@ script(type="text/x-template")#slider-thumbnail
     .slider__thumbnail
         ul.slider__list 
             li.slider__item(
-                v-for="work in works" 
+                v-for="(work, index) in works" 
                 :key="work.id"
-                :class="{active: currentWork.id === work.id}"
+                :class="{active: currentWork.id === index}"
                 )
-                button.slider__link(@click.prevent="handleClickThumb(work.id)")
-                    img.slider__thumbnail-img(:src="work.thumbnail", alt="slider thumbnail")
+                button.slider__link(@click.prevent="handleClickThumb(index)")
+                    img.slider__thumbnail-img(
+                        :src="`https://webdev-api.loftschool.com/${work.photo}`"
+                        alt="slider thumbnail")
 
 script(type="text/x-template")#slider-controls
     .slider__controls
@@ -51,13 +56,93 @@ script(type="text/x-template")#slider-school
         )
         .school__title {{currentWork.title}}
         .school__text
-            p  {{currentWork.desc}}
+            p  {{currentWork.description}}
         .school__site
             a.school__link(:href="currentWork.link") Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
     .tags
         ul.tags__list
-            li.tags__item(v-for="tag in tags" :key="tag") {{tag}}
+            li.tags__item(v-for="tag in tags" :key="tag") {{currentWork.techs}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- ===
+//- script(type="text/x-template")#slider-container
+//-     .my-work
+//-         .slider
+//-             .slider__title Мои Работы
+//-             .slider__body
+//-                 .slider__count {{currentWork.id}}
+//-                 controls(
+//-                     @slide="handleSlide"
+//-                     :currentWork="currentWork"
+//-                 )
+//-                 display(
+//-                     @thumb="handleThumb"
+//-                     :currentWork="currentWork"
+//-                     :works="works"
+//-                 )
+//-         school(
+//-             :currentWork="currentWork"
+//-         )
+
+//- script(type="text/x-template")#slider-display
+//-     .slider__preview
+//-         img.slider__preview-image(:src="currentWork.photo", alt="slider preview")
+//-         thumbnail(
+//-             @thumb="handleThumb"
+//-             :works="reversedWorks"
+//-             :currentWork="currentWork"
+//-         )
+
+//- script(type="text/x-template")#slider-thumbnail
+//-     .slider__thumbnail
+//-         ul.slider__list 
+//-             li.slider__item(
+//-                 v-for="work in works" 
+//-                 :key="work.id"
+//-                 :class="{active: currentWork.id === work.id}"
+//-                 )
+//-                 button.slider__link(@click.prevent="handleClickThumb(work.id)")
+//-                     img.slider__thumbnail-img(:src="work.thumbnail", alt="slider thumbnail")
+
+//- script(type="text/x-template")#slider-controls
+//-     .slider__controls
+//-         button(@click.prevent="handleClick('next')" id="btnNext").slider__btn.slider__btn--next
+//-             .slider__btn-text &lt;
+//-         button(@click.prevent="handleClick('prev')" id="btnPrev").slider__btn.slider__btn--prev
+//-             .slider__btn-text &gt;
+
+//- script(type="text/x-template")#slider-school
+//-     .school
+//-         tags(
+//-             :tags="tagsArray"
+//-         )
+//-         .school__title {{currentWork.title}}
+//-         .school__text
+//-             p  {{currentWork.desc}}
+//-         .school__site
+//-             a.school__link(:href="currentWork.link") Посмотреть сайт
+
+//- script(type="text/x-template")#slider-tags
+//-     .tags
+//-         ul.tags__list
+//-             li.tags__item(v-for="tag in tags" :key="tag") {{tag}}
+
 
 

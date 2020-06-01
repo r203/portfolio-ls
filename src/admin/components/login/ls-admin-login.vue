@@ -6,16 +6,15 @@
           h2.login__title-text Авторизация
         .login__col
             label.login__label Логин
+            .message(:class="{error: validation.hasError('login')}") {{ validation.firstError('login') }}
             input(
               type="text"
-              id="login"
               v-model="user.name"
               ).login__input
         .login__col
             label.login__label Пароль
             input(
               type="password"
-              id="pass"
               v-model="user.password"
               ).login__input
         .login__btns
@@ -25,9 +24,9 @@
 </template>
 
 <script>
-
 // import { mapActions } from "vuex";
 import $axios from "../../requests"; 
+
 export default {
   name: 'ls-admin-login',
   components: {},
