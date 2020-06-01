@@ -3,7 +3,6 @@
     router-view(name="header")
     router-view(name="tabs")
     router-view
-    tooltip
 
 </template>
 
@@ -15,7 +14,6 @@ export default {
   components: {
     lsAdminHeader: () => import("./components/ls-admin-header"),
     lsAdminNav: () => import("./components/ls-admin-nav"),
-    tooltip: () => import("./components/tooltip"),
   }
 }
 </script>

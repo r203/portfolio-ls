@@ -47,6 +47,10 @@
               @removeCurrentCategory="removeCurrentCategory"
               :category="cat"
             )
+
+      tooltip(
+        :tooltips="tooltips"
+      )
 </template>
 
 <script>
@@ -69,6 +73,12 @@ export default {
     return {
       category: {
         title: ""
+      },
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
       },
       blockVisibleOn: false,
     }
@@ -96,8 +106,18 @@ export default {
         try {
           await this.addCategory(this.category.title);
           this.category.title = "";
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Категория добавлена"
+          console.log(error.message);
+          
         } catch (error) {
-          alert(error.message);
+          // this.tooltips.visibleTooltip = true; 
+          // this.tooltips.header = "Ошибка";
+          // this.tooltips.message = error.message;
+          // this.tooltips.isError = true;
         };}
     },
     async removeCurrentCategory(currentCategory) {
@@ -109,7 +129,7 @@ export default {
     },
     resetForm(){
       this.category.title = "";
-    }
+    },
   }
 }
 </script>
