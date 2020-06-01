@@ -19,9 +19,7 @@
               )
                 //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
               .upload-photo__btn
-                button(
-                  v-model="reviewToEdit.photo"
-                ).btn.btn__add-photo Добавить фото
+                .btn.btn__add-photo Добавить фото
         .review-add__right
           .review-add__name-occupation
             .form-add-item__row
@@ -69,10 +67,7 @@
               )
                 //- img.upload-photo__image(src="../images/icons/user.png", alt="Artem Archenkov")
               .upload-photo__btn
-                button(
-                  type="button"
-                  v-model="review.photo"
-                ).btn.btn__add-photo Добавить фото
+                .btn.btn__add-photo Добавить фото
         .review-add__right
           .review-add__name-occupation
             .form-add-item__row

@@ -56,10 +56,13 @@ const Validator = SimpleVueValidation.Validator;
 Vue.use(SimpleVueValidation);
 
 import { mapActions, mapState } from "vuex";
+import tooltip from "../tooltip";
+
 export default {
   name: 'ls-admin-about',
   components: {
     lsAdminGroupAbout: () => import("./ls-admin-group-about"),
+    tooltip,
   },
   props: {},
   data() {

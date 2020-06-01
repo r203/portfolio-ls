@@ -9,18 +9,16 @@
       h2.work-add__title Добавление Работы
       .work-add__content
         .work-add__left
-          .upload
-            label.form-add-item__label-files
+          label.form-add-item__label-file
+            .upload
+              input(
+                type="file"
+                @change="handleFileChange"
+                ).form-add-item__input-file
               .upload__desc Перетащите либо загрузите изображение
               .upload__btn
-                  input(
-                    type="file"
-                    @change="handleFileChange"
-                  ).form-add-item__input-file
-                  button(
-                    type="button"
-                    v-model="work.photo"
-                  ).btn.btn__primary Загрузить
+                .message(:class="{error: validation.hasError('work.photo')}") {{ validation.firstError('work.photo') }}
+                .btn.btn__primary Загрузить
         .work-add__right.form-add-item
           .form-add-item__row
             .form-add-item__col
@@ -78,8 +76,8 @@
       h2.work-add__title Изменение Работы
       .work-add__content
         .work-add__left
-          .upload
-            label.form-add-item__label-files
+          label.form-add-item__label-file
+            .upload
               .upload__desc Перетащите либо загрузите изображение
               .upload__btn
                   input(
@@ -190,6 +188,9 @@ export default {
     'work.techs': function (value) {
       return Validator.value(value).required('Это поле обязательное');
     },
+    'work.photo': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
     'editedWork.title': function (value) {
       return Validator.value(value).required('Это поле обязательное');
     },
@@ -200,6 +201,9 @@ export default {
       return Validator.value(value).required('Это поле обязательное');
     },
     'editedWork.techs': function (value) {
+      return Validator.value(value).required('Это поле обязательное');
+    },
+    'editedWork.photo': function (value) {
       return Validator.value(value).required('Это поле обязательное');
     },
   },
