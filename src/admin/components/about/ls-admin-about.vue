@@ -111,7 +111,6 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Категория добавлена"
-          console.log(error.message);
           
         } catch (error) {
           // this.tooltips.visibleTooltip = true; 
@@ -123,6 +122,12 @@ export default {
     async removeCurrentCategory(currentCategory) {
       try {
         await this.removeCategory(currentCategory);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Категория удалена"
+          
       } catch (error) {
         alert(error.message);
       };

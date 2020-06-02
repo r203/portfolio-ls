@@ -36,8 +36,6 @@ export default {
       })
     },
     REMOVE_SKILL(state, skillToRemove) {
-      console.log(skillToRemove);
-            
       const removeSkillCategory = (category) => {
         category.skills = category.skills.filter(
           (skill) => skill.id !== skillToRemove.id

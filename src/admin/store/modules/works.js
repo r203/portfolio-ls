@@ -56,7 +56,7 @@ export default {
           console.log(editedWork);
           
           const {data} = await this.$axios.post(`/works/${editedWork.id}`, editedWork);
-          // await commit("EDIT_WORK", editedWork);
+          await commit("EDIT_WORK", editedWork);
         } catch (error){
             console.log(error);
           }

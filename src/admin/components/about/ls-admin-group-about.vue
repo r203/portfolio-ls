@@ -61,6 +61,10 @@
           button(
             type="submit"
           ).btn.btn__secondary.btn__add-group-item +
+
+    tooltip(
+      :tooltips="tooltips"
+    )
 </template>
 
 <script>
@@ -69,11 +73,14 @@ import SimpleVueValidation from 'simple-vue-validator';
 const Validator = SimpleVueValidation.Validator;
 Vue.use(SimpleVueValidation);
 import { mapActions } from "vuex";
+import tooltip from "../tooltip";
+
 
 export default {
   name: 'ls-admin-group-about',
   components: {
     lsAdminGroupAboutSkill: () => import("./ls-admin-group-about-skill"),
+    tooltip,
   },
   props: {
     category: Object
@@ -85,7 +92,13 @@ export default {
         percent: 0,
       },
       editModeOn: false,
-      editedCategory: {...this.category}
+      editedCategory: {...this.category},
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     }
   },
   validators: {
@@ -113,6 +126,11 @@ export default {
           await this.addSkill(skillData);
           this.skill.title = "";
           this.skill.percent = "";
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Скилл добавлен" 
         } catch (error){
           console.log(error);
       }}
@@ -124,7 +142,11 @@ export default {
     async editCurrentCategory() {
       try {
         await this.editCategory(this.editedCategory);
-        
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Категория изменена"        
       } catch (error) {
         console.log(error);
       } finally {

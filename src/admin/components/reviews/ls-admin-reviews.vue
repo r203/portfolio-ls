@@ -24,17 +24,23 @@
           @editCurrentReview="editCurrentReview"
           :review="review"
         )
+
+    tooltip(
+      :tooltips="tooltips"
+    )
 </template>
 
 <script>
 
 import { mapActions, mapState } from "vuex";
+import tooltip from "../tooltip";
 
 export default {
   name: 'ls-admin-reviews',
   components: {
     lsAdminReviewAdd: () => import("./ls-admin-review-add"),
     lsAdminReview: () => import("./ls-admin-review"),
+    tooltip,
 
   },
   props: {},
@@ -48,6 +54,12 @@ export default {
       },
       reviewToEdit: {},
       reviewBlockVisibleOn: false,
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     }
   },
   computed: {
@@ -66,6 +78,10 @@ export default {
       try {
         await this.removeReview(currentReview);
 
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Отзыв удален"
       } catch (error) {
         alert(error.message);
       };

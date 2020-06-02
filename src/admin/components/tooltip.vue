@@ -8,7 +8,7 @@
     button(
       type="button"
       @click="tooltips.visibleTooltip = false"
-    ).btn X
+    ).btn.btn__tooltip Закрыть
 </template>
 
 <script>
@@ -37,13 +37,13 @@ export default {
   position: fixed;
   display: flex;
   flex-direction: column;
+  color: #fff;
   padding: 10px;
   text-align: center;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
-  height: 100px;
   background-color: burlywood;
   opacity: .9;
   &__header {
@@ -51,6 +51,16 @@ export default {
     font-weight: 600;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
+  }
+}
+.btn.btn__tooltip {
+  display: block;
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
 .success {

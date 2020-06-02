@@ -138,6 +138,10 @@
               button(
                 type="submit"
                 ).btn.btn__primary Изменить
+
+    tooltip(
+        :tooltips="tooltips"
+      )
 </template>
 
 <script>
@@ -146,10 +150,14 @@ import SimpleVueValidation from 'simple-vue-validator';
 const Validator = SimpleVueValidation.Validator;
 Vue.use(SimpleVueValidation);
 import { mapActions } from "vuex";
+import tooltip from "../tooltip";
+
 
 export default {
   name: 'ls-admin-work-add',
-  components: {},
+  components: {
+    tooltip,
+  },
   props: {
     work: {
       type: Object,
@@ -173,7 +181,14 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
+    }
   },
   validators: {
     'work.title': function (value) {
@@ -191,21 +206,21 @@ export default {
     'work.photo': function (value) {
       return Validator.value(value).required('Это поле обязательное');
     },
-    'editedWork.title': function (value) {
-      return Validator.value(value).required('Это поле обязательное');
-    },
-    'editedWork.link': function (value) {
-      return Validator.value(value).required('Это поле обязательное');
-    },
-    'editedWork.description': function (value) {
-      return Validator.value(value).required('Это поле обязательное');
-    },
-    'editedWork.techs': function (value) {
-      return Validator.value(value).required('Это поле обязательное');
-    },
-    'editedWork.photo': function (value) {
-      return Validator.value(value).required('Это поле обязательное');
-    },
+    // 'editedWork.title': function (value) {
+    //   return Validator.value(value).required('Это поле обязательное');
+    // },
+    // 'editedWork.link': function (value) {
+    //   return Validator.value(value).required('Это поле обязательное');
+    // },
+    // 'editedWork.description': function (value) {
+    //   return Validator.value(value).required('Это поле обязательное');
+    // },
+    // 'editedWork.techs': function (value) {
+    //   return Validator.value(value).required('Это поле обязательное');
+    // },
+    // 'editedWork.photo': function (value) {
+    //   return Validator.value(value).required('Это поле обязательное');
+    // },
   },
   mounted() {},
   beforeDestroy() {},
@@ -232,20 +247,32 @@ export default {
           this.work.photo = "";
           this.work.link = "";
           this.work.description = "";
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Работа добавлена"
         } catch (error) {
           console.log(error);
         }
       }
     },
     async editCurrentWork() {
-      if (await this.$validate()){
+      // if (await this.$validate()){
         try {
+      console.log("123")
+
             await this.editWork(this.editedWork);
+
+              this.tooltips.visibleTooltip = true; 
+              this.tooltips.isSuccess = true;
+              this.tooltips.header = "Успешно"
+              this.tooltips.message = "Работа изменена"
           } catch (error) {
             console.log(error);
           } finally {
         }
-      }
+      // }
     },
   }
 }

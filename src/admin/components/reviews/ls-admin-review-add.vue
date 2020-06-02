@@ -96,16 +96,22 @@
                 type="submit"
                 ).btn.btn__primary Загрузить 
               
+    tooltip(
+      :tooltips="tooltips"
+    )
 </template>
 
 <script>
 
 import { renderer } from "../../helpers/pictures"
 import { mapActions } from "vuex";
+import tooltip from "../tooltip";
 
 export default {
   name: 'ls-admin-review-add',
-  components: {},
+  components: {
+    tooltip,
+  },
   props: {
     review: {
       type: Object,
@@ -125,6 +131,12 @@ export default {
   data() {
     return {
       renderedPhoto: {},
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     }
   },
   computed: {
@@ -149,6 +161,11 @@ export default {
         formData.append("photo", this.review.photo);
         
         await this.addReview(formData);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Отзыв добавлен"
       } catch (error) {
         console.log(error);
       }
@@ -156,6 +173,11 @@ export default {
     async editCurrentReview() {
       try {
         await this.editReview(this.reviewToEdit);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Отзыв изменен"
         
       } catch (error) {
         console.log(error);

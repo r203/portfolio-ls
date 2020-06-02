@@ -49,6 +49,10 @@
                 type="button"
                 @click="removeCurrentWork(index)"
               ).btn.btn__delete Удалить
+
+    tooltip(
+        :tooltips="tooltips"
+      )
 </template>
 
 <script>
@@ -56,11 +60,13 @@
 import { mapActions, mapState } from "vuex";
 
 import lsAdminWorkAdd from './ls-admin-work-add'
+import tooltip from "../tooltip";
 
 export default {
   name: 'ls-admin-works',
   components: {
     lsAdminWorkAdd,
+    tooltip,
   },
   props: {},
   data() {
@@ -75,6 +81,12 @@ export default {
       editedWork: {},
       workBlockVisibleOn: false,
       editWorkOn: true,
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     }
   },
   computed: {
@@ -92,6 +104,11 @@ export default {
     async removeCurrentWork(index) {
       try {
         await this.removeWork(this.works[index]);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Работа удалена"
       } catch (error) {
         alert(error.message);
       };

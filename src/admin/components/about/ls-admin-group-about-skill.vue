@@ -37,15 +37,22 @@
           type="button"
           @click="removeCurrentSkill"
         ).btn.btn__secondary.btn__trash
+    
+    tooltip(
+      :tooltips="tooltips"
+    )
 </template>
 
 <script>
 
 import { mapActions } from "vuex";
+import tooltip from "../tooltip";
 
 export default {
   name: 'ls-admin-group-about-skill',
-  components: {},
+  components: {
+    tooltip,
+  },
   props: {
     skill: {
       type: Object,
@@ -56,7 +63,13 @@ export default {
   data() {
     return {
       editModeOn: false,
-      editedSkill: {...this.skill}
+      editedSkill: {...this.skill},
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     }
   },
   mounted() {},
@@ -65,14 +78,26 @@ export default {
     ...mapActions("skills", ["removeSkill", "editSkill"]),
     async removeCurrentSkill() {
       try {
+
         await this.removeSkill(this.skill);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Скилл удален"
       } catch (error) {
+        console.log(error);
         
       }
     },
     async editCurrentSkill() {
       try {
         await this.editSkill(this.editedSkill);
+
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isSuccess = true;
+          this.tooltips.header = "Успешно"
+          this.tooltips.message = "Скилл изменен"
       } catch (error) {
         console.log(error);
       } finally {
