@@ -43,9 +43,11 @@
               button(
                 type="button"
                 @click="reviewBlockVisibleOn = false"
+                :disabled="disabledBTN"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
+                :disabled="disabledBTN"
                 ).btn.btn__primary Изменить 
 
     form(
@@ -91,9 +93,11 @@
               button(
                 type="button"
                 @click="reviewBlockVisibleOn = false"
+                :disabled="disabledBTN"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
+                :disabled="disabledBTN"
                 ).btn.btn__primary Загрузить 
               
     tooltip(
@@ -137,11 +141,14 @@ export default {
         isSuccess: false,
         isError: false,
       },
+      disabledBTN: false,
     }
   },
   computed: {
   },
-  mounted() {},
+  mounted() {
+    
+  },
   beforeDestroy() {},
   methods: {
     ...mapActions("reviews", ["addReview", "editReview"]),
@@ -152,6 +159,7 @@ export default {
       })
     },
     async addNewReview(review) {
+      this.disabledBTN = true;
       try {
         const formData = new FormData;
 
@@ -168,9 +176,12 @@ export default {
           this.tooltips.message = "Отзыв добавлен"
       } catch (error) {
         console.log(error);
+      } finally {
+        this.disabledBTN = false;
       }
     },
     async editCurrentReview() {
+      this.disabledBTN = true;
       try {
         await this.editReview(this.reviewToEdit);
 
@@ -183,6 +194,7 @@ export default {
         console.log(error);
       } finally {
         this.editModeOn = false;
+        this.disabledBTN = false;
       }
     },
   }

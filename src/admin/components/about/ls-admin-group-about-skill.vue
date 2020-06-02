@@ -17,10 +17,12 @@
         button(
           type="button"
           @click="editCurrentSkill"
+          :disabled="disabledBTN"
         ).btn.btn__secondary.btn__ok
         button(
           type="button"
           @click="editModeOn = false"
+          :disabled="disabledBTN"
         ).btn.btn__secondary.btn__erase    
 
     ul.group-about__skill-list(
@@ -32,10 +34,12 @@
         button(
           type="button"
           @click="editModeOn = true"
+          :disabled="disabledBTN"
         ).btn.btn__secondary.btn__edit
         button(
           type="button"
           @click="removeCurrentSkill"
+          :disabled="disabledBTN"
         ).btn.btn__secondary.btn__trash
     
     tooltip(
@@ -70,6 +74,7 @@ export default {
         isSuccess: false,
         isError: false,
       },
+      disabledBTN: false,
     }
   },
   mounted() {},
@@ -77,6 +82,7 @@ export default {
   methods: {
     ...mapActions("skills", ["removeSkill", "editSkill"]),
     async removeCurrentSkill() {
+      this.disabledBTN = true;
       try {
 
         await this.removeSkill(this.skill);
@@ -87,10 +93,12 @@ export default {
           this.tooltips.message = "Скилл удален"
       } catch (error) {
         console.log(error);
-        
+      } finally {
+        this.disabledBTN = false;
       }
     },
     async editCurrentSkill() {
+      this.disabledBTN = true;
       try {
         await this.editSkill(this.editedSkill);
 
@@ -102,6 +110,7 @@ export default {
         console.log(error);
       } finally {
         this.editModeOn = false;
+        this.disabledBTN = false;
       }
     },
   }

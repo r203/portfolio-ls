@@ -13,10 +13,12 @@
           button(
             type="button"
             @click="editCurrentCategory"
+            :disabled="disabledBTN"
           ).btn.btn__secondary.btn__ok
           button(
             type="button"
             @click="editModeOn = false"
+            :disabled="disabledBTN"
             ).btn.btn__secondary.btn__erase
     .group-about__title(
       v-else
@@ -28,10 +30,12 @@
           button(
             type="button"
             @click="editModeOn = true"
+            :disabled="disabledBTN"
           ).btn.btn__secondary.btn__edit
           button(
             type="button"
             @click="removeCurrentCategory"
+            :disabled="disabledBTN"
             ).btn.btn__secondary.btn__trash
 
     .group-about__content
@@ -60,6 +64,7 @@
         .group-about-add__btns
           button(
             type="submit"
+            :disabled="disabledBTN"
           ).btn.btn__secondary.btn__add-group-item +
 
     tooltip(
@@ -99,6 +104,7 @@ export default {
         isSuccess: false,
         isError: false,
       },
+      disabledBTN: false,
     }
   },
   validators: {
@@ -117,6 +123,7 @@ export default {
     ...mapActions("skills", ["addSkill"]),
     ...mapActions("categories", ["editCategory"]),
     async addNewSkill () {
+      this.disabledBTN = true;
       const skillData = {
         ...this.skill,
         category: this.category.id,
@@ -133,13 +140,18 @@ export default {
           this.tooltips.message = "Скилл добавлен" 
         } catch (error){
           console.log(error);
-      }}
+        } finally {
+          this.disabledBTN = false;
+        }
+      }
     },
     removeCurrentCategory(){
+      this.disabledBTN = true;
       const currentCategory = this.category;
       this.$emit('removeCurrentCategory', currentCategory);
     },
     async editCurrentCategory() {
+      this.disabledBTN = true;
       try {
         await this.editCategory(this.editedCategory);
 
@@ -151,6 +163,7 @@ export default {
         console.log(error);
       } finally {
         this.editModeOn = false;
+        this.disabledBTN = false;
       }
     },
   }

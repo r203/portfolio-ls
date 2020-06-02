@@ -37,7 +37,8 @@ export default {
     },
     async fetchReviews({commit}) {
       try {
-        const {data} = await this.$axios.get(`/reviews/327`);
+        const userID = await this.$axios.get(`/user`);
+        const {data} = await this.$axios.get(`/reviews/${userID.data.user.id}`);
         commit("SET_REVIEW", data);
       } catch(error) {
         console.log(error);

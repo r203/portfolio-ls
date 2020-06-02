@@ -35,6 +35,7 @@ export default {
 
 .ls-tooltip {
   position: fixed;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   color: #fff;

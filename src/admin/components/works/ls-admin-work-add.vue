@@ -68,6 +68,7 @@
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
+                :disabled="disabledBTN"
                 ).btn.btn__primary Загрузить
     form(
       v-else
@@ -137,6 +138,7 @@
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
+                :disabled="disabledBTN"
                 ).btn.btn__primary Изменить
 
     tooltip(
@@ -188,6 +190,7 @@ export default {
         isSuccess: false,
         isError: false,
       },
+      disabledBTN: false,
     }
   },
   validators: {
@@ -231,6 +234,7 @@ export default {
     },
     async addNewWork(work) {
       if (await this.$validate()){
+        this.disabledBTN = true;
         try {
           const formData = new FormData;
 
@@ -254,14 +258,15 @@ export default {
           this.tooltips.message = "Работа добавлена"
         } catch (error) {
           console.log(error);
+        } finally {
+          this.disabledBTN = false;
         }
       }
     },
     async editCurrentWork() {
       // if (await this.$validate()){
+        this.disabledBTN = true;
         try {
-      console.log("123")
-
             await this.editWork(this.editedWork);
 
               this.tooltips.visibleTooltip = true; 
@@ -271,6 +276,7 @@ export default {
           } catch (error) {
             console.log(error);
           } finally {
+          this.disabledBTN = false;
         }
       // }
     },

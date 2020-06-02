@@ -81,7 +81,8 @@ export default {
     },
     async fetchCategories({commit}) {
       try {
-        const {data} = await this.$axios.get(`/categories/327`);
+        const userID = await this.$axios.get(`/user`);
+        const {data} = await this.$axios.get(`/categories/${userID.data.user.id}`);
         commit("SET_CATEGORIES", data);
       } catch(error) {
         console.log(error);
@@ -97,7 +98,7 @@ export default {
         }
       },
       async editCategory({ commit }, editedCategory) {
-        try {
+        try {     
           const {data} = await this.$axios.post(`/categories/${editedCategory.id}`, { title: editedCategory.category });
           commit("categories/EDIT_CATEGORY", editedCategory, { root: true });
         } catch (error){

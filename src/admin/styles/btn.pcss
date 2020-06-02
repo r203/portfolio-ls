@@ -9,9 +9,15 @@
     border-radius: 50px;
     background: rgb(20,89,226);
     background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    &[disabled=disabled], button:disabled {
+      background: #ccc;
+    }
     &:hover {
       transition: all .3s;
       background: linear-gradient(90deg,#c856f1,#424268);
+      &[disabled=disabled], button:disabled {
+        background: #ccc;
+      }
     }
   }
   &__cancel {
@@ -33,8 +39,14 @@
     color: #414c63;
     opacity: .7;
     transition: opacity .3s;
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
     &:hover {
       opacity: 1;
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
     }
     &:after {
       content: '';
@@ -55,8 +67,14 @@
     color: #414c63;
     opacity: .7;
     transition: opacity .3s;
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
     &:hover {
       opacity: 1;
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
     }
     &:after {
       content: '';
@@ -86,11 +104,16 @@
     background: transparent;
     margin: 0 55px;
     transition: all .3s;
+    &[disabled=disabled], button:disabled {
+      background: #ccc;
+    }
     &:hover {
       color: #424268;
       &:before {
         background: linear-gradient(90deg,#c856f1,#424268);
-
+      }
+      &[disabled=disabled], button:disabled {
+        background: #ccc;
       }
     }
     @include phones {
@@ -124,9 +147,15 @@
       transition: all .3s;
       background: rgb(20,89,226);
       background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
       &:hover {
         transition: all .3s;
         background: linear-gradient(90deg,#c856f1,#424268);
+        &[disabled=disabled], button:disabled {
+          opacity: .3;
+        }
       }
     }
   }
@@ -140,6 +169,9 @@
     height: 22px;
     border-radius: 50%;
     background: svg-load('tick.svg', fill=#00d70a, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
   }
   &__erase {
     display: flex;
@@ -151,6 +183,9 @@
     height: 22px;
     border-radius: 50%;
     background: svg-load('remove.svg', fill=#bf2929, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
   }
   &__trash {
     display: flex;
@@ -161,6 +196,9 @@
     height: 22px;
     border-radius: 50%;
     background: svg-load('trash.svg', fill=#bf2929, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
   }
   &__del-tag {
     display: flex;

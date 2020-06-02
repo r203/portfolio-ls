@@ -1,6 +1,6 @@
 <template lang="pug">
   .ls-admin-header-user
-    .ls-admin-header__logo
+    a(href="/admin").ls-admin-header__logo
       .avatar
         img.avatar__image(src="https://picsum.photos/200", alt="Artem Archenkov")
     .ls-admin-header-user__user-name

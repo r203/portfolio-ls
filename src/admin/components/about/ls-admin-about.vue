@@ -26,7 +26,10 @@
                       ).form-add-item__input
               .group-about__title-right 
                 .group-about__btns
-                  button(type="submit").btn.btn__secondary.btn__ok 
+                  button(
+                    type="submit"
+                    :disabled="disabledBTN"
+                    ).btn.btn__secondary.btn__ok 
                   button(
                     type="button"
                     @click="resetForm()"
@@ -37,6 +40,7 @@
                 button(
                   type="button"
                   @click="blockVisibleOn= false"
+                  :disabled="disabledBTN"
                 ).btn.btn__secondary.btn__cancel Отменить
 
           li.group-about(
@@ -81,6 +85,7 @@ export default {
         isError: false,
       },
       blockVisibleOn: false,
+      disabledBTN: false,
     }
   },
   validators: {
@@ -103,6 +108,7 @@ export default {
     ...mapActions("categories", ["addCategory", "fetchCategories", "removeCategory"]),
     async createNewCategory() {
       if (await this.$validate()) {
+        this.disabledBTN = true;
         try {
           await this.addCategory(this.category.title);
           this.category.title = "";
@@ -117,9 +123,13 @@ export default {
           // this.tooltips.header = "Ошибка";
           // this.tooltips.message = error.message;
           // this.tooltips.isError = true;
-        };}
+        } finally {
+        this.disabledBTN = false;
+        }
+      }
     },
     async removeCurrentCategory(currentCategory) {
+      this.disabledBTN = true;
       try {
         await this.removeCategory(currentCategory);
 
@@ -130,7 +140,9 @@ export default {
           
       } catch (error) {
         alert(error.message);
-      };
+      } finally {
+        this.disabledBTN = false;
+      }
     },
     resetForm(){
       this.category.title = "";
