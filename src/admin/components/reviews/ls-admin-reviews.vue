@@ -1,15 +1,16 @@
 <template lang="pug">
   .ls-admin-reviews.container
     ls-admin-review-add(
+      @isReviewBlockVisibleOFF="isReviewBlockVisibleOFF"
       :review="review"
       :reviewToEdit="reviewToEdit"
-      :reviewBlockVisibleOn="reviewBlockVisibleOn"
+      :isReviewBlockVisibleOn="isReviewBlockVisibleOn"
     )
     ul.reviews__list
       li.reviews__item
         button(
           type="button"
-          @click="reviewBlockVisibleOn = true"
+          @click="isReviewBlockVisibleOn = true"
         ).item-add
           .item-add__content
             span.item-add__content-text +
@@ -53,19 +54,20 @@ export default {
         photo: {},
       },
       reviewToEdit: {},
-      reviewBlockVisibleOn: false,
+      isReviewBlockVisibleOn: false,
       tooltips: {
         header: "",
         visibleTooltip: false,
         isSuccess: false,
         isError: false,
       },
+      disabledBTN: false,
     }
   },
   computed: {
     ...mapState("reviews", {
       reviews: state => state.reviews,
-    })
+    }),
   },
   created() {
     this.fetchReviews();
@@ -88,8 +90,11 @@ export default {
     },
     editCurrentReview(editedReview, editReviewOn){
       this.reviewToEdit = editedReview;
-      this.reviewBlockVisibleOn = true   
+      this.isReviewBlockVisibleOn = true   
     },
+    isReviewBlockVisibleOFF() {
+      this.isReviewBlockVisibleOn = false;
+    }
   }
 }
 </script>

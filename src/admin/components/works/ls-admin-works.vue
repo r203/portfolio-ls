@@ -2,6 +2,7 @@
   .ls-admin-works
     .container.works__container
       lsAdminWorkAdd(
+        @workBlockVisibleOFF="workBlockVisibleOFF"
         :work="work"
         :editedWork="editedWork"
         :workBlockVisibleOn="workBlockVisibleOn"
@@ -117,6 +118,9 @@ export default {
       this.workBlockVisibleOn = true;
       this.editWorkOn = false;      
       this.editedWork = this.works[index];      
+    },
+    workBlockVisibleOFF() {
+      this.workBlockVisibleOn = false
     },
   },
 }

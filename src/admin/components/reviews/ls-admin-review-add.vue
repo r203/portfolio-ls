@@ -2,7 +2,7 @@
   .ls-admin-review-add
     form(
       v-if="reviewToEdit.editReviewOn"
-      v-show="reviewBlockVisibleOn"
+      v-show="isReviewBlockVisibleOn"
       @submit.prevent="editCurrentReview"
     ).form-add-item.review-add
       h2.review-add__title Изменение отзыва
@@ -42,7 +42,7 @@
           .form-add-item__btns
               button(
                 type="button"
-                @click="reviewBlockVisibleOn = false"
+                @click="isReviewBlockVisibleOFF"
                 :disabled="disabledBTN"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
@@ -52,7 +52,7 @@
 
     form(
       v-else
-      v-show="reviewBlockVisibleOn"
+      v-show="isReviewBlockVisibleOn"
       @submit.prevent="addNewReview"
     ).form-add-item.review-add
       h2.review-add__title Добавление отзыва
@@ -92,7 +92,7 @@
           .form-add-item__btns
               button(
                 type="button"
-                @click="reviewBlockVisibleOn = false"
+                @click="isReviewBlockVisibleOFF"
                 :disabled="disabledBTN"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
@@ -127,9 +127,10 @@ export default {
       default: () => {},
       required: true,
     },
-    reviewBlockVisibleOn: {
+    isReviewBlockVisibleOn: {
       type: Boolean,
       default: false,
+      required: true,
     },
   },
   data() {
@@ -143,8 +144,6 @@ export default {
       },
       disabledBTN: false,
     }
-  },
-  computed: {
   },
   mounted() {
     
@@ -197,6 +196,9 @@ export default {
         this.disabledBTN = false;
       }
     },
+    isReviewBlockVisibleOFF() { 
+      this.$emit('isReviewBlockVisibleOFF')
+    }
   }
 }
 </script>

@@ -64,7 +64,7 @@
           .form-add-item__btns
               button(
                 type="button"
-                @click="workBlockVisibleOn = false"
+                @click="workBlockVisibleOFF"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
@@ -134,7 +134,7 @@
           .form-add-item__btns
               button(
                 type="button"
-                @click="workBlockVisibleOn = false"
+                @click="workBlockVisibleOFF"
               ).btn.btn__secondary.btn__cancel Отменить
               button(
                 type="submit"
@@ -278,8 +278,10 @@ export default {
           } finally {
           this.disabledBTN = false;
         }
-      // }
     },
+    workBlockVisibleOFF() {
+      this.$emit('workBlockVisibleOFF')
+    }
   }
 }
 </script>
