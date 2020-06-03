@@ -44,22 +44,21 @@
           .form-add-item__row
             .form-add-item__col
               .message(:class="{error: validation.hasError('work.techs')}") {{ validation.firstError('work.techs') }}
-              label.form-add-item__label Добавление тега
+              label.form-add-item__label Добавление тега через пробел
               input(
                 v-model="work.techs"
+                @input="tagCreate"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
               .tags.work-add__tags
-                ul.tags__list
-                  li.tags__item 
-                    span.tags__text html
-                    button.btn.btn__secondary.btn__del-tag
-                  li.tags__item 
-                    span.tags__text css
-                    button.btn.btn__secondary.btn__del-tag
-                  li.tags__item 
-                    span.tags__text javaascript
+                ul(
+                  v-if="tagsArray.length"
+                ).tags__list
+                  li(
+                    v-for="tag in tagsArray"
+                  ).tags__item 
+                    span.tags__text {{tag}}
                     button.btn.btn__secondary.btn__del-tag
           .form-add-item__btns
               button(
@@ -114,9 +113,10 @@
           .form-add-item__row
             .form-add-item__col
               .message(:class="{error: validation.hasError('editedWork.techs')}") {{ validation.firstError('editedWork.techs') }}
-              label.form-add-item__label Добавление тега
+              label.form-add-item__label Изменение тега
               input(
                 v-model="editedWork.techs"
+                @input="tagEdit"
               ).form-add-item__input
           .form-add-item__row
             .form-add-item__col
@@ -191,6 +191,7 @@ export default {
         isError: false,
       },
       disabledBTN: false,
+      tagsArray: [],
     }
   },
   validators: {
@@ -264,7 +265,6 @@ export default {
       }
     },
     async editCurrentWork() {
-      // if (await this.$validate()){
         this.disabledBTN = true;
         try {
             await this.editWork(this.editedWork);
@@ -281,6 +281,22 @@ export default {
     },
     workBlockVisibleOFF() {
       this.$emit('workBlockVisibleOFF')
+    },
+    tagCreate(e) {
+      if(event.data === " ") {
+        this.tagsArray.push(this.work.techs);
+        this.work.techs = "";
+        // this.tagsArray = this.work.techs.split(",");
+        // this.tagsArray.pop();
+        // this.work.techs = "";
+      };
+      // if (this.work.techs.length === 0) {
+      //   this.tagsArray.length = 0;
+      // }
+    },
+    tagEdit() {
+      this.tagsArray = this.editedWork.techs.split(" ");
+      console.log(this.tagsArray)
     }
   }
 }
