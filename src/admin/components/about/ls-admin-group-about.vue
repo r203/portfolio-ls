@@ -113,7 +113,7 @@ export default {
       
     },
     'skill.percent': function (value) {
-      return Validator.value(value).lessThanOrEqualTo(100, "Число от 0 до 100").required('Это поле обязательное');
+      return Validator.value(value).lessThanOrEqualTo(100, "Число от 0 до 100").required('Это поле обязательное').digit();
       
     },
   },
@@ -123,12 +123,13 @@ export default {
     ...mapActions("skills", ["addSkill"]),
     ...mapActions("categories", ["editCategory"]),
     async addNewSkill () {
-      this.disabledBTN = true;
+
       const skillData = {
         ...this.skill,
         category: this.category.id,
       }
       if (await this.$validate()){
+        this.disabledBTN = true;
         try {
           await this.addSkill(skillData);
           this.skill.title = "";
@@ -138,8 +139,13 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Скилл добавлен" 
+
         } catch (error){
-          console.log(error);
+            this.tooltips.visibleTooltip = true; 
+            this.tooltips.isError = true;
+            this.tooltips.header = "Ошибка"
+            this.tooltips.message = error;
+            
         } finally {
           this.disabledBTN = false;
         }
@@ -154,13 +160,17 @@ export default {
       this.disabledBTN = true;
       try {
         await this.editCategory(this.editedCategory);
-
           this.tooltips.visibleTooltip = true; 
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
-          this.tooltips.message = "Категория изменена"        
+          this.tooltips.message = "Категория изменена"   
+          
       } catch (error) {
-        console.log(error);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
+
       } finally {
         this.editModeOn = false;
         this.disabledBTN = false;

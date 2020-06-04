@@ -30,27 +30,25 @@ export default {
         const {data} = await this.$axios.post("/reviews", addedReview);
         commit("ADD_REVIEW", data);
         
-      } catch (error) {
-          console.log(error);
-
-      }
+      } catch (error){
+        throw error.response.data.message;
+        }
     },
     async fetchReviews({commit}) {
       try {
         const userID = await this.$axios.get(`/user`);
         const {data} = await this.$axios.get(`/reviews/${userID.data.user.id}`);
         commit("SET_REVIEW", data);
-      } catch(error) {
-        console.log(error);
-        
-      }
+      } catch(error){
+        throw error.response.data.message;
+        }
     },
     async removeReview({ commit }, reviewToRemove) {
       try {        
         const {data} = await this.$axios.delete(`/reviews/${reviewToRemove.id}`);
         commit("REMOVE_REVIEW", reviewToRemove);
       } catch (error){
-          console.log(error);
+        throw error.response.data.message;
         }
       },
       async editReview({ commit }, editedReview) {
@@ -58,7 +56,7 @@ export default {
           const {data} = await this.$axios.post(`/reviews/${editedReview.id}`, editedReview);
           await commit("EDIT_REVIEW", editedReview);
         } catch (error){
-            console.log(error);
+          throw error.response.data.message;
           }
         },
   }

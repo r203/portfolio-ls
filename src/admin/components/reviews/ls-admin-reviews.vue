@@ -80,12 +80,16 @@ export default {
       try {
         await this.removeReview(currentReview);
 
-          this.tooltips.visibleTooltip = true; 
-          this.tooltips.isSuccess = true;
-          this.tooltips.header = "Успешно"
-          this.tooltips.message = "Отзыв удален"
+        this.tooltips.visibleTooltip = true; 
+        this.tooltips.isSuccess = true;
+        this.tooltips.header = "Успешно"
+        this.tooltips.message = "Отзыв удален"
+
       } catch (error) {
-        alert(error.message);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
       };
     },
     editCurrentReview(editedReview, editReviewOn){

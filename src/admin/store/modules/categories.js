@@ -74,36 +74,33 @@ export default {
         const {data} = await this.$axios.post("/categories", {title});
         commit("ADD_CATEGORY", data);
       } catch (error){
-        throw new Error(
-          error.response.data.error || error.response.data.message
-        );
-      }
+        throw error.response.data.message;
+        }
     },
     async fetchCategories({commit}) {
       try {
         const userID = await this.$axios.get(`/user`);
         const {data} = await this.$axios.get(`/categories/${userID.data.user.id}`);
         commit("SET_CATEGORIES", data);
-      } catch(error) {
-        console.log(error);
-        
-      }
+      } catch(error){
+        throw error.response.data.message;
+        }
     },
     async removeCategory({ commit }, categoryToRemove) {
       try {        
         const {data} = await this.$axios.delete(`/categories/${categoryToRemove.id}`);
         commit("REMOVE_CATEGORY", categoryToRemove);
       } catch (error){
-          console.log(error);
+        throw error.response.data.message;
         }
-      },
-      async editCategory({ commit }, editedCategory) {
+    },
+    async editCategory({ commit }, editedCategory) {
         try {     
           const {data} = await this.$axios.post(`/categories/${editedCategory.id}`, { title: editedCategory.category });
           commit("categories/EDIT_CATEGORY", editedCategory, { root: true });
         } catch (error){
-            console.log(error);
+          throw error.response.data.message;
           }
-        },
+    },
   }
 }

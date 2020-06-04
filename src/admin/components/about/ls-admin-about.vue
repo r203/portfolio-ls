@@ -119,10 +119,11 @@ export default {
           this.tooltips.message = "Категория добавлена"
           
         } catch (error) {
-          // this.tooltips.visibleTooltip = true; 
-          // this.tooltips.header = "Ошибка";
-          // this.tooltips.message = error.message;
-          // this.tooltips.isError = true;
+            this.tooltips.visibleTooltip = true; 
+            this.tooltips.isError = true;
+            this.tooltips.header = "Ошибка"
+            this.tooltips.message = error;
+
         } finally {
         this.disabledBTN = false;
         }
@@ -139,7 +140,10 @@ export default {
           this.tooltips.message = "Категория удалена"
           
       } catch (error) {
-        alert(error.message);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
       } finally {
         this.disabledBTN = false;
       }

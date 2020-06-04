@@ -169,12 +169,16 @@ export default {
         
         await this.addReview(formData);
 
-          this.tooltips.visibleTooltip = true; 
-          this.tooltips.isSuccess = true;
-          this.tooltips.header = "Успешно"
-          this.tooltips.message = "Отзыв добавлен"
+        this.tooltips.visibleTooltip = true; 
+        this.tooltips.isSuccess = true;
+        this.tooltips.header = "Успешно"
+        this.tooltips.message = "Отзыв добавлен"
+
       } catch (error) {
-        console.log(error);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
       } finally {
         this.disabledBTN = false;
       }
@@ -184,13 +188,16 @@ export default {
       try {
         await this.editReview(this.reviewToEdit);
 
-          this.tooltips.visibleTooltip = true; 
-          this.tooltips.isSuccess = true;
-          this.tooltips.header = "Успешно"
-          this.tooltips.message = "Отзыв изменен"
+        this.tooltips.visibleTooltip = true; 
+        this.tooltips.isSuccess = true;
+        this.tooltips.header = "Успешно"
+        this.tooltips.message = "Отзыв изменен"
         
       } catch (error) {
-        console.log(error);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
       } finally {
         this.editModeOn = false;
         this.disabledBTN = false;

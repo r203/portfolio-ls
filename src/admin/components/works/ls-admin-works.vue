@@ -111,8 +111,13 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Работа удалена"
+
       } catch (error) {
-        alert(error.message);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
+          
       };
     },
     async editCurrentWork(index){

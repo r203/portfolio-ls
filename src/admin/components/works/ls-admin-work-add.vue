@@ -243,7 +243,7 @@ export default {
           formData.append("description", this.work.description);
           
           await this.addWork(formData);
-
+          
           this.work.title = "";
           this.work.techs = "";
           this.work.photo = "";
@@ -254,8 +254,13 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Работа добавлена"
+
         } catch (error) {
-          console.log(error);
+            this.tooltips.visibleTooltip = true; 
+            this.tooltips.isError = true;
+            this.tooltips.header = "Ошибка"
+            this.tooltips.message = error;
+            
         } finally {
           this.disabledBTN = false;
         }
@@ -266,14 +271,19 @@ export default {
         try {
             await this.editWork(this.editedWork);
 
-              this.tooltips.visibleTooltip = true; 
-              this.tooltips.isSuccess = true;
-              this.tooltips.header = "Успешно"
-              this.tooltips.message = "Работа изменена"
+            this.tooltips.visibleTooltip = true; 
+            this.tooltips.isSuccess = true;
+            this.tooltips.header = "Успешно"
+            this.tooltips.message = "Работа изменена"
+
           } catch (error) {
-            console.log(error);
+            this.tooltips.visibleTooltip = true; 
+            this.tooltips.isError = true;
+            this.tooltips.header = "Ошибка"
+            this.tooltips.message = error;
+
           } finally {
-          this.disabledBTN = false;
+              this.disabledBTN = false;
         }
     },
     workBlockVisibleOFF() {
@@ -283,13 +293,7 @@ export default {
       if(event.data === " ") {
         this.tagsArray.push(this.work.techs);
         this.work.techs = "";
-        // this.tagsArray = this.work.techs.split(",");
-        // this.tagsArray.pop();
-        // this.work.techs = "";
       };
-      // if (this.work.techs.length === 0) {
-      //   this.tagsArray.length = 0;
-      // }
     },
     tagEdit() {
       this.tagsEditArray = this.editedWork.techs.split(" ");

@@ -91,8 +91,13 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Скилл удален"
+
       } catch (error) {
-        console.log(error);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
+
       } finally {
         this.disabledBTN = false;
       }
@@ -101,13 +106,17 @@ export default {
       this.disabledBTN = true;
       try {
         await this.editSkill(this.editedSkill);
+        this.tooltips.visibleTooltip = true; 
+        this.tooltips.isSuccess = true;
+        this.tooltips.header = "Успешно"
+        this.tooltips.message = "Скилл изменен"
 
-          this.tooltips.visibleTooltip = true; 
-          this.tooltips.isSuccess = true;
-          this.tooltips.header = "Успешно"
-          this.tooltips.message = "Скилл изменен"
       } catch (error) {
-        console.log(error);
+          this.tooltips.visibleTooltip = true; 
+          this.tooltips.isError = true;
+          this.tooltips.header = "Ошибка"
+          this.tooltips.message = error;
+          
       } finally {
         this.editModeOn = false;
         this.disabledBTN = false;
