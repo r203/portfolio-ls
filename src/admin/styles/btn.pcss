@@ -1,0 +1,214 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  &__primary {
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 19px 50px;
+    border-radius: 50px;
+    background: rgb(20,89,226);
+    background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    &[disabled=disabled], button:disabled {
+      background: #ccc;
+    }
+    &:hover {
+      transition: all .3s;
+      background: linear-gradient(90deg,#c856f1,#424268);
+      &[disabled=disabled], button:disabled {
+        background: #ccc;
+      }
+    }
+  }
+  &__cancel {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+    margin: 0 55px;
+    transition: all .3s;
+    &:hover {
+      color:#414c63;
+    }
+    @include phones {
+      margin: 0 15px;
+    }
+  }
+  &__edit {
+    font-weight: 600;
+    background: transparent;
+    color: #414c63;
+    opacity: .7;
+    transition: opacity .3s;
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
+    &:hover {
+      opacity: 1;
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
+    }
+    &:after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: svg-load('pencil.svg', fill=#383bcf, width=100%, height=100%);
+    }
+  }
+  &__delete {
+    font-weight: 600;
+    background: transparent;
+    color: #414c63;
+    opacity: .7;
+    transition: opacity .3s;
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
+    &:hover {
+      opacity: 1;
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
+    }
+    &:after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: svg-load('remove.svg', fill=#c92e2e, width=100%, height=100%);
+    }
+  }
+  &__add-photo {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+    transition: all .3s;
+    &:hover {
+      color:#414c63;
+    }
+  }
+  &__add-group {
+    font-weight: 600;
+    color: #383bcf;
+    background: transparent;
+    margin: 0 55px;
+    transition: all .3s;
+    &[disabled=disabled], button:disabled {
+      background: #ccc;
+    }
+    &:hover {
+      color: #424268;
+      &:before {
+        background: linear-gradient(90deg,#c856f1,#424268);
+      }
+      &[disabled=disabled], button:disabled {
+        background: #ccc;
+      }
+    }
+    @include phones {
+      margin: 0;
+      padding: 0;
+    }
+    &:before {
+      content: '+';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      transition: all .3s;
+      background: rgb(20,89,226);
+      background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all .3s;
+      background: rgb(20,89,226);
+      background: linear-gradient(90deg, rgba(20,89,226,1) 0%, rgba(63,53,203,1) 100%);
+      &[disabled=disabled], button:disabled {
+        opacity: .3;
+      }
+      &:hover {
+        transition: all .3s;
+        background: linear-gradient(90deg,#c856f1,#424268);
+        &[disabled=disabled], button:disabled {
+          opacity: .3;
+        }
+      }
+    }
+  }
+  &__ok {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: svg-load('tick.svg', fill=#00d70a, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
+  }
+  &__erase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: svg-load('remove.svg', fill=#bf2929, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
+  }
+  &__trash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: svg-load('trash.svg', fill=#bf2929, width=100%, height=100%);
+    &[disabled=disabled], button:disabled {
+      opacity: .3;
+    }
+  }
+  &__del-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: svg-load('remove.svg', fill=#414c63, width=100%, height=100%);
+  }
+}

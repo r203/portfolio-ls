@@ -1,4 +1,7 @@
 .section {
+    &-welcome {
+        background: url(../images/bg/main.jpg) center center/cover no-repeat;
+    }
     &-hero {
         display: flex;
         position: relative;
@@ -7,33 +10,33 @@
         min-height: 650px;
         &__content {
             position: absolute;
-            top: 28%;
-            left: 40%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            @include desktop {
-                left: 38%;
-            }
-            @include tablets {
-                left: 50%;
-            }
+            // @include desktop {
+            //     left: 38%;
+            // }
+            // @include tablets {
+            //     left: 50%;
+            // }
         }
         &__scroll-btn {
             position: absolute;
-            top: 55%;
-            left: 45%;
+            bottom: 5%;
+            left: 50%;
             transform: translateX(-50%);
         }
     }
     &-about {
-        position: absolute;
-        width: 100%;
-        transform: translateX(-50%);
-        @include tablets {
-            left: 50%;
-        }
-        @include phones {
-            bottom: 5%;
-        }
+        // position: absolute;
+        // width: 100%;
+        // transform: translateX(-50%);
+        // @include tablets {
+        //     left: 50%;
+        // }
+        // @include phones {
+        //     bottom: 5%;
+        // }
     }
     &-skill {
         background: url(../images/bg/foursection.png) center center/cover no-repeat;
@@ -81,4 +84,7 @@
 }
 .empty-section {
     display: block;
+    @include tablets {
+        display: none;
+    }
 }

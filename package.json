@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --hot",
+    "dev": "webpack-dev-server --mode=development --open --hot",
     "build": "rm -rf dist && webpack --mode=production --progress",
     "reg": "node reg-util.js"
   },
@@ -50,13 +50,18 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "axios": "^0.19.2",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.7",
     "vue-flickity": "^1.2.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.2.0",
+    "vue-scrollto": "^2.18.1",
+    "vuex": "^3.4.0"
   }
 }

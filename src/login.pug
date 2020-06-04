@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Portfolio | login
+  body
+    .wrapper.admin-wrapper
+      .maincontent
+        .section-welcome
+          .login
+            form.login__form
+              .login__col
+                h2.login__title-text Авторизация
+              .login__col
+                  label.login__label Логин
+                  input(type="text", id="login").login__input
+              .login__col
+                  label.login__label Пароль
+                  input(type="password", id="pass").login__input
+              .login__btns
+                button(type="submit").btn__submit-login Отправить
+              .login__btns-close
+                button(type="submit").btn__submit-close

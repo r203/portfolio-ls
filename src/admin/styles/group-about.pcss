@@ -1,0 +1,100 @@
+.group-about {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+  width: 50%;
+  /* убери высоту как контент появится */
+  height: 395px; 
+  padding: 35px 30px;
+  width: calc(100% / 2 - 30px);
+  margin-left: 30px;
+  @include phones {
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(31, 35, 45, .15);
+    &-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #414c63;
+    }
+    &-left {
+      width: 70%;
+    }
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 30%;
+    }
+  }
+  &__content {
+    height: 100%;
+    color: #414c63;
+    padding: 30px 0;
+  }
+  &__skills {
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  &__skill {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+    &-name {
+      width: 60%;
+    }
+    &-percent {
+      position: relative;
+      width: 15%;
+      &:after {
+        content: '%';
+        position: absolute;
+        display: inline-flex;
+        right: 0;
+      }
+    }
+    &-btn {
+      width: 25%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+  &-add {
+    &__row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      // width: 80%;
+      text-align: right;
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    &__skill {
+      width: 50%;
+      margin-right: 10px;
+  
+    }
+    &__percent {
+      width: 20%;
+      margin-right: 30px;
+    }
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,47 @@
+.header {
+  width: 100%;
+  background-color: #424268;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin: 0 auto;
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    :not(:last-child) {
+    margin-right: 22px;
+  }
+  }
+  &__logo {
+    width: 46px;
+  }
+}
+
+.user-name {
+  &__content {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.page-name {
+  @include phones {
+    display: none;
+  }
+  &__content {
+    opacity: .5;
+  }
+}
+
+.logout-btn {
+  &__link {
+    opacity: .7;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

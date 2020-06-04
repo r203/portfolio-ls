@@ -1,4 +1,9 @@
 import Vue from "vue";
+import axios from "axios";
+
+const request = axios.create({
+    baseURL: "https://webdev-api.loftschool.com"
+});
 
 const controls = {
     template: "#slider-controls",
@@ -13,6 +18,12 @@ const controls = {
 const thumbnail = {
     template: "#slider-thumbnail",
     props: ["works", "currentWork"],
+    methods: {
+        handleClickThumb(work) {
+            this.$emit("thumb", work);
+            
+        }
+    },
 }
 
 const display = {
@@ -24,7 +35,12 @@ const display = {
             const works = [...this.works];
             return  works.reverse();
         }
-    }
+    },
+    methods: {
+        handleThumb(work) {
+            this.$emit("thumb", work);
+        }
+    },
 }
 
 const tags = {
@@ -35,10 +51,12 @@ const tags = {
 const school = {
     template: "#slider-school",
     components: {tags},
-    props: ["currentWork"],
+    props:{
+        currentWork: Object,
+    },
     computed: {
         tagsArray() {
-            return this.currentWork.skills.split(",");
+            // return this.currentWork.techs.split(","); //почему то не нравится ему текс. без текса есть массив. а с ним уже ошибка
         }
     }
 }
@@ -72,14 +90,20 @@ new Vue({
             if (value === this.works.length) {
                 this.currentIndex--;
                 value = this.works.length - 1;
-                btnNext.classList.add("slider__btn--end")
-                console.log("конец");
             } 
             if (value < 0) {
                 this.currentIndex++;
                 value = 0;
+            } 
+            if (value === amountWorks) {
+                btnNext.classList.add("slider__btn--end")
+            } 
+            if (value === 0) {
                 btnPrev.classList.add("slider__btn--end")
-                console.log("Начало");
+            } 
+            if (value > 0 && value < amountWorks) {
+                btnNext.classList.remove("slider__btn--end")
+                btnPrev.classList.remove("slider__btn--end")
             } 
         },
         makeArrWithRequireImages(array) {
@@ -101,10 +125,16 @@ new Vue({
                     break;
             }
             
-        }
+        },
+        handleThumb(work) {
+            const workIndex = work - 1;
+            this.currentIndex = workIndex;
+
+            
+        },
     },
-    created() {
-        const data = require("../data/works.json");
-        this.works = this.makeArrWithRequireImages(data);
+    async created() {
+        const { data } = await request.get("/works/327");
+        this.works = data;
     },
 });
