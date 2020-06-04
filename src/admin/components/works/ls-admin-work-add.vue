@@ -122,14 +122,10 @@
             .form-add-item__col
               .tags.work-add__tags
                 ul.tags__list
-                  li.tags__item 
-                    span.tags__text html
-                    button.btn.btn__secondary.btn__del-tag
-                  li.tags__item 
-                    span.tags__text css
-                    button.btn.btn__secondary.btn__del-tag
-                  li.tags__item 
-                    span.tags__text javaascript
+                  li(
+                    v-for="tag in editedWork.tags"
+                  ).tags__item 
+                    span.tags__text {{tag}}
                     button.btn.btn__secondary.btn__del-tag
           .form-add-item__btns
               button(
@@ -192,6 +188,7 @@ export default {
       },
       disabledBTN: false,
       tagsArray: [],
+      tagsEditArray: [],
     }
   },
   validators: {
@@ -295,8 +292,9 @@ export default {
       // }
     },
     tagEdit() {
-      this.tagsArray = this.editedWork.techs.split(" ");
-      console.log(this.tagsArray)
+      this.tagsEditArray = this.editedWork.techs.split(" ");
+      this.tagsEditArray.pop();
+      console.log(this.tagsEditArray)
     }
   }
 }

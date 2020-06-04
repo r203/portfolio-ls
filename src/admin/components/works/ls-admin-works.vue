@@ -31,8 +31,6 @@
               .tags
                 ul.tags__list
                   li.tags__item html
-                  li.tags__item css
-                  li.tags__item javaascript
             .work__content
               h3.work__title {{workItem.title}}
               .work__desc
@@ -88,6 +86,8 @@ export default {
         isSuccess: false,
         isError: false,
       },
+      tagsArray: [],
+
     }
   },
   computed: {
@@ -98,7 +98,8 @@ export default {
   created() {
     this.fetchWorks();
   },
-  mounted() {},
+  mounted() {
+  },
   beforeDestroy() {},
   methods: {
     ...mapActions("works", ["fetchWorks", "removeWork"]),
@@ -117,7 +118,8 @@ export default {
     async editCurrentWork(index){
       this.workBlockVisibleOn = true;
       this.editWorkOn = false;      
-      this.editedWork = this.works[index];      
+      this.editedWork = this.works[index];    
+      this.editedWork.tags = this.works[index].techs.split(" ");      
     },
     workBlockVisibleOFF() {
       this.workBlockVisibleOn = false
