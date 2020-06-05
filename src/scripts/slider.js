@@ -52,7 +52,6 @@ const tags = {
     template: "#slider-tags",
     props: {
         currentWork: Object,
-        tagsArray: Array,
     },
     computed: {
         tagsArray() {
