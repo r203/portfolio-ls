@@ -2,28 +2,25 @@
   {
     "id": 1,
     "title": "1 Сайт школы онлайн образования",
-    "skills": "1 Html, Css, JavaScript",
-    "photo": "1.jpg",
-    "thumbnail": "mini-1.jpg",
+    "techs": "1 Html, Css, JavaScript",
+    "photo": "https://picsum.photos/200",
     "link": "//google.com",
-    "desc": "1 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "description": "1 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
   },
   {
     "id": 2,
     "title": "2 Сайт школы онлайн образования",
-    "skills": "2 Html, Css, JavaScript",
-    "photo": "2.jpg",
-    "thumbnail": "mini-2.jpg",
+    "techs": "2 Html, Css, JavaScript",
+    "photo": "https://picsum.photos/200",
     "link": "//yandex.ru",
-    "desc": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "description": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
   },
   {
     "id": 3,
     "title": "3 Сайт школы онлайн образования",
-    "skills": "3 Html, Css, JavaScript",
-    "photo": "3.jpg",
-    "thumbnail": "mini-3.jpg",
+    "techs": "3 Html, Css, JavaScript",
+    "photo": "https://picsum.photos/200",
     "link": "//rambler.ru",
-    "desc": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "description": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
   }
 ]

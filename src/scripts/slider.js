@@ -5,6 +5,19 @@ const request = axios.create({
     baseURL: "https://webdev-api.loftschool.com"
 });
 
+const thumbnail = {
+    template: "#slider-thumbnail",
+    props:  {
+        works: Array,
+        currentWork: Object
+    },
+    methods: {
+        handleClickThumb(work) {
+            this.$emit("thumb", work);
+            
+        }
+    },
+};
 const controls = {
     template: "#slider-controls",
     props: ["currentWork"],
@@ -13,27 +26,20 @@ const controls = {
             this.$emit("slide", direction);
         }
     },
-}
-
-const thumbnail = {
-    template: "#slider-thumbnail",
-    props: ["works", "currentWork"],
-    methods: {
-        handleClickThumb(work) {
-            this.$emit("thumb", work);
-            
-        }
-    },
-}
-
+};
 const display = {
     template: "#slider-display",
     components: {thumbnail},
-    props: ["currentWork", "works"],
+    props:  {
+        works: Array,
+        currentWork: Object,
+        currentIndex: Number,
+    },
     computed: {
         reversedWorks() {
             const works = [...this.works];
-            return  works.reverse();
+            // return  works.reverse();
+            return works;
         }
     },
     methods: {
@@ -41,25 +47,27 @@ const display = {
             this.$emit("thumb", work);
         }
     },
-}
-
+};
 const tags = {
     template: "#slider-tags",
-    props: ["tags"],
-}
+    props: {
+        currentWork: Object,
+        tagsArray: Array,
+    },
+    computed: {
+        tagsArray() {
+            return this.currentWork.techs.split(' ');;
+        },
+    }
+};
 
 const school = {
     template: "#slider-school",
     components: {tags},
-    props:{
-        currentWork: Object,
-    },
-    computed: {
-        tagsArray() {
-            // return this.currentWork.techs.split(","); //почему то не нравится ему текс. без текса есть массив. а с ним уже ошибка
-        }
-    }
-}
+    props: ["currentWork"],
+
+};
+
 
 new Vue({
     el: "#slider-component",
@@ -80,6 +88,8 @@ new Vue({
         currentIndex(value) {
             this.makeNotLoopSlider(value);
         },
+    },
+    mounted() {
     },
     methods: {
         makeNotLoopSlider(value) {
@@ -124,17 +134,23 @@ new Vue({
                     this.currentIndex--;
                     break;
             }
-            
         },
         handleThumb(work) {
-            const workIndex = work - 1;
-            this.currentIndex = workIndex;
-
             
+            const workIndex = work;
+            this.currentIndex = workIndex;  
+            console.log(workIndex);
+
         },
     },
     async created() {
-        const { data } = await request.get("/works/327");
+        // const data = require("../data/works.json");
+        const {data} = await request.get("/works/327");
+        // console.log(dataJ);
+        // console.log(data);
+        
         this.works = data;
+        
+        
     },
 });

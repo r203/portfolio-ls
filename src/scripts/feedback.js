@@ -31,13 +31,10 @@ new Vue({
   methods: {
     next() {
       this.$refs.flickity.next();
-      console.log("next");
-      
     },
     
     previous() {
       this.$refs.flickity.previous();
-      console.log("prev");
     }
   },
   async created() {

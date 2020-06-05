@@ -117,6 +117,8 @@ export default {
           this.tooltips.isSuccess = true;
           this.tooltips.header = "Успешно"
           this.tooltips.message = "Категория добавлена"
+
+          this.blockVisibleOn = false;
           
         } catch (error) {
             this.tooltips.visibleTooltip = true; 
