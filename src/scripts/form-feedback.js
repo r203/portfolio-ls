@@ -1,16 +1,27 @@
 import Vue from 'vue'
 import SimpleVueValidation from 'simple-vue-validator';
+import tooltip from "../admin/components/tooltip";
+
 const Validator = SimpleVueValidation.Validator;
 Vue.use(SimpleVueValidation);
 
 new Vue({
   el: "#form-feedback-component",
   template: "#form-feedback-container",
+  components: {
+    tooltip,
+  },
   data: function () {
     return {
       name: '',
       email: '',
-      textarea: ''
+      textarea: '',
+      tooltips: {
+        header: "",
+        visibleTooltip: false,
+        isSuccess: false,
+        isError: false,
+      },
     };
   },
   validators: {
@@ -28,9 +39,11 @@ new Vue({
     }
   },
   methods: {
-    submit: function () {
+    submit: function (tooltips) {
+
       this.$validate()
         .then(function (success) {
+
           if (success) {
             const deliveryForm = document.querySelector('#deliveryForm');
             
@@ -42,18 +55,30 @@ new Vue({
             xhr.open("POST", "https://webdev-api.loftschool.com/sendmail");
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             xhr.send(formData);
+            
             xhr.addEventListener('load', ()=> {
                 if(xhr.response.status) {
                     var reviewText = xhr.response.message;
-                    alert(reviewText);
+
+                    tooltips.visibleTooltip = true; 
+                    tooltips.isSuccess = true;
+                    tooltips.header = "Успешно"
+                    tooltips.message = reviewText;
+
                     deliveryForm.reset();
+
                 } else {
                     reviewText = xhr.response.message;
-                    alert(reviewText);
+                    
+                    tooltips.visibleTooltip = true; 
+                    tooltips.isError = true;
+                    tooltips.header = "Ошибка"
+                    tooltips.message = reviewText;
                 };
             })
           }
         });
     }
+
   },
 });

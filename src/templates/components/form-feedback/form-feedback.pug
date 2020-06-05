@@ -21,4 +21,7 @@ script(type="text/x-template")#form-feedback-container
               textarea.feedback__textarea.feedback__textarea-textarea(name="comment", cols="30", rows="2", v-model="textarea" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса" required)
               .feedback__placeholder.feedback__placeholder-textarea Сообщение к письму
         .feedback__row
-          button(type="submit" @click.prevent="submit").btn.feedback__btn Отправить
+          button(type="submit" @click.prevent="submit(tooltips)").btn.feedback__btn Отправить
+    tooltip(
+      :tooltips="tooltips"
+    )

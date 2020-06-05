@@ -57,6 +57,7 @@ export default {
 .btn.btn__tooltip {
   display: block;
   background-color: #fff;
+  color: #2f3642;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
