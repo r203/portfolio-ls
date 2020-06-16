@@ -22,12 +22,17 @@ html(lang="ru")
 
                   .header__socials  
                       .socials
-                        - var items = ["insta", "vk", "github"];
+                        - 
+                          var items = [
+                            ["insta","https://www.instagram.com/artem_arch/"],
+                            ["hh","https://astrakhan.hh.ru/resume/13180a2eff03dcea600039ed1f4f5070713163"],
+                            ["github","https://github.com/r203/"]
+                          ];
                         ul.socials__list
                           each item in items
                             li.socials__item
-                              a.socials__link(href="/")
-                                +icon(item, "socials__icon")
+                              a.socials__link(href=`${item[1]}`)
+                                +icon(item[0], "socials__icon")
                   .mobile-menu
                     .mobile-menu__wrap
                       .mobile-menu__nav
@@ -47,12 +52,20 @@ html(lang="ru")
                                 a.nav__link(href=`${item[1]}`,  v-scroll-to=`"${item[1]}"`, @click="onStart") #{item[0]}
                       .mobile-menu__socials
                         .socials
-                          - var items = ["insta", "vk", "github"];
+                          - 
+                            var items = [
+                              ["Главная", "#main"],
+                              ["Обо мне", "#about"],
+                              ["Навыки", "#skills"],
+                              ["Работы", "#works"],
+                              ["Отзывы", "#reviews"],
+                              ["Связаться", "#feedback"],
+                            ];
                           ul.socials__list
                             each item in items
                               li.socials__item
-                                a.socials__link(href="/")
-                                  +icon(item, "socials__icon")
+                                a.socials__link(href=`${item[1]}`)
+                                  +icon(item[0], "socials__icon")
                   a.hamburger-menu-link
                     .hamburger-menu-link__bars
                 .section-hero__content
@@ -139,12 +152,17 @@ html(lang="ru")
                         .footer__about 
                           p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
                         .footer__socials.socials.socials--footer
-                          - var items = ["insta", "vk", "github"];
+                          - 
+                            var items = [
+                              ["insta","https://www.instagram.com/artem_arch/"],
+                              ["hh","https://astrakhan.hh.ru/resume/13180a2eff03dcea600039ed1f4f5070713163"],
+                              ["github","https://github.com/r203/"]
+                            ];
                           ul.socials__list
                             each item in items
                               li.socials__item
-                                a.socials__link(href="/")
-                                  +icon(item, "socials__icon")
+                                a.socials__link(href=`${item[1]}`)
+                                  +icon(item[0], "socials__icon")
                     .footer__quote
                       .footer-quote
                         blockquote.footer-quote__content Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
