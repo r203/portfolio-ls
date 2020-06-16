@@ -1,26 +1,26 @@
 [
   {
     "id": 1,
-    "title": "1 Сайт школы онлайн образования",
-    "techs": "1 Html, Css, JavaScript",
-    "photo": "https://picsum.photos/200",
-    "link": "//google.com",
-    "description": "1 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "title": "ИНТЕРАКТИВНАЯ ФОРМА",
+    "techs": "HTML, CSS, JQUERY",
+    "photo": "https://r203.github.io/img/formsubscr640.jpg",
+    "link": "https://r203.github.io/subscribe_form/",
+    "description": "Анимированная форма на которой посетители могут подписаться. Простенько но со вкусом. Использованы HTML, CSS и JQUERY."
   },
   {
     "id": 2,
-    "title": "2 Сайт школы онлайн образования",
-    "techs": "2 Html, Css, JavaScript",
-    "photo": "https://picsum.photos/200",
-    "link": "//yandex.ru",
-    "description": "2 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "title": "СТАРТОВАЯ СТРАНИЦА",
+    "techs": "Html, Css",
+    "photo": "https://r203.github.io/img/start-page640.jpg",
+    "link": "https://r203.github.io/start-page/",
+    "description": "Статичная стартовая страница с интересным и запоминающимся дизайном для авторизации пользователей. Написана с применением технологий HTML и CSS."
   },
   {
     "id": 3,
-    "title": "3 Сайт школы онлайн образования",
-    "techs": "3 Html, Css, JavaScript",
-    "photo": "https://picsum.photos/200",
-    "link": "//rambler.ru",
-    "description": "3 Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+    "title": "ИНТЕРАКТИВНАЯ ФОРМА",
+    "techs": "HTML, CSS, JavaScript, Gulp, Pug",
+    "photo": "https://r203.github.io/img/form-with-skillometer.jpg",
+    "link": "https://r203.github.io/form-with-skillometer/",
+    "description": "Адаптивная интерактивная форма для отправки свои знаний, с анимированным счетчиком, который показывает результат в зависимости от количества выбранных скиллов. Использованы HTML, CSS, JavaScript, Gulp, Pug."
   }
 ]

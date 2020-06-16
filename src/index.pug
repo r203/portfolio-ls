@@ -54,12 +54,9 @@ html(lang="ru")
                         .socials
                           - 
                             var items = [
-                              ["Главная", "#main"],
-                              ["Обо мне", "#about"],
-                              ["Навыки", "#skills"],
-                              ["Работы", "#works"],
-                              ["Отзывы", "#reviews"],
-                              ["Связаться", "#feedback"],
+                              ["insta","https://www.instagram.com/artem_arch/"],
+                              ["hh","https://astrakhan.hh.ru/resume/13180a2eff03dcea600039ed1f4f5070713163"],
+                              ["github","https://github.com/r203/"]
                             ];
                           ul.socials__list
                             each item in items
@@ -102,7 +99,7 @@ html(lang="ru")
                             .about__desc
                               p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                           .about__text 
-                            p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                            p Этот сайт моё портфолио. На нём я выкладываю свои работы, а так же небольшие практикумы. У всех работ есть небольшое описание и перечень используемых технологий. Сам сайт портфолио написан с импользованием HTML, CSS3, JS и Vue.js. Контактные данные для связи указанны в шапке и в подвале сайта. Я всегда на связи и готов к новым задачам!
 
         section.section.section-skill
           +image("bg/hands.png", "section-skill-image", "section-three image")
@@ -113,13 +110,17 @@ html(lang="ru")
                   .longtitle
                     h2.longtitle__title Чем я могу быть полезен вам
                     .longtitle__text
-                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                      p Данные графики динамические и их данные изменяются через административную панель сайта, написанная на Vue.js. Здесь только часть скиллов, так как я постоянно в получении новых знаний и преминений их на практике 
               .value__content
                 #skills-component
 
         section.section.section-jobs
           .container.container--mobile-full#works
             #slider-component
+        
+        section.section.section-jobs
+          .container.container--mobile-full#practicum
+            #practicum-component
 
         section.section.section-feedback
           .container

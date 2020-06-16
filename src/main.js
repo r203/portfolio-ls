@@ -7,6 +7,7 @@ import "./scripts/nav";
 import "./scripts/mobile-menu";
 import "./scripts/skills";
 import "./scripts/slider";
+import "./scripts/practicum";
 import "./scripts/parallax";
 import "./scripts/feedback";
 import "./scripts/form-feedback";

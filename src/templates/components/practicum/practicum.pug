@@ -1,61 +1,61 @@
-script(type="text/x-template")#slider-container
+script(type="text/x-template")#practicum-container
     .my-work
         .slider
-            .slider__title Мои Работы
+            .slider__title Практикум
             .slider__body
                 .slider__count {{currentIndex+1}}
                 controls(
                     @slide="handleSlide"
-                    :currentWork="currentWork"
+                    :currentWorkPractice="currentWorkPractice"
                 )
                 display(
                     @thumb="handleThumb"
-                    :currentWork="currentWork"
+                    :currentWorkPractice="currentWorkPractice"
                     :works="works"
                 )
         school(
-            :currentWork="currentWork"
+            :currentWorkPractice="currentWorkPractice"
         )
 
-script(type="text/x-template")#slider-display
+script(type="text/x-template")#practice-display
     .slider__preview
-        img.slider__preview-image(:src="`https://webdev-api.loftschool.com/${currentWork.photo}`", alt="slider preview")
+        img.slider__preview-image(:src="currentWorkPractice.photo", alt="slider preview1")
         thumbnail(
             @thumb="handleThumb"
             :works="reversedWorks"
-            :currentWork="currentWork"
+            :currentWorkPractice="currentWorkPractice"
         )
 
-script(type="text/x-template")#slider-thumbnail
+script(type="text/x-template")#practice-thumbnail
     .slider__thumbnail
         ul.slider__list 
             li.slider__item(
                 v-for="(work, index) in works" 
                 :key="work.id"
-                :class="{active: currentWork.id === work.id}"
+                :class="{active: currentWorkPractice.id === work.id}"
                 )
                 button.slider__link(@click.prevent="handleClickThumb(index)")
-                    img.slider__thumbnail-img(:src="`https://webdev-api.loftschool.com/${work.photo}`", alt="slider thumbnail")
+                    img.slider__thumbnail-img(:src="`${work.photo}`", alt="slider thumbnail")
 
-script(type="text/x-template")#slider-controls
+script(type="text/x-template")#practice-controls
     .slider__controls
         a(@click.prevent="handleClick('next')" id="btnNext").slider__btn.slider__btn--next
             .slider__btn-text &gt;
         a(@click.prevent="handleClick('prev')" id="btnPrev").slider__btn.slider__btn--prev.slider__btn--end
             .slider__btn-text &lt;
 
-script(type="text/x-template")#slider-school
+script(type="text/x-template")#practice-school
     .school
         tags(
-        :currentWork="currentWork"
+        :currentWorkPractice="currentWorkPractice"
         )
-        .school__title {{currentWork.title}}
+        .school__title {{currentWorkPractice.title}}
         .school__text
-            p  {{currentWork.description}}
+            p  {{currentWorkPractice.description}}
         .school__site
-            a.school__link(:href="currentWork.link") Посмотреть сайт
+            a.school__link(:href="currentWorkPractice.link") Посмотреть сайт
 
-script(type="text/x-template")#slider-tags
+script(type="text/x-template")#practice-tags
     .tags
         ul.tags__list
             li.tags__item(v-for="tag in tagsArray") {{tag}}

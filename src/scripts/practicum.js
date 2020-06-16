@@ -6,10 +6,10 @@ const request = axios.create({
 });
 
 const thumbnail = {
-    template: "#slider-thumbnail",
+    template: "#practice-thumbnail",
     props:  {
         works: Array,
-        currentWork: Object
+        currentWorkPractice: Object
     },
     methods: {
         handleClickThumb(work) {
@@ -19,9 +19,9 @@ const thumbnail = {
     },
 };
 const controls = {
-    template: "#slider-controls",
+    template: "#practice-controls",
     props: {
-        currentWork: Object,
+        currentWorkPractice: Object,
     },
     methods: {
         handleClick(direction) {
@@ -30,17 +30,11 @@ const controls = {
     },
 };
 const display = {
-    template: "#slider-display",
+    template: "#practice-display",
     components: {thumbnail},
     props:  {
-        works: {
-            type: Array,
-            default: () => [],
-            required: true,
-        },
-        currentWork: {
-            type: Object,
-        },
+        works: Array,
+        currentWorkPractice: Object,
         currentIndex: Number,
     },
     computed: {
@@ -57,30 +51,30 @@ const display = {
     },
 };
 const tags = {
-    template: "#slider-tags",
+    template: "#practice-tags",
     props: {
-        currentWork: Object,
+        currentWorkPractice: Object,
     },
     computed: {
         tagsArray() {
-            return this.currentWork.techs.split(',');
+            return this.currentWorkPractice.techs.split(',');
         },
     }
 };
 
 const school = {
-    template: "#slider-school",
+    template: "#practice-school",
     components: {tags},
-    props: {
-        currentWork: Object,
-    }
+    props:  {
+        currentWorkPractice: Object,
+    },
 
 };
 
 
 new Vue({
-    el: "#slider-component",
-    template: "#slider-container",
+    el: "#practicum-component",
+    template: "#practicum-container",
     components: {display, controls, school},
     data() {
         return {
@@ -89,7 +83,7 @@ new Vue({
         };
     },
     computed: {
-        currentWork() {
+        currentWorkPractice() {
             return this.works[this.currentIndex];
         },
     },
@@ -153,10 +147,9 @@ new Vue({
         },
     },
     async created() {
-        // const data = require("../data/works.json");
-        const {data} = await request.get("/works/327");
-        // console.log(dataJ);
-        // console.log(data);
+        const data = require("../data/works.json");
+        // const {data} = await request.get("/works/327");
+
         
         this.works = data;
         
